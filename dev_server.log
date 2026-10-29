@@ -1,0 +1,11 @@
+
+> synfusion-website@1.0.0 dev
+> next dev
+
+▲ Next.js 16.4.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 557ms
+✓ Running next.config.ts took 48ms
+
+ HEAD / 200 in 738ms (next.js: 297ms, application-code: 441ms)
