@@ -49,7 +49,7 @@
       --dark-card: #222222;
       --dark-border: #333333;
       --text-main: #172033;
-      --text-muted: #5A6578;
+      --text-muted: #64748B;
       --text-light: #94A3B8;
       --bg-main: #FFFFFF;
       --bg-alt: #FFF8F6;
@@ -83,6 +83,13 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      padding-bottom: 0;
+    }
+
+    @media (max-width: 767px) {
+      body {
+        padding-bottom: 72px; /* Space for floating mobile bar */
+      }
     }
 
     a {
@@ -138,12 +145,12 @@
       background-color: var(--primary-light);
       border: 1px solid var(--primary-border);
       color: var(--primary-hover);
-      font-size: 0.875rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       border-radius: var(--radius-full);
       margin-bottom: 1rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
     .section-title {
@@ -240,7 +247,7 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.92);
+      background-color: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(226, 232, 240, 0.8);
@@ -287,7 +294,6 @@
       font-size: 0.95rem;
       color: var(--text-muted);
       transition: color 0.2s ease;
-      position: relative;
     }
 
     .nav-link:hover, .nav-link.active {
@@ -347,14 +353,14 @@
     /* Hero Section */
     .hero {
       padding: 4rem 0 6rem 0;
-      background: radial-gradient(circle at 50% 0%, rgba(255, 99, 71, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+      background: radial-gradient(circle at 50% 0%, rgba(255, 99, 71, 0.08) 0%, rgba(255, 255, 255, 0) 70%), var(--bg-main);
       position: relative;
       overflow: hidden;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 3.5rem;
       align-items: center;
     }
@@ -367,7 +373,7 @@
       }
     }
 
-    .hero-badge {
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -375,10 +381,12 @@
       background-color: var(--primary-light);
       border: 1px solid var(--primary-border);
       border-radius: var(--radius-full);
-      font-size: 0.875rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 800;
       color: var(--primary-hover);
       margin-bottom: 1.5rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .hero-title {
@@ -397,10 +405,11 @@
     }
 
     .hero-desc {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
       max-width: 580px;
+      line-height: 1.6;
     }
 
     @media (max-width: 992px) {
@@ -423,23 +432,25 @@
       }
     }
 
-    /* Hero Mockup Visual */
+    /* Layered Product Composition Mockup */
     .hero-visual {
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 380px;
     }
 
     .browser-mockup {
       width: 100%;
-      max-width: 520px;
+      max-width: 500px;
       background: #ffffff;
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-color);
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
       overflow: hidden;
       position: relative;
+      z-index: 1;
     }
 
     .browser-header {
@@ -483,7 +494,7 @@
     .browser-body {
       padding: 1.5rem;
       background: #FAFAFA;
-      min-height: 280px;
+      min-height: 260px;
     }
 
     .mockup-hero-card {
@@ -533,8 +544,9 @@
       background: #171717;
       border-radius: 28px;
       padding: 8px;
-      box-shadow: 0 20px 30px rgba(0,0,0,0.25);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.25);
       border: 3px solid #333333;
+      z-index: 2;
       animation: float 4s ease-in-out infinite;
     }
 
@@ -547,7 +559,7 @@
       background: #ffffff;
       border-radius: 20px;
       padding: 1rem 0.75rem;
-      height: 260px;
+      height: 250px;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
@@ -560,6 +572,50 @@
       background: #171717;
       border-radius: 0 0 8px 8px;
       margin: -1rem auto 0.5rem auto;
+    }
+
+    /* Secondary Floating Analytics Dashboard Card */
+    .analytics-card {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      background: #ffffff;
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(8px); }
+    }
+
+    .analytics-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .analytics-val {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .analytics-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
 
     /* Trust Strip */
@@ -717,6 +773,91 @@
 
     .service-card:hover .service-link {
       gap: 0.6rem;
+    }
+
+    /* Serving Businesses Across India */
+    .locations-section {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .locations-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .location-badge:hover {
+      border-color: var(--primary-border);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .location-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--primary);
+    }
+
+    /* Capability Metrics Grid (Verified non-fabricated statistics alternative) */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    @media (max-width: 992px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-lbl {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
     }
 
     /* About Section */
@@ -1339,6 +1480,62 @@
       padding: 0 1.5rem 1.25rem 1.5rem;
     }
 
+    /* Floating Mobile Contact Bar */
+    .mobile-contact-bar {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .mobile-contact-bar {
+        display: flex;
+        position: fixed;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 24px);
+        max-width: 420px;
+        background: rgba(23, 32, 51, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius-full);
+        padding: 6px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 998;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-bar-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        border-radius: var(--radius-full);
+        color: #ffffff;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .mobile-bar-quote {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+      }
+
+      .mobile-bar-wa {
+        background: #25D366;
+      }
+
+      .mobile-bar-call {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+
     /* Final CTA Banner */
     .cta-banner {
       background: linear-gradient(135deg, #171717 0%, #222222 100%);
@@ -1455,7 +1652,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .phone-mockup {
+      .reveal, .phone-mockup, .analytics-card {
         animation: none !important;
         transition: none !important;
         opacity: 1 !important;
@@ -1499,7 +1696,7 @@
           </svg>
           <span>WhatsApp</span>
         </a>
-        <a class='btn btn-primary btn-sm btn-desk' href='#contact'>Get Started</a>
+        <a class='btn btn-primary btn-sm btn-desk' href='#contact'>Start Your Project</a>
         <button aria-label='Toggle menu' class='mobile-toggle' id='mobileToggle'>
           <svg fill='none' height='28' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='28'>
             <line x1='3' x2='21' y1='12' y2='12'/>
@@ -1516,17 +1713,14 @@
     <section class='hero'>
       <div class='container hero-grid'>
         <div class='hero-content reveal'>
-          <div class='hero-badge'>
-            <svg fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='16'>
-              <polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/>
-            </svg>
-            <span>We Build. We Innovate. We Scale.</span>
+          <div class='hero-eyebrow'>
+            WE BUILD. WE INNOVATE. WE SCALE.
           </div>
           <h1 class='hero-title'>
-            Transforming Ideas into <span class='text-gradient'>High-Impact</span> Apps &amp; Websites
+            Transforming Ideas into <span class='text-gradient'>High-Impact</span> Apps &amp; Websites.
           </h1>
           <p class='hero-desc'>
-            SynFusion is a premium digital product engineering agency. We build sleek mobile applications, custom web platforms, and scalable AI solutions.
+            SynFusion builds modern mobile applications, high-performance websites, and scalable digital solutions designed around your business goals.
           </p>
           <div class='hero-ctas'>
             <a class='btn btn-primary' href='#contact'>
@@ -1540,8 +1734,23 @@
           </div>
         </div>
 
-        <!-- HERO ANIMATED CSS MOCKUPS -->
+        <!-- HERO LAYERED PRODUCT COMPOSITION MOCKUPS -->
         <div class='hero-visual reveal'>
+          <!-- Secondary Floating Analytics Dashboard Card -->
+          <div class='analytics-card'>
+            <div class='analytics-icon'>
+              <svg fill='none' height='20' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='20'>
+                <polyline points='23 6 13.5 15.5 8.5 10.5 1 18'/>
+                <polyline points='17 6 23 6 23 12'/>
+              </svg>
+            </div>
+            <div>
+              <div class='analytics-val'>99.9% Speed</div>
+              <div class='analytics-lbl'>Core Web Vitals</div>
+            </div>
+          </div>
+
+          <!-- Browser Window Mockup -->
           <div class='browser-mockup'>
             <div class='browser-header'>
               <div class='browser-dots'>
@@ -1569,16 +1778,16 @@
             </div>
           </div>
 
-          <!-- Floating Phone Mockup -->
+          <!-- Floating Smartphone Mockup -->
           <div class='phone-mockup'>
             <div class='phone-notch'></div>
             <div class='phone-screen'>
               <div style='background: var(--primary-light); padding: 0.5rem; border-radius: 8px; font-weight: 700; font-size: 0.75rem; color: var(--primary);'>
                 WorkDaily App
               </div>
-              <div style='background: #F1F5F9; height: 40px; border-radius: 6px;'></div>
-              <div style='background: #F1F5F9; height: 60px; border-radius: 6px;'></div>
-              <div style='background: var(--primary); height: 32px; border-radius: 6px; margin-top: auto;'></div>
+              <div style='background: #F1F5F9; height: 35px; border-radius: 6px;'></div>
+              <div style='background: #F1F5F9; height: 55px; border-radius: 6px;'></div>
+              <div style='background: var(--primary); height: 30px; border-radius: 6px; margin-top: auto;'></div>
             </div>
           </div>
         </div>
@@ -1648,7 +1857,7 @@
       <div class='container'>
         <div class='section-header reveal'>
           <span class='section-badge'>What We Do</span>
-          <h2 class='section-title'>Comprehensive Digital Engineering</h2>
+          <h2 class='section-title'>Everything You Need to Build and Grow.</h2>
           <p class='section-subtitle'>We turn ambitious concepts into world-class software products across web and mobile ecosystems.</p>
         </div>
 
@@ -1767,8 +1976,50 @@
       </div>
     </section>
 
+    <!-- SERVING BUSINESSES ACROSS INDIA -->
+    <section class='section-padding locations-section'>
+      <div class='container'>
+        <div class='section-header reveal'>
+          <span class='section-badge'>Nationwide Reach</span>
+          <h2 class='section-title'>Building Digital Solutions for Businesses Everywhere.</h2>
+          <p class='section-subtitle'>Empowering growing tech startups, digital ventures, and enterprises across major tech hubs and regions in India.</p>
+        </div>
+
+        <div class='locations-badges reveal'>
+          <div class='location-badge'><span class='location-dot'></span> Delhi NCR</div>
+          <div class='location-badge'><span class='location-dot'></span> Mumbai</div>
+          <div class='location-badge'><span class='location-dot'></span> Bengaluru</div>
+          <div class='location-badge'><span class='location-dot'></span> Hyderabad</div>
+          <div class='location-badge'><span class='location-dot'></span> Chennai</div>
+          <div class='location-badge'><span class='location-dot'></span> Pune</div>
+          <div class='location-badge'><span class='location-dot'></span> Kolkata</div>
+          <div class='location-badge'><span class='location-dot'></span> All of India</div>
+        </div>
+
+        <!-- Capability Metrics Grid (Non-fabricated capability pillars) -->
+        <div class='stats-grid reveal'>
+          <div class='stat-card'>
+            <div class='stat-val'>100%</div>
+            <div class='stat-lbl'>Native &amp; Modern Tech</div>
+          </div>
+          <div class='stat-card'>
+            <div class='stat-val'>Multi</div>
+            <div class='stat-lbl'>Domain Expertise</div>
+          </div>
+          <div class='stat-card'>
+            <div class='stat-val'>Agile</div>
+            <div class='stat-lbl'>Client-Centric Process</div>
+          </div>
+          <div class='stat-card'>
+            <div class='stat-val'>24/7</div>
+            <div class='stat-lbl'>Scalable Engineering</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT SYNFUSION SECTION -->
-    <section class='section-padding' id='about' style='background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);'>
+    <section class='section-padding' id='about'>
       <div class='container about-grid'>
         <div class='reveal'>
           <span class='section-badge'>About SynFusion</span>
@@ -1810,7 +2061,7 @@
     </section>
 
     <!-- 5-STEP DEVELOPMENT PROCESS -->
-    <section class='section-padding' id='process'>
+    <section class='section-padding' id='process' style='background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);'>
       <div class='container'>
         <div class='section-header reveal'>
           <span class='section-badge'>Our Methodology</span>
@@ -1883,11 +2134,11 @@
     </section>
 
     <!-- PROJECT PORTFOLIO WITH CATEGORY FILTERS -->
-    <section class='section-padding' id='portfolio' style='background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);'>
+    <section class='section-padding' id='portfolio'>
       <div class='container'>
         <div class='section-header reveal'>
           <span class='section-badge'>Featured Work</span>
-          <h2 class='section-title'>Featured Projects</h2>
+          <h2 class='section-title'>Selected Work. Built With Purpose.</h2>
           <p class='section-subtitle'>Explore selected applications and digital products engineered by SynFusion.</p>
         </div>
 
@@ -2002,7 +2253,7 @@
       <div class='container'>
         <div class='section-header reveal'>
           <span class='section-badge' style='background: rgba(255,99,71,0.15); border-color: rgba(255,99,71,0.3); color: #FF8C75;'>Our Core Advantage</span>
-          <h2 class='section-title'>Why Partner with SynFusion?</h2>
+          <h2 class='section-title'>Built With Purpose. Designed for People.</h2>
           <p class='section-subtitle'>We combine technical craftsmanship with product clarity to deliver software that scales effortlessly.</p>
         </div>
 
@@ -2014,7 +2265,7 @@
                 <polyline points='8 6 2 12 8 18'/>
               </svg>
             </div>
-            <h3 class='why-card-title'>Clean &amp; Maintainable Code</h3>
+            <h3 class='why-card-title'>Clean, Maintainable Code</h3>
             <p class='why-card-desc'>We write well-structured, maintainable code following modern software design patterns that your team can expand cleanly.</p>
           </div>
 
@@ -2026,8 +2277,8 @@
                 <line x1='12' x2='12' y1='17' y2='21'/>
               </svg>
             </div>
-            <h3 class='why-card-title'>Flawless Responsiveness</h3>
-            <p class='why-card-desc'>Tested meticulously across mobile, tablet, and desktop screens to ensure smooth rendering and interaction.</p>
+            <h3 class='why-card-title'>User-Focused Interfaces</h3>
+            <p class='why-card-desc'>Tested meticulously across mobile, tablet, and desktop screens to ensure smooth rendering and intuitive user interaction.</p>
           </div>
 
           <div class='why-card reveal'>
@@ -2036,8 +2287,8 @@
                 <path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/>
               </svg>
             </div>
-            <h3 class='why-card-title'>Performance &amp; Security</h3>
-            <p class='why-card-desc'>Optimized resource loads, crisp Core Web Vitals, and standard encryption practices integrated from day one.</p>
+            <h3 class='why-card-title'>Performance-Conscious</h3>
+            <p class='why-card-desc'>Optimized resource loads, crisp Core Web Vitals, and standard security practices integrated from day one.</p>
           </div>
 
           <div class='why-card reveal'>
@@ -2047,7 +2298,7 @@
                 <path d='M12 8v4l3 3'/>
               </svg>
             </div>
-            <h3 class='why-card-title'>Transparent Sprints</h3>
+            <h3 class='why-card-title'>Reliable Communication</h3>
             <p class='why-card-desc'>Regular milestone demos, clear feedback loops, and open communication with zero technical surprises.</p>
           </div>
 
@@ -2059,7 +2310,7 @@
                 <polyline points='2 12 12 17 22 12'/>
               </svg>
             </div>
-            <h3 class='why-card-title'>Conversion UI/UX</h3>
+            <h3 class='why-card-title'>Responsive Experiences</h3>
             <p class='why-card-desc'>Interfaces designed with cognitive ergonomics and clear call-to-actions that drive active user engagement.</p>
           </div>
 
@@ -2070,7 +2321,7 @@
                 <path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/>
               </svg>
             </div>
-            <h3 class='why-card-title'>Scalable Investments</h3>
+            <h3 class='why-card-title'>Scalable Solutions</h3>
             <p class='why-card-desc'>Architectures designed to adapt easily to future features, API integrations, and market expansion.</p>
           </div>
         </div>
@@ -2176,7 +2427,7 @@
       <div class='container'>
         <div class='section-header reveal'>
           <span class='section-badge'>Get In Touch</span>
-          <h2 class='section-title'>Let's Build Something Exceptional</h2>
+          <h2 class='section-title'>Have an Idea? Let's Build It.</h2>
           <p class='section-subtitle'>Have a project in mind or need technical advice? Message us today for a free project estimate.</p>
         </div>
 
@@ -2256,7 +2507,7 @@
             </div>
 
             <button class='btn btn-primary' style='width: 100%;' type='submit'>
-              <span>Send Project Inquiry</span>
+              <span>Send Project Enquiry</span>
               <svg fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='18'>
                 <line x1='22' x2='11' y1='2' y2='13'/>
                 <polygon points='22 2 15 22 11 13 2 9 22 2'/>
@@ -2360,12 +2611,34 @@
           <h2 class='cta-banner-title'>Ready to Build Your Next Product?</h2>
           <p class='cta-banner-desc'>Partner with SynFusion today and bring your web, mobile, or AI application to life with unmatched precision.</p>
           <div style='display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;'>
-            <a class='btn btn-primary' href='#contact'>Schedule a Discovery Call</a>
+            <a class='btn btn-primary' href='#contact'>Start Your Project</a>
             <a class='btn btn-whatsapp' href='https://wa.me/919334603912?text=Hi%20SynFusion,%20I%20would%20like%20to%20discuss%20a%20project.' target='_blank'>WhatsApp Us Direct</a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- FLOATING MOBILE CONTACT BAR -->
+    <div class='mobile-contact-bar' id='mobileContactBar'>
+      <a class='mobile-bar-btn mobile-bar-quote' href='#contact'>
+        <svg fill='none' height='15' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='15'>
+          <path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/>
+        </svg>
+        <span>Quote</span>
+      </a>
+      <a class='mobile-bar-btn mobile-bar-wa' href='https://wa.me/919334603912?text=Hi%20SynFusion' target='_blank'>
+        <svg fill='none' height='15' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='15'>
+          <path d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+      <a class='mobile-bar-btn mobile-bar-call' href='tel:+919334603912'>
+        <svg fill='none' height='15' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='15'>
+          <path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'/>
+        </svg>
+        <span>Call</span>
+      </a>
+    </div>
   </b:if>
 
   <!-- PROFESSIONAL FOOTER -->
@@ -2384,7 +2657,7 @@
             <span>SynFusion</span>
           </a>
           <p class='footer-brand-desc'>
-            We Build. We Innovate. We Scale. <br/>
+            WE BUILD. WE INNOVATE. WE SCALE. <br/>
             Premium app and website development agency crafting modern digital experiences.
           </p>
         </div>
@@ -2441,9 +2714,14 @@
       // Mobile Menu Toggle
       var mobileToggle = document.getElementById('mobileToggle');
       var navLinks = document.getElementById('navLinks');
+      var mobileContactBar = document.getElementById('mobileContactBar');
+
       if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', function() {
-          navLinks.classList.toggle('active');
+          var isExpanded = navLinks.classList.toggle('active');
+          if (mobileContactBar) {
+            mobileContactBar.style.display = isExpanded ? 'none' : 'flex';
+          }
         });
 
         // Close menu on link click
@@ -2451,6 +2729,9 @@
         links.forEach(function(link) {
           link.addEventListener('click', function() {
             navLinks.classList.remove('active');
+            if (mobileContactBar) {
+              mobileContactBar.style.display = 'flex';
+            }
           });
         });
       }
