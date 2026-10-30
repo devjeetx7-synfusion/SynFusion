@@ -13,14 +13,12 @@ export default function ProcessSection() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Check prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Progress line animation on scroll
       if (lineRef.current) {
         gsap.fromTo(
           lineRef.current,
@@ -48,24 +46,24 @@ export default function ProcessSection() {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8F6] border border-[#FF6347]/20 text-[#E94B35] text-xs font-semibold tracking-wide uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#FF6347]" />
-            <span>OUR METHODOLOGY</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3FAF5] border border-[#008F4C]/20 text-[#064E32] text-xs font-semibold tracking-wide uppercase shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#008F4C]" />
+            <span>PROCESS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#172033] tracking-tight">
-            From Idea to <span className="text-[#FF6347]">Launch.</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#17251E] tracking-tight">
+            How We Bring Products to <span className="text-[#008F4C]">Life.</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#64748B]">
-            A structured, transparent development framework designed to minimize risk and maximize quality.
+          <p className="text-base sm:text-lg text-[#64736A]">
+            A structured, 5-step development framework engineered for precision, speed, and reliability.
           </p>
         </div>
 
         {/* Process Timeline */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Animated Connecting Timeline Line */}
+          {/* Timeline Line */}
           <div
             ref={lineRef}
-            className="absolute left-6 md:left-1/2 top-4 bottom-4 w-1 bg-[#FF6347] origin-top transform -translate-x-1/2 hidden sm:block rounded-full z-0"
+            className="absolute left-6 md:left-1/2 top-4 bottom-4 w-1 bg-[#008F4C] origin-top transform -translate-x-1/2 hidden sm:block rounded-full z-0"
           />
 
           <div className="space-y-12 sm:space-y-16 relative z-10">
@@ -80,25 +78,25 @@ export default function ProcessSection() {
                 >
                   {/* Card Content */}
                   <div className={`w-full sm:w-1/2 ${isEven ? "sm:text-right" : "sm:text-left"}`}>
-                    <div className="bg-[#FFF8F6]/80 p-6 sm:p-8 rounded-2xl border border-[#E8E8EC] group-hover:border-[#FF6347]/40 transition-all duration-300 shadow-xs hover:shadow-md">
+                    <div className="bg-[#F3FAF5]/80 p-6 sm:p-8 rounded-2xl border border-[#E2ECE6] group-hover:border-[#008F4C]/40 transition-all duration-300 shadow-xs hover:shadow-md">
                       <div className="flex items-center justify-between sm:justify-start gap-3 mb-3">
-                        <span className="text-xs font-mono font-extrabold px-3 py-1 bg-[#FF6347] text-white rounded-full">
+                        <span className="text-xs font-mono font-extrabold px-3 py-1 bg-gradient-to-r from-[#008F4C] to-[#064E32] text-white rounded-full">
                           STEP {step.step}
                         </span>
-                        <h3 className="text-xl font-bold text-[#172033]">{step.title}</h3>
+                        <h3 className="text-xl font-bold text-[#17251E]">{step.title}</h3>
                       </div>
-                      <p className="text-sm text-[#64748B] mb-4 leading-relaxed">
+                      <p className="text-sm text-[#64736A] mb-4 leading-relaxed">
                         {step.description}
                       </p>
 
-                      {/* Key Activities */}
-                      <div className="flex flex-wrap gap-2 pt-2 border-t border-[#E8E8EC]/80">
+                      {/* Key Deliverables */}
+                      <div className="flex flex-wrap gap-2 pt-2 border-t border-[#E2ECE6]/80">
                         {step.details.map((detail) => (
                           <span
                             key={detail}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-[#E8E8EC] text-[11px] font-medium text-[#172033]"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-[#E2ECE6] text-[11px] font-medium text-[#17251E]"
                           >
-                            <CheckCircle className="w-3 h-3 text-[#FF6347]" />
+                            <CheckCircle className="w-3 h-3 text-[#008F4C]" />
                             {detail}
                           </span>
                         ))}
@@ -106,12 +104,12 @@ export default function ProcessSection() {
                     </div>
                   </div>
 
-                  {/* Circle Badge in Center */}
-                  <div className="hidden sm:flex w-12 h-12 rounded-full bg-[#171717] border-4 border-white text-white font-extrabold text-sm items-center justify-center shrink-0 shadow-md group-hover:bg-[#FF6347] transition-colors duration-300">
+                  {/* Number Circle Badge in Center */}
+                  <div className="hidden sm:flex w-12 h-12 rounded-full bg-[#071C16] border-4 border-white text-white font-extrabold text-sm items-center justify-center shrink-0 shadow-md group-hover:bg-[#008F4C] transition-colors duration-300">
                     {step.number}
                   </div>
 
-                  {/* Empty Spacer Column for Desktop Grid Alignment */}
+                  {/* Spacer for Desktop Grid Alignment */}
                   <div className="hidden sm:block w-1/2" />
                 </div>
               );
