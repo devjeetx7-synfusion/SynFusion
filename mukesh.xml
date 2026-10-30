@@ -1347,6 +1347,558 @@
       transform: none;
     }
   }
+
+  /* ==========================================================================
+     REELS & VERTICAL VIDEO SHOWCASE SECTION
+     ========================================================================== */
+  .reels-section {
+    background: radial-gradient(ellipse at 50% 0%, rgba(79, 70, 229, 0.05), transparent 70%), #FFFFFF;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reels-category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .reel-filter-btn {
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #FFFFFF;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+  }
+
+  .reel-filter-btn:hover,
+  .reel-filter-btn.active {
+    background: linear-gradient(135deg, #4F46E5, #2563EB);
+    color: #FFFFFF;
+    border-color: transparent;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+  }
+
+  .reels-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+
+  .reels-carousel-track-wrapper {
+    overflow: hidden;
+    padding: 20px 10px;
+  }
+
+  .reels-carousel-track {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Vertical Reel Card Frame (9:16 aspect ratio) */
+  .reel-card {
+    flex: 0 0 280px;
+    width: 280px;
+    position: relative;
+    border-radius: 24px;
+    background: #000000;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.65;
+    transform: scale(0.92);
+    user-select: none;
+  }
+
+  .reel-card.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 20px 48px rgba(79, 70, 229, 0.22);
+    border-color: rgba(79, 70, 229, 0.4);
+    z-index: 5;
+  }
+
+  .reel-frame-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #111827;
+    overflow: hidden;
+    border-radius: 23px;
+  }
+
+  .reel-thumbnail-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    transition: opacity 0.35s ease;
+  }
+
+  .reel-thumbnail-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .reel-badge-category {
+    position: relative;
+    z-index: 2;
+    align-self: flex-start;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .reel-play-btn-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .reel-play-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4F46E5, #2563EB, #06B6D4);
+    color: #FFFFFF;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+    transition: transform 0.25s ease;
+  }
+
+  .reel-play-btn svg {
+    width: 26px;
+    height: 26px;
+    fill: #FFFFFF;
+    margin-left: 3px;
+  }
+
+  .reel-card:hover .reel-play-btn-wrap {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .reel-meta-bottom {
+    position: relative;
+    z-index: 2;
+    color: #FFFFFF;
+  }
+
+  .reel-meta-title {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .reel-meta-desc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.85);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* YouTube IFrame Container inside Reel Card */
+  .reel-iframe-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .reel-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* Error & Loading States inside Reel Card */
+  .reel-status-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: #0F172A;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .reel-status-overlay.hidden {
+    display: none;
+  }
+
+  .reel-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(255,255,255,0.2);
+    border-top-color: var(--cyan);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .reel-error-text {
+    font-size: 0.82rem;
+    color: #F87171;
+  }
+
+  .reel-retry-btn {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.15);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: background 0.2s ease;
+  }
+
+  .reel-retry-btn:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  /* Carousel Navigation Footer */
+  .reels-carousel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 580px;
+    margin: 28px auto 0;
+    padding: 0 16px;
+  }
+
+  .reels-counter {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .reels-counter span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  /* Sound / Fullscreen / Carousel Control Row */
+  .reels-control-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ==========================================================================
+     GRAPHIC DESIGN GALLERY SECTION
+     ========================================================================== */
+  .graphics-section {
+    background: var(--panel);
+    border-block: 1px solid var(--border);
+  }
+
+  .graphics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .graphic-card {
+    position: relative;
+    border-radius: 18px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .graphic-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+  }
+
+  .graphic-card[hidden] {
+    display: none !important;
+  }
+
+  .graphic-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #F1F5F9;
+    overflow: hidden;
+  }
+
+  .graphic-image-wrap img,
+  .graphic-image-wrap svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .graphic-card:hover .graphic-image-wrap img,
+  .graphic-card:hover .graphic-image-wrap svg {
+    transform: scale(1.06);
+  }
+
+  .graphic-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    backdrop-filter: blur(8px);
+    z-index: 2;
+  }
+
+  .graphic-info {
+    padding: 16px 18px;
+    background: #FFFFFF;
+  }
+
+  .graphic-info h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+
+  .graphic-info p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ==========================================================================
+     LIGHTBOX / MODAL FOR GRAPHIC PREVIEW
+     ========================================================================== */
+  .lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(17, 24, 39, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .lightbox-modal.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox-content-wrap {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    transform: scale(0.92);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lightbox-modal.open .lightbox-content-wrap {
+    transform: scale(1);
+  }
+
+  .lightbox-body {
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    background: #000000;
+    overflow: hidden;
+    max-height: 70vh;
+  }
+
+  .lightbox-body img,
+  .lightbox-body svg {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-meta-bar {
+    padding: 20px 24px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .lightbox-meta-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .lightbox-meta-cat {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .lightbox-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border);
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .lightbox-close-btn:hover {
+    transform: scale(1.08);
+    background: #FFFFFF;
+  }
+
+  .lightbox-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border);
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .lightbox-nav-btn:hover {
+    transform: translateY(-50%) scale(1.08);
+    background: #FFFFFF;
+  }
+
+  .lightbox-nav-prev { left: 16px; }
+  .lightbox-nav-next { right: 16px; }
+
+  /* Responsive Adjustments for Reels and Graphics */
+  @media (max-width: 1024px) {
+    .graphics-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .reels-carousel-track {
+      gap: 16px;
+    }
+    .reel-card {
+      flex: 0 0 260px;
+      width: 260px;
+    }
+    .graphics-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .lightbox-content-wrap {
+      max-height: 95vh;
+    }
+    .lightbox-body {
+      max-height: 60vh;
+    }
+    .lightbox-meta-bar {
+      padding: 14px 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .reel-card {
+      flex: 0 0 250px;
+      width: 250px;
+    }
+    .reels-carousel-footer {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
 ]]></b:skin>
 
 <b:template-skin><![CDATA[
@@ -1386,9 +1938,10 @@
       <svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='#111827' stroke-linecap='round' stroke-width='2.5' viewBox='0 0 24 24'><line x1='4' x2='20' y1='12' y2='12'/><line x1='4' x2='20' y1='6' y2='6'/><line x1='4' x2='20' y1='18' y2='18'/></svg>
     </button>
     <nav class='navlinks' id='navLinks' aria-label='Main navigation'>
+      <a href='#home'>Home</a>
       <a href='#services'>Services</a>
-      <a href='#work'>Portfolio</a>
-      <a href='#motion'>Motion Lab</a>
+      <a href='#reels'>Reels</a>
+      <a href='#graphics'>Graphics</a>
       <a href='#about'>About</a>
       <a href='#contact'>Contact</a>
       <a class='navcta' href='#contact'>Start a Project ↗</a>
@@ -1551,6 +2104,108 @@
       <span>Social Media Design</span><b>✳</b>
       <span>Motion Graphics</span><b>✳</b>
       <span>Animation &amp; Video</span><b>✳</b>
+    </div>
+  </div>
+
+  <!-- Our Creative Reels Section (Mobile-First Vertical Video Gallery) -->
+  <section class='section reels-section' id='reels'>
+    <div class='container'>
+      <div class='section-head reveal' style='text-align: center; justify-content: center;'>
+        <div>
+          <span class='eyebrow' style='justify-content: center;'>VERTICAL VIDEO EXPERIENCE</span>
+          <h2 class='display'>Our Creative <span class='gradient-text'>Reels</span></h2>
+          <p style='margin: 12px auto 0;'>Motion, stories, and creative ideas brought to life. Explore our animation, editing, and AI-powered advertising projects.</p>
+        </div>
+      </div>
+
+      <!-- Reels Category Filters -->
+      <div class='reels-category-filters reveal' id='reelsFilterGroup' role='group' aria-label='Filter reels by category'>
+        <button class='reel-filter-btn active' data-reel-filter='all' type='button'>All Reels</button>
+        <button class='reel-filter-btn' data-reel-filter='2d' type='button'>2D Animation</button>
+        <button class='reel-filter-btn' data-reel-filter='3d' type='button'>3D Animation</button>
+        <button class='reel-filter-btn' data-reel-filter='editing' type='button'>Video Editing</button>
+        <button class='reel-filter-btn' data-reel-filter='ai-ads' type='button'>AI Product Ads</button>
+        <button class='reel-filter-btn' data-reel-filter='motion' type='button'>Motion Graphics</button>
+      </div>
+
+      <!-- Reels Carousel Showcase -->
+      <div class='reels-carousel-container reveal' id='reelsContainer'>
+        <div class='reels-carousel-track-wrapper' id='reelsTrackWrapper'>
+          <div class='reels-carousel-track' id='reelsTrack'>
+            <!-- Dynamically or statically populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Carousel Footer Navigation & Counter -->
+        <div class='reels-carousel-footer'>
+          <div class='reels-counter' id='reelsCounter'>01 <span>/ 06</span></div>
+
+          <div class='reels-control-group'>
+            <button class='btn-icon' id='reelPrevBtn' aria-label='Previous Reel' type='button'>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><line x1='19' x2='5' y1='12' y2='12'/><polyline points='12 19 5 12 12 5'/></svg>
+            </button>
+            <button class='btn-icon' id='reelMuteBtn' aria-label='Toggle Sound' type='button' title='Toggle Sound'>
+              <svg xmlns='http://www.w3.org/2000/svg' id='reelMuteIcon' viewBox='0 0 24 24'><polygon points='11 5 6 9 2 9 2 15 6 15 11 19 11 5'/><line x1='23' x2='17' y1='9' y2='15'/><line x1='17' x2='23' y1='9' y2='15'/></svg>
+            </button>
+            <button class='btn-icon' id='reelNextBtn' aria-label='Next Reel' type='button'>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><line x1='5' x2='19' y1='12' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Graphic Design Showcase Section -->
+  <section class='section graphics-section' id='graphics'>
+    <div class='container'>
+      <div class='section-head reveal'>
+        <div>
+          <span class='eyebrow'>VISUAL IDENTITIES &amp; CREATIVE ASSETS</span>
+          <h2 class='display'>Graphic Design <span class='gradient-text'>Showcase</span></h2>
+        </div>
+        <p>Visual identities, social media creatives, thumbnails, and advertising assets crafted for brands that demand distinction.</p>
+      </div>
+
+      <!-- Graphic Category Filters -->
+      <div class='filters reveal' id='graphicsFilterGroup' role='group' aria-label='Filter graphic designs by category'>
+        <button class='filter active' data-gfx-filter='all' type='button'>All Graphics</button>
+        <button class='filter' data-gfx-filter='logo' type='button'>Logo Design</button>
+        <button class='filter' data-gfx-filter='social' type='button'>Social Media Posts</button>
+        <button class='filter' data-gfx-filter='thumbnail' type='button'>YouTube Thumbnails</button>
+        <button class='filter' data-gfx-filter='poster' type='button'>Posters &amp; Banners</button>
+        <button class='filter' data-gfx-filter='ads' type='button'>Advertising Creatives</button>
+        <button class='filter' data-gfx-filter='brand' type='button'>Brand Identity</button>
+      </div>
+
+      <!-- Graphics Responsive Grid -->
+      <div class='graphics-grid' id='graphicsGrid'>
+        <!-- Populated dynamically / statically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal Container for Graphic Design Preview -->
+  <div class='lightbox-modal' id='lightboxModal' role='dialog' aria-modal='true' aria-label='Graphic Design Preview'>
+    <div class='lightbox-content-wrap'>
+      <button class='lightbox-close-btn' id='lightboxClose' aria-label='Close Preview' type='button'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'/><line x1='6' y1='6' x2='18' y2='18'/></svg>
+      </button>
+      <button class='lightbox-nav-btn lightbox-nav-prev' id='lightboxPrev' aria-label='Previous Image' type='button'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='19' y1='12' x2='5' y2='12'/><polyline points='12 19 5 12 12 5'/></svg>
+      </button>
+      <button class='lightbox-nav-btn lightbox-nav-next' id='lightboxNext' aria-label='Next Image' type='button'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='5' y1='12' x2='19' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>
+      </button>
+      <div class='lightbox-body' id='lightboxBody'>
+        <!-- Image or SVG content rendered here -->
+      </div>
+      <div class='lightbox-meta-bar'>
+        <div>
+          <div class='lightbox-meta-title' id='lightboxTitle'>Project Title</div>
+          <div class='lightbox-meta-cat' id='lightboxCat'>Category</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2213,6 +2868,717 @@ function startCinematicTransition() {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  /* ==========================================================================
+     SINGH CREATIVE STUDIO — REELS & GRAPHICS SYSTEM
+     ========================================================================== */
+
+  /**
+   * REELS DATA CONFIGURATION
+   * To add a new vertical video reel, add an object to this array with:
+   * - id: Unique string or number
+   * - title: Project name
+   * - category: '2d' | '3d' | 'editing' | 'ai-ads' | 'motion'
+   * - youtubeId: Valid 11-character YouTube Video ID (e.g., 'dQw4w9WgXcQ')
+   * - thumbnail: Optional custom thumbnail image URL (if omitted, uses YouTube HD thumbnail fallback)
+   * - description: Short project breakdown
+   * - featured: true/false
+   */
+  var REELS_DATA = [
+    {
+      id: 'reel-1',
+      title: 'Cinematic 3D Character Rigging & Animation',
+      category: '3d',
+      youtubeId: 'L_LUpnjgPso', // High quality vertical animation reel sample ID
+      thumbnail: '',
+      description: '3D character motion design, fluid simulations, and visual storytelling for digital brand campaigns.',
+      featured: true
+    },
+    {
+      id: 'reel-2',
+      title: 'Product Advertisement Video with AI',
+      category: 'ai-ads',
+      youtubeId: 'jNQXAC9IVRw', // Sample YouTube video ID
+      thumbnail: '',
+      description: 'AI-generated hyper-realistic product visuals paired with motion typography for high CTR ads.',
+      featured: true
+    },
+    {
+      id: 'reel-3',
+      title: '2D Hand-Drawn Frame Animation',
+      category: '2d',
+      youtubeId: 'kJQP7kiw5Fk', // Sample YouTube video ID
+      thumbnail: '',
+      description: 'Expressive frame-by-frame 2D animation sequence crafted for brand commercial intros.',
+      featured: true
+    },
+    {
+      id: 'reel-4',
+      title: 'Dynamic Short-Form Reel Editing',
+      category: 'editing',
+      youtubeId: 'fJ9rUzIMcZQ', // Sample YouTube video ID
+      thumbnail: '',
+      description: 'Fast-paced rhythmic video editing, sound design, and colored grading for social media.',
+      featured: true
+    },
+    {
+      id: 'reel-5',
+      title: 'Kinetic Motion Graphics & Title Sequence',
+      category: 'motion',
+      youtubeId: '3JZ_D3ELwOQ', // Sample YouTube video ID
+      thumbnail: '',
+      description: 'Bold kinetic typography and particle motion graphics designed for campaign launch teasers.',
+      featured: true
+    },
+    {
+      id: 'reel-6',
+      title: 'AI Commercial & Creative Direction',
+      category: 'ai-ads',
+      youtubeId: '2Vv-BfVoq4g', // Sample YouTube video ID
+      thumbnail: '',
+      description: 'Synthesized AI camera choreography combined with premium audio design for modern brands.',
+      featured: true
+    }
+  ];
+
+  /**
+   * GRAPHIC DESIGN SHOWCASE DATA CONFIGURATION
+   * To add a new graphic design project, add an object to this array:
+   * - id: Unique identifier
+   * - title: Project title
+   * - category: 'logo' | 'social' | 'thumbnail' | 'poster' | 'ads' | 'brand'
+   * - categoryLabel: Human readable label (e.g. 'YouTube Thumbnail')
+   * - image: High-res image URL or inline SVG placeholder
+   * - badge: 'CONCEPT' | 'CLIENT' | 'FEATURED'
+   */
+  var GRAPHICS_DATA = [
+    {
+      id: 'gfx-1',
+      title: 'Aura Studio Brand Identity',
+      category: 'brand',
+      categoryLabel: 'Brand Identity',
+      badge: 'BRANDING',
+      svgType: 'brand1'
+    },
+    {
+      id: 'gfx-2',
+      title: 'Tech Review YouTube Thumbnail',
+      category: 'thumbnail',
+      categoryLabel: 'YouTube Thumbnail',
+      badge: 'THUMBNAIL',
+      svgType: 'thumb1'
+    },
+    {
+      id: 'gfx-3',
+      title: 'High-Converting Fitness Ad Creative',
+      category: 'ads',
+      categoryLabel: 'Advertising Creatives',
+      badge: 'AD CREATIVE',
+      svgType: 'ad1'
+    },
+    {
+      id: 'gfx-4',
+      title: 'Minimalist Monogram Logo Set',
+      category: 'logo',
+      categoryLabel: 'Logo Design',
+      badge: 'LOGO',
+      svgType: 'logo1'
+    },
+    {
+      id: 'gfx-5',
+      title: 'Cyberpunk Event Poster',
+      category: 'poster',
+      categoryLabel: 'Posters & Banners',
+      badge: 'POSTER',
+      svgType: 'poster1'
+    },
+    {
+      id: 'gfx-6',
+      title: 'Instagram Carousel Grid System',
+      category: 'social',
+      categoryLabel: 'Social Media Posts',
+      badge: 'SOCIAL KIT',
+      svgType: 'social1'
+    },
+    {
+      id: 'gfx-7',
+      title: 'Luxury Watch Ad Campaign Visual',
+      category: 'ads',
+      categoryLabel: 'Advertising Creatives',
+      badge: 'AD CREATIVE',
+      svgType: 'ad2'
+    },
+    {
+      id: 'gfx-8',
+      title: 'Podcast Cover & Channel Art',
+      category: 'social',
+      categoryLabel: 'Social Media Posts',
+      badge: 'CHANNEL ART',
+      svgType: 'social2'
+    }
+  ];
+
+  // Global YouTube API Management Variables
+  var ytApiLoaded = false;
+  var ytApiLoading = false;
+  var activeYtPlayer = null;
+  var activeYtIframeId = null;
+  var isMuted = false;
+
+  // Active Reels Carousel State
+  var filteredReels = REELS_DATA.slice();
+  var activeReelIndex = 0;
+
+  // Helper to load YouTube IFrame API safely once
+  function loadYouTubeIframeApi(callback) {
+    if (window.YT && window.YT.Player) {
+      ytApiLoaded = true;
+      if (callback) callback();
+      return;
+    }
+    if (ytApiLoading) {
+      var checkInterval = setInterval(function() {
+        if (window.YT && window.YT.Player) {
+          clearInterval(checkInterval);
+          ytApiLoaded = true;
+          if (callback) callback();
+        }
+      }, 100);
+      return;
+    }
+
+    ytApiLoading = true;
+    window.onYouTubeIframeAPIReady = function() {
+      ytApiLoaded = true;
+      ytApiLoading = false;
+      if (callback) callback();
+    };
+
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    if (firstScriptTag && firstScriptTag.parentNode) {
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    } else {
+      document.head.appendChild(tag);
+    }
+  }
+
+  // Centralized YouTube Player Cleanup & Stop
+  function cleanupActivePlayer() {
+    if (activeYtPlayer) {
+      try {
+        if (typeof activeYtPlayer.stopVideo === 'function') {
+          activeYtPlayer.stopVideo();
+        }
+        if (typeof activeYtPlayer.destroy === 'function') {
+          activeYtPlayer.destroy();
+        }
+      } catch (e) {}
+      activeYtPlayer = null;
+    }
+    activeYtIframeId = null;
+
+    // Reset iframe containers visually
+    var iframeContainers = document.querySelectorAll('.reel-iframe-container');
+    iframeContainers.forEach(function(el) {
+      el.innerHTML = '';
+    });
+
+    var thumbWraps = document.querySelectorAll('.reel-thumbnail-wrap');
+    thumbWraps.forEach(function(el) {
+      el.style.opacity = '1';
+      el.style.pointerEvents = 'auto';
+    });
+
+    var statusOverlays = document.querySelectorAll('.reel-status-overlay');
+    statusOverlays.forEach(function(el) {
+      el.classList.add('hidden');
+    });
+  }
+
+  // Render SVG Thumbnail Fallback
+  function createBrandedSvgThumbnail(title, category) {
+    var catUpper = (category || 'CREATIVE REEL').toUpperCase();
+    var cleanTitle = (title || 'Singh Creative Studio').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 640'>" +
+      "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>" +
+      "<stop stop-color='#0F172A'/><stop offset='0.5' stop-color='#1E1B4B'/><stop offset='1' stop-color='#312E81'/>" +
+      "</linearGradient></defs>" +
+      "<rect width='360' height='640' fill='url(#g)'/>" +
+      "<circle cx='180' cy='280' r='100' fill='none' stroke='#4F46E5' stroke-width='2' stroke-opacity='0.4'/>" +
+      "<text x='180' y='220' text-anchor='middle' fill='#818CF8' font-family='sans-serif' font-size='12' font-weight='800' letter-spacing='3'>" + catUpper + "</text>" +
+      "<text x='180' y='280' text-anchor='middle' fill='#FFFFFF' font-family='sans-serif' font-size='22' font-weight='800'>" + cleanTitle + "</text>" +
+      "<text x='180' y='580' text-anchor='middle' fill='#94A3B8' font-family='sans-serif' font-size='11' letter-spacing='2'>SINGH CREATIVE STUDIO</text>" +
+      "</svg>"
+    );
+  }
+
+  // Render Reels Carousel Track
+  function renderReelsCarousel() {
+    var track = document.getElementById('reelsTrack');
+    var counterEl = document.getElementById('reelsCounter');
+    if (!track) return;
+
+    // Clean up active playback before re-rendering
+    cleanupActivePlayer();
+
+    if (!filteredReels.length) {
+      track.innerHTML = "<div style='padding: 40px; text-align: center; color: var(--muted);'>No reels found for this category.</div>";
+      if (counterEl) counterEl.innerHTML = "00 <span>/ 00</span>";
+      return;
+    }
+
+    if (activeReelIndex >= filteredReels.length) activeReelIndex = 0;
+    if (activeReelIndex < 0) activeReelIndex = filteredReels.length - 1;
+
+    var html = '';
+    filteredReels.forEach(function(reel, idx) {
+      var isActive = idx === activeReelIndex;
+      var thumbUrl = reel.thumbnail || ('https://img.youtube.com/vi/' + reel.youtubeId + '/maxresdefault.jpg');
+      var fallbackThumbUrl = 'https://img.youtube.com/vi/' + reel.youtubeId + '/hqdefault.jpg';
+      var svgFallback = createBrandedSvgThumbnail(reel.title, reel.category);
+
+      html += "<div class='reel-card " + (isActive ? 'active' : '') + "' data-index='" + idx + "' data-id='" + reel.id + "'>";
+      html += "<div class='reel-frame-inner'>";
+
+      // Thumbnail Overlay
+      html += "<div class='reel-thumbnail-wrap' id='reelThumb-" + idx + "' style=\"background-image: url('" + thumbUrl + "'), url('" + fallbackThumbUrl + "'), url('" + svgFallback + "');\">";
+      html += "<span class='reel-badge-category'>" + reel.category + "</span>";
+      html += "<div class='reel-play-btn-wrap' data-play-index='" + idx + "' title='Play Reel'>";
+      html += "<div class='reel-play-btn'><svg viewBox='0 0 24 24'><polygon points='5 3 19 12 5 21 5 3'/></svg></div>";
+      html += "</div>";
+      html += "<div class='reel-meta-bottom'>";
+      html += "<div class='reel-meta-title'>" + reel.title + "</div>";
+      html += "<div class='reel-meta-desc'>" + reel.description + "</div>";
+      html += "</div></div>";
+
+      // Iframe Container
+      html += "<div class='reel-iframe-container' id='reelIframeBox-" + idx + "'></div>";
+
+      // Status Overlay (Loading/Error)
+      html += "<div class='reel-status-overlay hidden' id='reelStatus-" + idx + "'>";
+      html += "<div class='reel-spinner'></div>";
+      html += "<div class='reel-error-text' id='reelErrorText-" + idx + "'>Loading YouTube Player...</div>";
+      html += "<button class='reel-retry-btn hidden' id='reelRetry-" + idx + "' type='button'>Retry Playback</button>";
+      html += "</div>";
+
+      html += "</div></div>";
+    });
+
+    track.innerHTML = html;
+
+    if (counterEl) {
+      var numStr = (activeReelIndex + 1 < 10 ? '0' : '') + (activeReelIndex + 1);
+      var totalStr = (filteredReels.length < 10 ? '0' : '') + filteredReels.length;
+      counterEl.innerHTML = numStr + " <span>/ " + totalStr + "</span>";
+    }
+
+    // Attach click events to cards & play buttons
+    var cardEls = track.querySelectorAll('.reel-card');
+    cardEls.forEach(function(cardEl) {
+      var idx = parseInt(cardEl.getAttribute('data-index'), 10);
+
+      cardEl.addEventListener('click', function(e) {
+        var playBtn = e.target.closest('.reel-play-btn-wrap');
+        if (playBtn || idx === activeReelIndex) {
+          if (idx !== activeReelIndex) {
+            selectReel(idx);
+          }
+          playReel(idx);
+        } else {
+          selectReel(idx);
+        }
+      });
+    });
+  }
+
+  function selectReel(index) {
+    if (index === activeReelIndex) return;
+    cleanupActivePlayer();
+    activeReelIndex = index;
+
+    var cards = document.querySelectorAll('#reelsTrack .reel-card');
+    cards.forEach(function(card, idx) {
+      card.classList.toggle('active', idx === activeReelIndex);
+    });
+
+    var counterEl = document.getElementById('reelsCounter');
+    if (counterEl) {
+      var numStr = (activeReelIndex + 1 < 10 ? '0' : '') + (activeReelIndex + 1);
+      var totalStr = (filteredReels.length < 10 ? '0' : '') + filteredReels.length;
+      counterEl.innerHTML = numStr + " <span>/ " + totalStr + "</span>";
+    }
+  }
+
+  function playReel(index) {
+    var reel = filteredReels[index];
+    if (!reel || !reel.youtubeId) return;
+
+    var iframeBox = document.getElementById('reelIframeBox-' + index);
+    var thumbWrap = document.getElementById('reelThumb-' + index);
+    var statusOverlay = document.getElementById('reelStatus-' + index);
+    var errorText = document.getElementById('reelErrorText-' + index);
+    var retryBtn = document.getElementById('reelRetry-' + index);
+
+    if (!iframeBox) return;
+
+    // Show loading overlay
+    if (statusOverlay) {
+      statusOverlay.classList.remove('hidden');
+      if (errorText) errorText.textContent = "Connecting to YouTube...";
+      if (retryBtn) retryBtn.classList.add('hidden');
+    }
+
+    loadYouTubeIframeApi(function() {
+      var containerId = 'ytPlayerInstance-' + index;
+      iframeBox.innerHTML = "<div id='" + containerId + "'></div>";
+
+      if (statusOverlay) statusOverlay.classList.add('hidden');
+
+      try {
+        activeYtPlayer = new window.YT.Player(containerId, {
+          height: '100%',
+          width: '100%',
+          videoId: reel.youtubeId,
+          playerVars: {
+            autoplay: 1,
+            controls: 1,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1,
+            mute: isMuted ? 1 : 0
+          },
+          events: {
+            onReady: function(event) {
+              activeYtIframeId = containerId;
+              if (thumbWrap) {
+                thumbWrap.style.opacity = '0';
+                thumbWrap.style.pointerEvents = 'none';
+              }
+              event.target.playVideo();
+            },
+            onError: function(e) {
+              if (statusOverlay) {
+                statusOverlay.classList.remove('hidden');
+                var msg = "Video unavailable or embedding restricted.";
+                if (e && e.data === 150) msg = "Playback restricted by video owner.";
+                if (errorText) errorText.textContent = msg;
+                if (retryBtn) {
+                  retryBtn.classList.remove('hidden');
+                  retryBtn.onclick = function() {
+                    playReel(index);
+                  };
+                }
+              }
+            }
+          }
+        });
+      } catch (err) {
+        if (statusOverlay) {
+          statusOverlay.classList.remove('hidden');
+          if (errorText) errorText.textContent = "Unable to initialize YouTube API player.";
+        }
+      }
+    });
+  }
+
+  // Setup Reels Controls & Touch Gestures
+  function setupReelsControls() {
+    var prevBtn = document.getElementById('reelPrevBtn');
+    var nextBtn = document.getElementById('reelNextBtn');
+    var muteBtn = document.getElementById('reelMuteBtn');
+    var muteIcon = document.getElementById('reelMuteIcon');
+    var filterBtns = document.querySelectorAll('#reelsFilterGroup .reel-filter-btn');
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        if (!filteredReels.length) return;
+        var newIdx = (activeReelIndex - 1 + filteredReels.length) % filteredReels.length;
+        selectReel(newIdx);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (!filteredReels.length) return;
+        var newIdx = (activeReelIndex + 1) % filteredReels.length;
+        selectReel(newIdx);
+      });
+    }
+
+    if (muteBtn) {
+      muteBtn.addEventListener('click', function() {
+        isMuted = !isMuted;
+        muteBtn.setAttribute('title', isMuted ? 'Unmute' : 'Mute');
+        if (activeYtPlayer && typeof activeYtPlayer.mute === 'function') {
+          if (isMuted) activeYtPlayer.mute();
+          else activeYtPlayer.unMute();
+        }
+        if (muteIcon) {
+          muteIcon.innerHTML = isMuted ?
+            "<polygon points='11 5 6 9 2 9 2 15 6 15 11 19 11 5'/><line x1='23' x2='17' y1='9' y2='15'/><line x1='17' x2='23' y1='9' y2='15'/>" :
+            "<polygon points='11 5 6 9 2 9 2 15 6 15 11 19 11 5'/><path d='M15.54 8.46a5 5 0 0 1 0 7.07'/><path d='M19.07 4.93a10 10 0 0 1 0 14.14'/>";
+        }
+      });
+    }
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var category = btn.getAttribute('data-reel-filter');
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        if (category === 'all') {
+          filteredReels = REELS_DATA.slice();
+        } else {
+          filteredReels = REELS_DATA.filter(function(r) { return r.category === category; });
+        }
+        activeReelIndex = 0;
+        renderReelsCarousel();
+      });
+    });
+
+    // Touch Swipe Gestures for Reels
+    var reelsTrackWrapper = document.getElementById('reelsTrackWrapper');
+    if (reelsTrackWrapper) {
+      var touchStartX = 0;
+      var touchStartY = 0;
+
+      reelsTrackWrapper.addEventListener('touchstart', function(e) {
+        if (e.touches.length) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      reelsTrackWrapper.addEventListener('touchend', function(e) {
+        if (e.changedTouches.length) {
+          var diffX = e.changedTouches[0].clientX - touchStartX;
+          var diffY = e.changedTouches[0].clientY - touchStartY;
+
+          // Horizontal swipe threshold > 40px and dominant over vertical scrolling
+          if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX < 0) {
+              // Swipe Left -> Next Reel
+              if (filteredReels.length) {
+                var nextIdx = (activeReelIndex + 1) % filteredReels.length;
+                selectReel(nextIdx);
+              }
+            } else {
+              // Swipe Right -> Prev Reel
+              if (filteredReels.length) {
+                var prevIdx = (activeReelIndex - 1 + filteredReels.length) % filteredReels.length;
+                selectReel(prevIdx);
+              }
+            }
+          }
+        }
+      }, { passive: true });
+    }
+  }
+
+  // Render Graphic Design Gallery & Lightbox Modal
+  var currentGfxIndex = 0;
+  var filteredGraphics = GRAPHICS_DATA.slice();
+
+  function renderGraphicSvgPlaceholder(svgType, title) {
+    var cleanTitle = (title || 'GRAPHIC DESIGN').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 450' role='img'>" +
+      "<defs><linearGradient id='g-" + svgType + "' x1='0' y1='0' x2='1' y2='1'>" +
+      "<stop stop-color='#4F46E5'/><stop offset='0.5' stop-color='#2563EB'/><stop offset='1' stop-color='#06B6D4'/>" +
+      "</linearGradient></defs>" +
+      "<rect width='600' height='450' fill='#F8FAFC'/>" +
+      "<rect x='30' y='30' width='540' height='390' rx='16' fill='none' stroke='#E2E8F0' stroke-width='2'/>" +
+      "<circle cx='300' cy='200' r='90' fill='url(#g-" + svgType + ")' opacity='0.85'/>" +
+      "<text x='300' y='350' text-anchor='middle' fill='#111827' font-family='Space Grotesk' font-size='22' font-weight='800'>" + cleanTitle + "</text>" +
+      "<text x='300' y='380' text-anchor='middle' fill='#64748B' font-family='sans-serif' font-size='12' letter-spacing='3'>SINGH CREATIVE STUDIO</text>" +
+      "</svg>";
+  }
+
+  function renderGraphicsGrid() {
+    var grid = document.getElementById('graphicsGrid');
+    if (!grid) return;
+
+    if (!filteredGraphics.length) {
+      grid.innerHTML = "<div style='grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--muted);'>No graphics found in this category.</div>";
+      return;
+    }
+
+    var html = '';
+    filteredGraphics.forEach(function(gfx, idx) {
+      html += "<article class='graphic-card' data-gfx-index='" + idx + "'>";
+      html += "<div class='graphic-image-wrap'>";
+      html += "<span class='graphic-badge'>" + (gfx.badge || 'CREATIVE') + "</span>";
+      if (gfx.image) {
+        html += "<img src='" + gfx.image + "' alt='" + gfx.title + "' loading='lazy'/>";
+      } else {
+        html += renderGraphicSvgPlaceholder(gfx.svgType || 'default', gfx.title);
+      }
+      html += "</div>";
+      html += "<div class='graphic-info'>";
+      html += "<h3>" + gfx.title + "</h3>";
+      html += "<p>" + (gfx.categoryLabel || gfx.category) + "</p>";
+      html += "</div></article>";
+    });
+
+    grid.innerHTML = html;
+
+    var cards = grid.querySelectorAll('.graphic-card');
+    cards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        var idx = parseInt(card.getAttribute('data-gfx-index'), 10);
+        openLightbox(idx);
+      });
+    });
+  }
+
+  function openLightbox(index) {
+    if (index < 0 || index >= filteredGraphics.length) return;
+    currentGfxIndex = index;
+    var gfx = filteredGraphics[currentGfxIndex];
+
+    var modal = document.getElementById('lightboxModal');
+    var body = document.getElementById('lightboxBody');
+    var titleEl = document.getElementById('lightboxTitle');
+    var catEl = document.getElementById('lightboxCat');
+
+    if (!modal || !body) return;
+
+    if (gfx.image) {
+      body.innerHTML = "<img src='" + gfx.image + "' alt='" + gfx.title + "'/>";
+    } else {
+      body.innerHTML = renderGraphicSvgPlaceholder(gfx.svgType || 'default', gfx.title);
+    }
+
+    if (titleEl) titleEl.textContent = gfx.title;
+    if (catEl) catEl.textContent = gfx.categoryLabel || gfx.category;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    var modal = document.getElementById('lightboxModal');
+    if (modal) modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function setupGraphicsControls() {
+    var filterBtns = document.querySelectorAll('#graphicsFilterGroup .filter');
+    var closeBtn = document.getElementById('lightboxClose');
+    var prevBtn = document.getElementById('lightboxPrev');
+    var nextBtn = document.getElementById('lightboxNext');
+    var modal = document.getElementById('lightboxModal');
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var category = btn.getAttribute('data-gfx-filter');
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        if (category === 'all') {
+          filteredGraphics = GRAPHICS_DATA.slice();
+        } else {
+          filteredGraphics = GRAPHICS_DATA.filter(function(g) { return g.category === category; });
+        }
+        renderGraphicsGrid();
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        if (!filteredGraphics.length) return;
+        var prevIdx = (currentGfxIndex - 1 + filteredGraphics.length) % filteredGraphics.length;
+        openLightbox(prevIdx);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (!filteredGraphics.length) return;
+        var nextIdx = (currentGfxIndex + 1) % filteredGraphics.length;
+        openLightbox(nextIdx);
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeLightbox();
+      });
+    }
+
+    // Keyboard controls
+    document.addEventListener('keydown', function(e) {
+      if (modal && modal.classList.contains('open')) {
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft' && prevBtn) prevBtn.click();
+        else if (e.key === 'ArrowRight' && nextBtn) nextBtn.click();
+      } else if (document.activeElement && document.activeElement.closest('#reelsContainer')) {
+        if (e.key === 'ArrowLeft') {
+          var rPrev = document.getElementById('reelPrevBtn');
+          if (rPrev) rPrev.click();
+        } else if (e.key === 'ArrowRight') {
+          var rNext = document.getElementById('reelNextBtn');
+          if (rNext) rNext.click();
+        }
+      }
+    });
+  }
+
+  // Optional Blogger Feed Discovery for Posts Labeled 'Reels' or 'Graphics'
+  function discoverBloggerPosts() {
+    try {
+      var feedUrl = '/feeds/posts/default?alt=json&max-results=50';
+      fetch(feedUrl)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (!data || !data.feed || !data.feed.entry) return;
+          var entries = data.feed.entry;
+
+          entries.forEach(function(entry) {
+            var title = entry.title ? entry.title.$t : 'Untitled';
+            var content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+            var categories = entry.category ? entry.category.map(function(c) { return c.term; }) : [];
+
+            // Extract YouTube ID if present in post content or link
+            var ytMatch = content.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            if (ytMatch && ytMatch[1] && categories.indexOf('Reels') !== -1) {
+              var ytId = ytMatch[1];
+              // Avoid duplicates
+              if (!REELS_DATA.some(function(r) { return r.youtubeId === ytId; })) {
+                REELS_DATA.unshift({
+                  id: 'blogger-' + ytId,
+                  title: title,
+                  category: 'motion',
+                  youtubeId: ytId,
+                  thumbnail: '',
+                  description: 'Published on Singh Creative Studio Blog',
+                  featured: true
+                });
+              }
+            }
+          });
+
+          filteredReels = REELS_DATA.slice();
+          renderReelsCarousel();
+        })
+        .catch(function() {
+          // Gracefully fallback to static REELS_DATA configuration
+        });
+    } catch (e) {}
+  }
+
+  // Initialize Reels and Graphics Modules
+  renderReelsCarousel();
+  setupReelsControls();
+  renderGraphicsGrid();
+  setupGraphicsControls();
+  discoverBloggerPosts();
+
 })();
 //]]>
 </script>
