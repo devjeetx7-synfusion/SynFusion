@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:responsive='true' b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=5' name='viewport'/>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  <meta content='Singh Creative Studio — graphic design, branding, motion graphics and animation by Mukesh Singh.' name='description'/>
+  <meta content='#07111F' name='theme-color'/>
+  <title>Singh Creative Studio | Mukesh Singh</title>
+  <b:include data='blog' name='all-head-content'/>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
+  <b:skin><![CDATA[
+    :root{--bg:#07111f;--bg2:#0b1729;--panel:#0e1d32;--blue:#2563eb;--sky:#38bdf8;--ice:#bae6fd;--white:#f8fafc;--muted:#94a3b8;--line:rgba(148,163,184,.18);--max:1180px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+    body.intro-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+    .blue-text{background:linear-gradient(100deg,var(--sky),#6485ff 55%,#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--ice);font-size:.75rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
+    .eyebrow:before{content:'';width:22px;height:2px;background:var(--sky)}
+    .intro{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;min-height:100svh;padding:24px;background:radial-gradient(ellipse at 50% 43%,rgba(37,99,235,.19),transparent 37%),radial-gradient(ellipse at 80% 90%,rgba(56,189,248,.08),transparent 35%),#07111f;transition:opacity .7s ease,visibility .7s ease,transform .7s ease}
+    .intro:before,.intro:after{content:'';position:absolute;pointer-events:none;border:1px solid rgba(96,165,250,.12);border-radius:50%;width:min(70vw,650px);aspect-ratio:1;animation:orbit 24s linear infinite}
+    .intro:after{width:min(88vw,850px);animation-duration:36s;animation-direction:reverse;border-style:dashed;opacity:.5}
+    @keyframes orbit{to{transform:rotate(360deg)}}
+    .intro-inner{position:relative;z-index:1;width:min(100%,650px);text-align:center;animation:introUp 1s both}
+    @keyframes introUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .brand-mark{width:78px;height:78px;margin:0 auto 27px;display:grid;place-items:center;border-radius:24px;background:linear-gradient(145deg,#3b82f6,#1d4ed8 60%,#0c4a6e);box-shadow:0 0 65px rgba(37,99,235,.35),inset 0 1px rgba(255,255,255,.35);font:700 2.8rem 'Space Grotesk',sans-serif;color:white;transform:rotate(-5deg)}
+    .brand-mark span{transform:rotate(5deg)}
+    .intro h1{margin:0;font:700 clamp(2rem,6vw,4.1rem)/1.08 'Space Grotesk',sans-serif;letter-spacing:-.055em}
+    .founder{margin:17px 0 0;color:var(--ice);font-size:.78rem;letter-spacing:.25em;font-weight:600}
+    .tagline{margin:13px 0 31px;color:var(--muted);font-size:1rem}
+    .primary-btn,.secondary-btn{min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:0 23px;border:1px solid transparent;border-radius:12px;font-weight:750;font-size:.92rem;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+    .primary-btn{color:#fff;background:linear-gradient(110deg,#2563eb,#168bd3);box-shadow:0 10px 35px rgba(37,99,235,.28)}
+    .primary-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(37,99,235,.4)}
+    .secondary-btn{border-color:var(--line);background:rgba(255,255,255,.035);color:var(--white)}
+    .secondary-btn:hover{border-color:rgba(56,189,248,.55);transform:translateY(-2px)}
+    .intro-exit{opacity:0;visibility:hidden;transform:scale(1.025);pointer-events:none}
+    .site{opacity:0;visibility:hidden;transition:opacity .65s ease}
+    .site.site-ready{opacity:1;visibility:visible}
+    .site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(148,163,184,.1);background:rgba(7,17,31,.82);backdrop-filter:blur(18px)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .nav-brand{display:flex;align-items:center;gap:12px;font:700 1.05rem 'Space Grotesk',sans-serif;letter-spacing:-.025em}
+    .nav-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#3b82f6,#1d4ed8);font-size:1.35rem}
+    .nav-links{display:flex;align-items:center;gap:27px;color:#cbd5e1;font-size:.88rem}
+    .nav-links a:hover{color:var(--sky)}
+    .nav-cta{padding:11px 16px;border-radius:10px;background:var(--blue);color:white!important;font-weight:700}
+    .menu-toggle{display:none;background:transparent;color:white;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+    .hero{position:relative;padding:76px 0 62px;overflow:hidden}
+    .hero:before{content:'';position:absolute;right:-150px;top:0;width:500px;height:500px;border-radius:50%;background:rgba(37,99,235,.13);filter:blur(90px);pointer-events:none}
+    .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:50px;align-items:center}
+    .hero-copy h2{margin:19px 0 18px;font:700 clamp(2.8rem,5.4vw,5rem)/1.04 'Space Grotesk',sans-serif;letter-spacing:-.065em}
+    .hero-copy p{max-width:530px;color:var(--muted);font-size:1.02rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}
+    .hero-note{display:flex;align-items:center;gap:10px;margin-top:27px;color:#a5b4c8;font-size:.82rem}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:#38bdf8;box-shadow:0 0 12px #38bdf8}
+    .showcase{min-width:0;position:relative;padding:17px;border:1px solid rgba(148,163,184,.2);border-radius:25px;background:linear-gradient(145deg,rgba(20,42,72,.9),rgba(9,22,39,.92));box-shadow:0 28px 90px rgba(0,0,0,.24)}
+    .showcase-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:3px 4px 15px;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.12em}
+    .showcase-live{display:flex;align-items:center;gap:7px;color:#bfdbfe;letter-spacing:.08em}
+    .art-stage{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1.12/1;border-radius:17px;background:#10294a;display:grid;place-items:center}
+    .art-stage:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(56,189,248,.22),transparent 38%),linear-gradient(135deg,rgba(37,99,235,.25),transparent 60%);z-index:-1}
+    .artwork{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:translateX(28px) scale(.98);transition:opacity .65s ease,transform .65s ease;pointer-events:none;padding:20px}
+    .artwork.active{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
+    .artwork svg{width:100%;height:100%;max-height:380px;filter:drop-shadow(0 20px 35px rgba(0,0,0,.28))}
+    .art-caption{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;padding:18px 4px 3px}
+    .art-caption small{display:block;margin-bottom:4px;color:var(--sky);font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    .art-caption h3{margin:0;font:700 clamp(1.1rem,2.4vw,1.55rem)/1.2 'Space Grotesk',sans-serif}
+    .art-caption p{margin:6px 0 0;color:var(--muted);font-size:.82rem}
+    .carousel-controls{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    .carousel-btn{width:39px;height:39px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.04);color:white;cursor:pointer}
+    .carousel-btn:hover{background:var(--blue)}
+    .carousel-progress{height:3px;margin:16px 4px 0;background:rgba(148,163,184,.2);overflow:hidden;border-radius:9px}
+    .carousel-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--sky))}
+    .carousel-progress span.running{animation:progress 5s linear forwards}
+    @keyframes progress{to{width:100%}}
+    .section{padding:90px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+    .section-head h2{margin:12px 0 0;font:700 clamp(2rem,4vw,3.3rem)/1.08 'Space Grotesk',sans-serif;letter-spacing:-.05em}
+    .section-head p{max-width:410px;margin:0;color:var(--muted)}
+    .services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .service{min-height:215px;padding:23px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(18,37,62,.78),rgba(10,24,42,.72));transition:transform .25s,border-color .25s}
+    .service:hover{transform:translateY(-5px);border-color:rgba(56,189,248,.5)}
+    .service-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:rgba(37,99,235,.18);color:var(--sky);font-size:1.25rem}
+    .service h3{margin:19px 0 8px;font:650 1.15rem 'Space Grotesk',sans-serif}
+    .service p{margin:0;color:var(--muted);font-size:.88rem}
+    .filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:23px}
+    .filter-btn{padding:9px 15px;border:1px solid var(--line);border-radius:99px;background:transparent;color:#cbd5e1;cursor:pointer;font-size:.83rem}
+    .filter-btn.active,.filter-btn:hover{background:var(--blue);border-color:var(--blue);color:white}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .project{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--bg2);transition:transform .25s,border-color .25s}
+    .project:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.45)}
+    .project-art{aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;background:linear-gradient(140deg,#10294a,#123b69 55%,#07111f);position:relative}
+    .project-art svg{width:100%;height:100%;transition:transform .5s}
+    .project:hover .project-art svg{transform:scale(1.04)}
+    .project-info{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 19px}
+    .project-info h3{margin:0;font:650 1.04rem 'Space Grotesk',sans-serif}
+    .project-info p{margin:4px 0 0;color:var(--muted);font-size:.8rem}
+    .project-arrow{color:var(--sky);font-size:1.3rem}
+    .motion-band{position:relative;overflow:hidden;padding:48px;border:1px solid rgba(96,165,250,.22);border-radius:24px;background:radial-gradient(ellipse at 80% 20%,rgba(37,99,235,.28),transparent 45%),linear-gradient(120deg,#0d1c31,#0a1424)}
+    .motion-band h2{margin:13px 0;font:700 clamp(2rem,4.5vw,3.7rem)/1.05 'Space Grotesk',sans-serif;letter-spacing:-.055em}
+    .motion-band p{max-width:610px;color:var(--muted)}
+    .motion-orb{position:absolute;right:9%;top:12%;width:150px;aspect-ratio:1;border-radius:35%;background:linear-gradient(135deg,#60a5fa,#2563eb 50%,#0c4a6e);box-shadow:inset -15px -20px 35px rgba(0,0,0,.28),0 0 60px rgba(37,99,235,.24);transform:rotate(25deg);animation:float 7s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-14px) rotate(42deg)}}
+    .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:center}
+    .about-monogram{min-height:290px;display:grid;place-items:center;border-radius:24px;border:1px solid rgba(96,165,250,.22);background:radial-gradient(circle,rgba(37,99,235,.25),transparent 55%),#0b192b}
+    .about-monogram span{font:700 9rem 'Space Grotesk',sans-serif;color:transparent;-webkit-text-stroke:2px #60a5fa}
+    .about-copy h2{margin:12px 0;font:700 clamp(2rem,4vw,3.2rem)/1.08 'Space Grotesk',sans-serif;letter-spacing:-.05em}
+    .about-copy p{color:var(--muted)}
+    .skill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .skill-list span{padding:8px 11px;border:1px solid var(--line);border-radius:9px;color:#cbd5e1;font-size:.8rem}
+    .contact{padding:78px 0 90px;text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(37,99,235,.17),transparent 55%)}
+    .contact h2{margin:15px auto;font:700 clamp(2.2rem,5vw,4.2rem)/1.04 'Space Grotesk',sans-serif;letter-spacing:-.06em}
+    .contact p{max-width:580px;margin:0 auto 24px;color:var(--muted)}
+    .contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+    .footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.82rem}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .socials{display:flex;gap:9px;flex-wrap:wrap}
+    .socials a{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:#cbd5e1}
+    .socials a:hover{color:white;border-color:var(--sky);background:rgba(37,99,235,.2)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .no-motion .reveal{opacity:1;transform:none}
+    .blogger-posts{display:none}
+    @media(max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:34px}.hero-copy{text-align:center}.hero-copy p{margin-inline:auto}.hero-actions,.hero-note{justify-content:center}.showcase{width:min(100%,720px);margin-inline:auto}.services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-grid{gap:32px}}
+    @media(max-width:700px){.container{width:calc(100% - 32px)}.nav{min-height:66px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:66px;left:0;right:0;padding:18px 20px 22px;flex-direction:column;align-items:stretch;gap:17px;background:#0a1728;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}.nav-cta{text-align:center}.hero{padding:48px 0 38px}.hero-grid{gap:28px}.hero-copy h2{font-size:clamp(2.55rem,11vw,3.7rem)}.hero-copy p{font-size:.95rem}.showcase{padding:11px;border-radius:19px}.art-stage{aspect-ratio:.94/1}.artwork{padding:10px}.art-caption{align-items:center;padding-top:14px}.art-caption p{font-size:.76rem}.carousel-btn{width:35px;height:35px}.section{padding:62px 0}.section-head{display:block;margin-bottom:24px}.section-head p{margin-top:12px}.services-grid{gap:10px}.service{padding:16px;min-height:190px}.service h3{font-size:1rem}.service p{font-size:.82rem}.projects-grid{grid-template-columns:1fr;gap:14px}.project-info{padding:15px}.motion-band{padding:28px 22px}.motion-orb{width:75px;right:7%;top:8%;opacity:.65}.motion-band h2,.motion-band p{position:relative;z-index:1}.about-grid{grid-template-columns:1fr;gap:25px}.about-monogram{min-height:220px}.about-monogram span{font-size:7rem}.contact{padding:60px 0}.footer-inner{flex-direction:column;text-align:center}.socials{justify-content:center}}
+    @media(max-width:380px){.container{width:calc(100% - 24px)}.intro h1{font-size:2rem}.brand-mark{width:66px;height:66px}.primary-btn,.secondary-btn{padding-inline:16px}.services-grid{grid-template-columns:1fr}.art-caption{align-items:flex-start;flex-direction:column}.carousel-controls{align-self:flex-end;margin-top:-4px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.intro:before,.intro:after,.motion-orb{animation:none!important}}
+  ]]></b:skin>
+</head>
+<body class='intro-open'>
+  <div class='intro' id='introScreen' aria-label='Singh Creative Studio introduction'>
+    <div class='intro-inner'>
+      <div class='brand-mark' aria-label='Singh Creative Studio logo'><span>S</span></div>
+      <h1>Singh <span class='blue-text'>Creative Studio</span></h1>
+      <p class='founder'>MUKESH SINGH</p>
+      <p class='tagline'>Ideas Made Visible.</p>
+      <button class='primary-btn' id='enterStudio' type='button'>START YOUR DESIGN <span aria-hidden='true'>→</span></button>
+    </div>
+  </div>
+  <div class='site' id='mainSite'>
+    <header class='site-header'>
+      <div class='container nav'>
+        <a class='nav-brand' href='#home' aria-label='Singh Creative Studio home'><span class='nav-mark'>S</span><span>Singh Creative Studio</span></a>
+        <button class='menu-toggle' id='menuToggle' type='button' aria-expanded='false' aria-controls='navLinks'>Menu ☰</button>
+        <nav class='nav-links' id='navLinks' aria-label='Main navigation'>
+          <a href='#services'>Services</a><a href='#work'>Portfolio</a><a href='#motion'>Motion Lab</a><a href='#about'>About</a><a class='nav-cta' href='#contact'>Let's Talk ↗</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class='hero' id='home'>
+        <div class='container hero-grid'>
+          <div class='hero-copy'>
+            <span class='eyebrow'>GRAPHIC DESIGN · MOTION · ANIMATION</span>
+            <h2>Turning Creative Ideas Into <span class='blue-text'>Visual Impact.</span></h2>
+            <p>I create eye-catching graphics, engaging animations and powerful visuals that help ideas stand out.</p>
+            <div class='hero-actions'><a class='primary-btn' href='#work'>Explore My Work <span>↗</span></a><a class='secondary-btn' href='#contact'>Let's Work Together</a></div>
+            <div class='hero-note'><span class='status-dot'></span> Design with purpose. Create with impact.</div>
+          </div>
+          <div class='showcase reveal' aria-label='Featured creative work carousel'>
+            <div class='showcase-top'><span>FEATURED VISUALS</span><span class='showcase-live'><span class='status-dot'></span> CREATIVE SHOWCASE</span></div>
+            <div class='art-stage' id='artStage'>
+              <article class='artwork active' data-category='Graphic Design' data-title='Electric Form' data-description='Bold shapes and high-contrast composition.'>
+                <svg viewBox='0 0 500 440' role='img' aria-label='Abstract blue graphic composition'><defs><linearGradient id='g1' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#38bdf8'/><stop offset='.55' stop-color='#2563eb'/><stop offset='1' stop-color='#111c56'/></linearGradient><linearGradient id='g2' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#dbeafe'/><stop offset='1' stop-color='#60a5fa'/></linearGradient></defs><circle cx='250' cy='220' r='150' fill='#0b1d38' stroke='#3b82f6' stroke-opacity='.35'/><circle cx='250' cy='220' r='115' fill='none' stroke='#7dd3fc' stroke-opacity='.5' stroke-width='1.5'/><path d='M150 315 250 80 350 315Z' fill='url(#g1)'/><path d='M250 80 300 315 350 315Z' fill='#7dd3fc' opacity='.6'/><circle cx='250' cy='220' r='52' fill='url(#g2)'/><circle cx='250' cy='220' r='22' fill='#0c2344'/><path d='M65 350H435M85 80H160M350 95H425' stroke='#60a5fa' stroke-opacity='.65' stroke-width='2'/><text x='250' y='400' fill='#dbeafe' font-size='15' letter-spacing='7' text-anchor='middle'>FORM / 001</text></svg>
+              </article>
+              <article class='artwork' data-category='Brand Identity' data-title='Blue Horizon' data-description='A clean visual identity direction.'>
+                <svg viewBox='0 0 500 440' role='img' aria-label='Blue brand identity concept'><defs><linearGradient id='g3' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#60a5fa'/><stop offset='1' stop-color='#1d4ed8'/></linearGradient></defs><rect x='70' y='60' width='360' height='320' rx='8' fill='#f8fafc'/><path d='M120 300 210 115 300 300Z' fill='url(#g3)'/><circle cx='300' cy='165' r='48' fill='#0f172a'/><text x='110' y='340' fill='#0f172a' font-size='19' font-weight='700'>BLUE HORIZON</text><text x='110' y='360' fill='#64748b' font-size='9' letter-spacing='3'>IDENTITY CONCEPT / 002</text></svg>
+              </article>
+              <article class='artwork' data-category='Motion Graphics' data-title='Motion in Blue' data-description='Layered forms designed to feel in motion.'>
+                <svg viewBox='0 0 500 440' role='img' aria-label='Motion graphics visual concept'><defs><linearGradient id='g4' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#38bdf8'/><stop offset='1' stop-color='#1d4ed8'/></linearGradient></defs><g fill='none' stroke='url(#g4)' stroke-width='20' stroke-linecap='round'><path d='M90 110Q250 10 410 110'/><path d='M70 180Q250 70 430 180' opacity='.8'/><path d='M55 250Q250 130 445 250' opacity='.65'/><path d='M80 320Q250 220 420 320' opacity='.5'/></g><circle cx='250' cy='218' r='60' fill='#dbeafe'/><circle cx='250' cy='218' r='35' fill='#2563eb'/></svg>
+              </article>
+              <article class='artwork' data-category='3D Design' data-title='Sculpted Light' data-description='A dimensional study of light and material.'>
+                <svg viewBox='0 0 500 440' role='img' aria-label='Abstract 3D blue sphere concept'><defs><radialGradient id='g5' cx='.3' cy='.22' r='.8'><stop stop-color='#e0f2fe'/><stop offset='.25' stop-color='#60a5fa'/><stop offset='.7' stop-color='#2563eb'/><stop offset='1' stop-color='#101a45'/></radialGradient></defs><ellipse cx='250' cy='350' rx='135' ry='24' fill='#020617' opacity='.6'/><circle cx='250' cy='210' r='125' fill='url(#g5)'/><ellipse cx='205' cy='150' rx='42' ry='18' fill='#fff' opacity='.25' transform='rotate(-28 205 150)'/><ellipse cx='250' cy='210' rx='155' ry='65' fill='none' stroke='#7dd3fc' stroke-width='2' stroke-opacity='.7' transform='rotate(-25 250 210)'/></svg>
+              </article>
+              <article class='artwork' data-category='Animation' data-title='Orbit Study' data-description='A playful motion and shape experiment.'>
+                <svg viewBox='0 0 500 440' role='img' aria-label='Abstract animation study'><defs><linearGradient id='g6' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#bae6fd'/><stop offset='1' stop-color='#2563eb'/></linearGradient></defs><ellipse cx='250' cy='220' rx='160' ry='70' fill='none' stroke='#60a5fa' stroke-width='3' transform='rotate(-30 250 220)'/><ellipse cx='250' cy='220' rx='160' ry='70' fill='none' stroke='#38bdf8' stroke-width='3' transform='rotate(35 250 220)'/><circle cx='250' cy='220' r='67' fill='url(#g6)'/><circle cx='365' cy='132' r='19' fill='#e0f2fe'/><circle cx='122' cy='292' r='12' fill='#38bdf8'/></svg>
+              </article>
+              <article class='artwork' data-category='Video Design' data-title='Frame the Story' data-description='A cinematic composition concept.'>
+                <svg viewBox='0 0 500 440' role='img' aria-label='Cinematic blue visual concept'><defs><linearGradient id='g7' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#0f172a'/><stop offset='.5' stop-color='#2563eb'/><stop offset='1' stop-color='#38bdf8'/></linearGradient></defs><rect x='45' y='65' width='410' height='270' rx='10' fill='url(#g7)'/><circle cx='325' cy='150' r='65' fill='#bae6fd' opacity='.8'/><path d='M45 310 170 180 255 270 325 215 455 330V335H45Z' fill='#07111f' opacity='.85'/><path d='M70 95H130M70 95V145M430 95H370M430 95V145M70 305H130M70 305V255M430 305H370M430 305V255' stroke='#e0f2fe' stroke-width='3'/><text x='250' y='380' text-anchor='middle' fill='#dbeafe' font-size='13' letter-spacing='5'>FRAME / STORY</text></svg>
+              </article>
+            </div>
+            <div class='art-caption'><div><small id='artCategory'>Graphic Design</small><h3 id='artTitle'>Electric Form</h3><p id='artDescription'>Bold shapes and high-contrast composition.</p></div><div class='carousel-controls'><button class='carousel-btn' id='prevSlide' type='button' aria-label='Previous artwork'>←</button><button class='carousel-btn' id='pauseSlide' type='button' aria-label='Pause carousel'>Ⅱ</button><button class='carousel-btn' id='nextSlide' type='button' aria-label='Next artwork'>→</button></div></div>
+            <div class='carousel-progress' aria-hidden='true'><span id='progressBar'></span></div>
+          </div>
+        </div>
+      </section>
+      <section class='section' id='services'><div class='container'><div class='section-head reveal'><div><span class='eyebrow'>WHAT I CREATE</span><h2>Creative skills.<br/><span class='blue-text'>Clear purpose.</span></h2></div><p>Visual design and motion that help your message stand out and stay memorable.</p></div><div class='services-grid'>
+        <article class='service reveal'><div class='service-icon'>✳</div><h3>Graphic Design</h3><p>Posters, banners, social media creatives and promotional visuals.</p></article>
+        <article class='service reveal'><div class='service-icon'>◈</div><h3>Brand Identity</h3><p>Logo concepts, color systems and consistent visual direction.</p></article>
+        <article class='service reveal'><div class='service-icon'>〰</div><h3>Motion Graphics</h3><p>Animated typography, logo reveals and moving visual stories.</p></article>
+        <article class='service reveal'><div class='service-icon'>▶</div><h3>Animation &amp; Video</h3><p>Animation concepts, edits and short promotional content.</p></article>
+      </div></div></section>
+      <section class='section' id='work'><div class='container'><div class='section-head reveal'><div><span class='eyebrow'>PORTFOLIO</span><h2>Selected <span class='blue-text'>creative work.</span></h2></div><p>Explore visual concepts across design, identity and motion.</p></div><div class='filters reveal' role='group' aria-label='Filter projects'><button class='filter-btn active' data-filter='all' type='button'>All work</button><button class='filter-btn' data-filter='graphics' type='button'>Graphics</button><button class='filter-btn' data-filter='branding' type='button'>Branding</button><button class='filter-btn' data-filter='motion' type='button'>Motion</button><button class='filter-btn' data-filter='3d' type='button'>3D</button><button class='filter-btn' data-filter='video' type='button'>Video</button></div><div class='projects-grid'>
+        <article class='project reveal' data-tags='graphics motion'><div class='project-art'><svg viewBox='0 0 600 360' aria-label='Electric poster design concept' role='img'><defs><linearGradient id='p1' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#38bdf8'/><stop offset='1' stop-color='#1d4ed8'/></linearGradient></defs><rect width='600' height='360' fill='#081426'/><circle cx='430' cy='170' r='130' fill='url(#p1)'/><path d='M0 300 220 50 390 360H0Z' fill='#142e55'/><text x='38' y='92' fill='#f8fafc' font-size='35' font-weight='800'>MAKE IT</text><text x='38' y='137' fill='#60a5fa' font-size='48' font-weight='800'>MATTER.</text><text x='40' y='325' fill='#cbd5e1' font-size='12' letter-spacing='4'>GRAPHIC STUDY / 001</text></svg></div><div class='project-info'><div><h3>Make It Matter</h3><p>Graphic design · Concept</p></div><span class='project-arrow'>↗</span></div></article>
+        <article class='project reveal' data-tags='branding'><div class='project-art'><svg viewBox='0 0 600 360' aria-label='Blue Horizon branding concept' role='img'><rect width='600' height='360' fill='#eaf4ff'/><circle cx='300' cy='145' r='82' fill='#2563eb'/><path d='M255 185 300 85 345 185Z' fill='#bae6fd'/><text x='300' y='270' fill='#0b1730' text-anchor='middle' font-size='30' font-weight='800'>BLUE HORIZON</text><text x='300' y='300' fill='#475569' text-anchor='middle' font-size='12' letter-spacing='5'>BRAND CONCEPT / 002</text></svg></div><div class='project-info'><div><h3>Blue Horizon</h3><p>Brand identity · Concept</p></div><span class='project-arrow'>↗</span></div></article>
+        <article class='project reveal' data-tags='3d motion'><div class='project-art'><svg viewBox='0 0 600 360' aria-label='Sculpted light 3D concept' role='img'><defs><radialGradient id='p3'><stop stop-color='#bae6fd'/><stop offset='.4' stop-color='#60a5fa'/><stop offset='1' stop-color='#1d4ed8'/></radialGradient></defs><rect width='600' height='360' fill='#081426'/><circle cx='300' cy='165' r='110' fill='url(#p3)'/><ellipse cx='300' cy='165' rx='145' ry='50' fill='none' stroke='#7dd3fc' stroke-width='3' transform='rotate(-24 300 165)'/><text x='300' y='320' fill='#dbeafe' font-size='15' letter-spacing='6' text-anchor='middle'>SCULPTED LIGHT / 003</text></svg></div><div class='project-info'><div><h3>Sculpted Light</h3><p>3D visual · Concept</p></div><span class='project-arrow'>↗</span></div></article>
+        <article class='project reveal' data-tags='video motion'><div class='project-art'><svg viewBox='0 0 600 360' aria-label='Frame the story video concept' role='img'><defs><linearGradient id='p4' x1='0' y1='0' x2='1' y2='1'><stop stop-color='#0f172a'/><stop offset='.6' stop-color='#2563eb'/><stop offset='1' stop-color='#38bdf8'/></linearGradient></defs><rect width='600' height='360' fill='url(#p4)'/><circle cx='420' cy='105' r='72' fill='#bae6fd' opacity='.8'/><path d='M0 290 180 120 300 260 410 180 600 315V360H0Z' fill='#07111f'/><text x='35' y='70' fill='#fff' font-size='30' font-weight='800'>FRAME THE STORY</text><text x='38' y='330' fill='#dbeafe' font-size='12' letter-spacing='4'>VIDEO STUDY / 004</text></svg></div><div class='project-info'><div><h3>Frame the Story</h3><p>Video design · Concept</p></div><span class='project-arrow'>↗</span></div></article>
+      </div></div></section>
+      <section class='section' id='motion'><div class='container'><div class='motion-band reveal'><div class='motion-orb' aria-hidden='true'></div><span class='eyebrow'>MOTION LAB</span><h2>Design that feels<br/><span class='blue-text'>alive.</span></h2><p>Shapes, color and movement come together to turn simple ideas into expressive visual moments.</p><a class='secondary-btn' href='#work'>Explore visual concepts ↗</a></div></div></section>
+      <section class='section' id='about'><div class='container about-grid'><div class='about-monogram reveal' aria-label='Mukesh Singh monogram'><span>MS</span></div><div class='about-copy reveal'><span class='eyebrow'>THE CREATOR</span><h2>Meet <span class='blue-text'>Mukesh Singh.</span></h2><p>I'm Mukesh Singh, a creative designer focused on graphics, visual storytelling and animation. I enjoy turning ideas into clear, memorable and engaging visuals.</p><div class='skill-list'><span>Graphic Design</span><span>Branding</span><span>Motion Graphics</span><span>Animation</span><span>Video Editing</span></div></div></div></section>
+      <section class='contact' id='contact'><div class='container reveal'><span class='eyebrow'>LET'S CREATE</span><h2>Have an idea?<br/><span class='blue-text'>Let's make it real.</span></h2><p>Tell me what you want to create. Let's talk about your next visual project.</p><div class='contact-actions'><a class='primary-btn' href='mailto:hello@example.com'>Email Me ↗</a><a class='secondary-btn' href='#work'>View Portfolio</a></div></div></section>
+    </main>
+    <footer class='footer'><div class='container footer-inner'><div>© <span id='yearNow'>2026</span> Singh Creative Studio · MUKESH SINGH</div><div class='socials' aria-label='Social links'><a href='#contact' aria-label='Instagram' title='Add your Instagram profile'>◎</a><a href='#contact' aria-label='Behance' title='Add your Behance profile'>Bē</a><a href='#contact' aria-label='YouTube' title='Add your YouTube profile'>▷</a><a href='#contact' aria-label='LinkedIn' title='Add your LinkedIn profile'>in</a></div></div></footer>
+  </div>
+  <div class='blogger-posts'><b:section id='main' class='main' maxwidgets='1' showaddelement='no'><b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='false'/></b:section></div>
+  <script type='text/javascript'>
+  //<![CDATA[
+  (function(){
+    var intro=document.getElementById('introScreen');
+    var site=document.getElementById('mainSite');
+    var enter=document.getElementById('enterStudio');
+    var reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function enterSite(){
+      if(!intro||!site)return;
+      intro.classList.add('intro-exit');
+      site.classList.add('site-ready');
+      document.body.classList.remove('intro-open');
+      window.setTimeout(function(){intro.style.display='none';},reduced?0:750);
+      try{sessionStorage.setItem('scs-intro-seen','1');}catch(e){}
+    }
+    // Show the intro on a fresh page visit; avoid repeating it for every in-page navigation.
+    try{if(sessionStorage.getItem('scs-intro-seen')==='1'){intro.style.display='none';site.classList.add('site-ready');document.body.classList.remove('intro-open');}}catch(e){}
+    if(enter)enter.addEventListener('click',enterSite);
+    var nav=document.getElementById('navLinks'),toggle=document.getElementById('menuToggle');
+    if(toggle&&nav){toggle.addEventListener('click',function(){var open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open?'true':'false');});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');});});}
+    var slides=Array.prototype.slice.call(document.querySelectorAll('.artwork'));
+    var category=document.getElementById('artCategory'),title=document.getElementById('artTitle'),description=document.getElementById('artDescription'),bar=document.getElementById('progressBar');
+    var current=0,paused=false,timer=null,delay=5000;
+    function paintProgress(){if(!bar)return;bar.classList.remove('running');bar.style.animation='none';void bar.offsetWidth;bar.style.animation='';if(!paused&&!reduced){bar.classList.add('running');}}
+    function showSlide(index,manual){if(!slides.length)return;current=(index+slides.length)%slides.length;slides.forEach(function(slide,i){slide.classList.toggle('active',i===current);});var s=slides[current];if(category)category.textContent=s.getAttribute('data-category')||'';if(title)title.textContent=s.getAttribute('data-title')||'';if(description)description.textContent=s.getAttribute('data-description')||'';if(manual)resetTimer();paintProgress();}
+    function stopTimer(){if(timer){window.clearInterval(timer);timer=null;}}
+    function resetTimer(){stopTimer();if(!paused&&!reduced&&!document.hidden){timer=window.setInterval(function(){showSlide(current+1,false);},delay);}}
+    var next=document.getElementById('nextSlide'),prev=document.getElementById('prevSlide'),pause=document.getElementById('pauseSlide');
+    if(next)next.addEventListener('click',function(){showSlide(current+1,true);});
+    if(prev)prev.addEventListener('click',function(){showSlide(current-1,true);});
+    if(pause)pause.addEventListener('click',function(){paused=!paused;pause.textContent=paused?'▶':'Ⅱ';pause.setAttribute('aria-label',paused?'Play carousel':'Pause carousel');if(paused){stopTimer();if(bar){bar.classList.remove('running');bar.style.animation='none';}}else{paintProgress();resetTimer();}});
+    var stage=document.getElementById('artStage');
+    if(stage){stage.addEventListener('mouseenter',function(){stopTimer();});stage.addEventListener('mouseleave',function(){resetTimer();});var startX=0;stage.addEventListener('touchstart',function(e){if(e.touches.length)startX=e.touches[0].clientX;},{passive:true});stage.addEventListener('touchend',function(e){if(!e.changedTouches.length)return;var dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)showSlide(current+(dx<0?1:-1),true);},{passive:true});}
+    document.addEventListener('visibilitychange',function(){if(document.hidden)stopTimer();else resetTimer();});
+    showSlide(0,false);resetTimer();
+    document.querySelectorAll('.filter-btn').forEach(function(btn){btn.addEventListener('click',function(){var filter=btn.getAttribute('data-filter');document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.toggle('active',b===btn);});document.querySelectorAll('.project').forEach(function(card){var tags=(card.getAttribute('data-tags')||'').split(' ');card.style.display=(filter==='all'||tags.indexOf(filter)!==-1)?'':'none';});});});
+    var observer=('IntersectionObserver'in window)?new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:.12}):null;
+    document.querySelectorAll('.reveal').forEach(function(el){if(observer)observer.observe(el);else el.classList.add('visible');});
+    if(reduced){document.documentElement.classList.add('no-motion');document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+    var year=document.getElementById('yearNow');if(year)year.textContent=new Date().getFullYear();
+  })();
+  //]]>
+  </script>
+</body>
+</html>
