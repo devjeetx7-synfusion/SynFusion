@@ -68,7 +68,7 @@ export default function PortfolioSection() {
 
   const username = CONTACT_INFO.githubUsername;
 
-  // Fetch GitHub profile & all public repos across pages
+  // Fetch GitHub profile & all public repos across pages without arbitrary limits
   const fetchGitHubData = useCallback(async (isManualRefresh = false) => {
     if (isManualRefresh) {
       setRefreshing(true);
@@ -89,12 +89,12 @@ export default function PortfolioSection() {
       const profileData: GitHubProfile = await profileRes.json();
       setProfile(profileData);
 
-      // 2. Fetch All Public Repositories (handling pagination)
+      // 2. Fetch All Public Repositories (unbounded page loop until all repos loaded or rate limited)
       let allRepos: GitHubRepo[] = [];
       let page = 1;
       let hasMore = true;
 
-      while (hasMore && page <= 5) {
+      while (hasMore) {
         const reposRes = await fetch(
           `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated`
         );
@@ -147,27 +147,41 @@ export default function PortfolioSection() {
     }
   }, [username]);
 
-  // Load from cache or fetch on initial render
+  // Load from cache or fetch on initial render asynchronously
   useEffect(() => {
-    try {
-      const cachedTime = localStorage.getItem(CACHE_KEY_TIME);
-      const cachedRepos = localStorage.getItem(CACHE_KEY_REPOS);
-      const cachedProfile = localStorage.getItem(CACHE_KEY_PROFILE);
+    let isMounted = true;
 
-      if (cachedTime && cachedRepos && cachedProfile) {
-        const age = Date.now() - parseInt(cachedTime, 10);
-        if (age < CACHE_EXPIRY_MS) {
-          setRepos(JSON.parse(cachedRepos));
-          setProfile(JSON.parse(cachedProfile));
-          setLoading(false);
-          return;
+    const loadData = async () => {
+      try {
+        const cachedTime = localStorage.getItem(CACHE_KEY_TIME);
+        const cachedRepos = localStorage.getItem(CACHE_KEY_REPOS);
+        const cachedProfile = localStorage.getItem(CACHE_KEY_PROFILE);
+
+        if (cachedTime && cachedRepos && cachedProfile) {
+          const age = Date.now() - parseInt(cachedTime, 10);
+          if (age < CACHE_EXPIRY_MS) {
+            if (isMounted) {
+              setRepos(JSON.parse(cachedRepos));
+              setProfile(JSON.parse(cachedProfile));
+              setLoading(false);
+            }
+            return;
+          }
         }
+      } catch {
+        // Ignore cache load errors
       }
-    } catch {
-      // Ignore cache load errors
-    }
 
-    fetchGitHubData();
+      if (isMounted) {
+        await fetchGitHubData();
+      }
+    };
+
+    loadData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [fetchGitHubData]);
 
   // Extract unique languages for filter dropdown
@@ -218,10 +232,26 @@ export default function PortfolioSection() {
       });
   }, [repos, includeForks, selectedLanguage, searchQuery, sortBy]);
 
-  // Reset page when filters change
-  useEffect(() => {
+  // Reset page safely when filters change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
     setCurrentPage(1);
-  }, [searchQuery, selectedLanguage, includeForks, sortBy]);
+  };
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedLanguage(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(e.target.value as SortOption);
+    setCurrentPage(1);
+  };
+
+  const handleForkToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIncludeForks(e.target.checked);
+    setCurrentPage(1);
+  };
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredRepos.length / itemsPerPage);
@@ -309,7 +339,7 @@ export default function PortfolioSection() {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleSearchChange}
                 placeholder="Search repositories..."
                 className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-[#E2ECE6] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] text-[#17251E]"
               />
@@ -323,7 +353,7 @@ export default function PortfolioSection() {
                 <Filter className="w-3.5 h-3.5" />
                 <select
                   value={selectedLanguage}
-                  onChange={(e) => setSelectedLanguage(e.target.value)}
+                  onChange={handleLanguageChange}
                   className="px-3 py-2 text-xs font-semibold rounded-xl border border-[#E2ECE6] bg-white text-[#17251E] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C]"
                 >
                   {languages.map((lang) => (
@@ -337,7 +367,7 @@ export default function PortfolioSection() {
               {/* Sorting Options */}
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as SortOption)}
+                onChange={handleSortChange}
                 className="px-3 py-2 text-xs font-semibold rounded-xl border border-[#E2ECE6] bg-white text-[#17251E] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C]"
               >
                 <option value="updated">Recently Updated</option>
@@ -351,7 +381,7 @@ export default function PortfolioSection() {
                 <input
                   type="checkbox"
                   checked={includeForks}
-                  onChange={(e) => setIncludeForks(e.target.checked)}
+                  onChange={handleForkToggle}
                   className="rounded text-[#008F4C] focus:ring-[#008F4C]"
                 />
                 <span>Include Forks</span>
@@ -421,6 +451,7 @@ export default function PortfolioSection() {
                 setSearchQuery("");
                 setSelectedLanguage("All");
                 setIncludeForks(false);
+                setCurrentPage(1);
               }}
               aria-label="Reset all search filters"
               className="px-4 py-2 rounded-xl bg-[#008F4C] text-white font-semibold text-xs hover:bg-[#064E32] transition-colors"
