@@ -440,6 +440,35 @@
       overflow: hidden;
     }
 
+    /* Responsive contact form layout */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+      gap: 2rem;
+      max-width: 1040px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    @media (max-width: 760px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+      }
+
+      .contact-grid .feature-card {
+        min-width: 0;
+        padding: 1.25rem;
+      }
+
+      .contact-grid input,
+      .contact-grid select,
+      .contact-grid textarea {
+        box-sizing: border-box;
+        max-width: 100%;
+      }
+    }
+
     /* Floating Mobile Contact Bar */
     .mobile-contact-bar {
       display: none;
@@ -597,7 +626,6 @@
     .post-view-container .post-meta-item {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
       flex-wrap: wrap;
       gap: 0.4rem;
       font-weight: 500;
@@ -615,6 +643,67 @@
     /* 3-Smartphone Animated Product Visual */
     .hero-visual {
       position: relative;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 4rem);
+    }
+
+    .hero-content,
+    .hero-visual {
+      min-width: 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-phones-wrap {
+        height: 320px;
+        transform: scale(0.82);
+        transform-origin: top center;
+        margin-bottom: -55px;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 9vw, 2.65rem);
+        line-height: 1.12;
+      }
+
+      .hero-desc {
+        font-size: 0.98rem;
+      }
+
+      .hero-ctas {
+        gap: 0.65rem;
+      }
+
+      .hero-ctas .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     .post-view-container .post-toc-title {
@@ -624,7 +713,6 @@
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
-      min-height: 420px;
     }
 
     .hero-phones-wrap {
@@ -2052,20 +2140,14 @@
       margin-bottom: 1.25rem;
     }
 
-    /* Scroll Reveal Animation via IntersectionObserver */
+    /* Fail-open reveal: content remains visible even if JavaScript/observer fails. */
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
-    /* Reveal Animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
+    /* Optional reveal enhancement; visibility never depends on this class. */
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
@@ -2077,6 +2159,38 @@
         transition: none !important;
         opacity: 1 !important;
         transform: none !important;
+      }
+    }
+
+    /* Prevent narrow-screen overflow without hiding page content. */
+    html, body {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    img, svg, video, iframe {
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(100% - 2rem, 1200px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 380px) {
+      .container {
+        width: calc(100% - 1.25rem);
+      }
+
+      .mobile-contact-bar {
+        width: calc(100% - 16px);
+        gap: 4px;
+      }
+
+      .mobile-bar-btn {
+        padding: 0.6rem 0.25rem;
+        font-size: 0.72rem;
       }
     }
 
@@ -2314,10 +2428,9 @@
     <section class='section-padding' id='portfolio' style='background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);'>
       <div class='container'>
         <div class='section-header reveal'>
-          <span class='section-badge'>Live Source Code</span>
-          <h2 class='section-title'>Automated GitHub Portfolio</h2>
-          <p class='section-subtitle'>Public repositories auto-fetched directly from official account (@devjeetx7-synfusion).</p>
-          <div id='ghProfileBadgeContainer' style='margin-top: 0.75rem;'/>
+          <span class='section-badge'>Our Work</span>
+          <h2 class='section-title'>Selected Projects</h2>
+          <p class='section-subtitle'>A selection of projects and experiments from our development work.</p>
         </div>
 
         <!-- Glass Capability Statistics Grid -->
@@ -2369,7 +2482,7 @@
         <!-- Dynamic Repository Cards Container -->
         <div class='portfolio-grid' id='githubRepoGrid'>
           <div style='grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--text-muted);'>
-            Fetching public GitHub repositories...
+            Loading projects...
           </div>
         </div>
 
@@ -2648,7 +2761,7 @@
           <p class='section-subtitle'>Reach out directly or send us your requirements for a technical proposal.</p>
         </div>
 
-        <div style='display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; max-width: 1040px; margin: 0 auto;'>
+        <div class='contact-grid'>
           <div class='feature-card reveal'>
             <h3 style='font-size: 1.35rem; font-weight: 800; margin-bottom: 1rem;'>Direct Details</h3>
             <p style='font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;'>Contact us directly via phone, email, or instant WhatsApp.</p>
@@ -2799,8 +2912,16 @@
       var mobileToggle = document.getElementById('mobileToggle');
       var navLinks = document.getElementById('navLinks');
       if (mobileToggle && navLinks) {
+        mobileToggle.setAttribute('aria-expanded', 'false');
         mobileToggle.addEventListener('click', function() {
-          navLinks.classList.toggle('active');
+          var isOpen = navLinks.classList.toggle('active');
+          mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navLinks.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+          });
         });
       }
 
@@ -2820,24 +2941,10 @@
       var forkToggle = document.getElementById('repoForkToggle');
       var refreshBtn = document.getElementById('repoRefreshBtn');
       var paginationContainer = document.getElementById('repoPaginationContainer');
-      var profileBadgeContainer = document.getElementById('ghProfileBadgeContainer');
-
-      // Fetch Profile Details
-      fetch('https://api.github.com/users/' + username)
-        .then(function(res) { if (res.ok) return res.json(); return null; })
-        .then(function(user) {
-          if (user && profileBadgeContainer) {
-            profileBadgeContainer.innerHTML = "<div style='display: inline-flex; align-items: center; gap: 0.5rem; background: #ffffff; padding: 0.4rem 1rem; border-radius: 9999px; border: 1px solid var(--border-color); font-size: 0.8rem; font-weight: 700; shadow: var(--shadow-sm);'>" +
-              "<span style='width: 8px; height: 8px; border-radius: 50%; background: #84CC16;'></span>" +
-              "<span>GitHub: <a href='" + user.html_url + "' target='_blank' style='color: var(--primary);'>@" + user.login + "</a> (" + user.public_repos + " Public Repositories)</span>" +
-              "</div>";
-          }
-        })
-        .catch(function() {});
 
       function fetchGitHubRepos() {
         if (!repoGrid) return;
-        repoGrid.innerHTML = "<div style='grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--text-muted);'>Fetching public GitHub repositories...</div>";
+        repoGrid.innerHTML = "<div style='grid-column: 1 / -1; text-align: center; padding: 2rem 1rem; color: var(--text-muted);'>Loading projects...</div>";
 
         // Check local caching
         var cacheTime = localStorage.getItem('synfusion_gh_time');
@@ -2891,7 +2998,7 @@
                 return;
               } catch(e) {}
             }
-            repoGrid.innerHTML = "<div style='grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: #DC2626;'>Unable to load GitHub repositories. Please retry shortly.</div>";
+            repoGrid.innerHTML = "<div style='grid-column: 1 / -1; text-align: center; padding: 2rem 1rem; color: var(--text-muted);'>Projects are temporarily unavailable. Please try again later.</div>";
           });
       }
 
