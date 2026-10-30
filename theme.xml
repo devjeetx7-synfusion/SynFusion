@@ -2245,25 +2245,8 @@
               </div>
             </div>
           </div>
-      <div class='container hero-content reveal'>
-        <div class='section-badge'>Official Agency Website</div>
-        <h1 class='hero-title'>
-          We Build. We Innovate. <br/>
-          <span class='text-gradient'>We Scale Digital Products.</span>
-        </h1>
-        <p class='hero-subtitle'>
-          SynFusion is a software agency crafting high-performance Android applications, custom web platforms, and automated workflow solutions.
-        </p>
-        <div style='display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;'>
-          <a class='btn btn-primary' href='#contact'>
-            <span>Start Your Project</span>
-            <svg fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='18'><line x1='5' x2='19' y1='12' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>
-          </a>
-          <a class='btn btn-outline' href='#portfolio'>
-            <span>Explore Repositories</span>
-          </a>
         </div>
-      </div>
+        </div>
     </section>
 
     <!-- TRUST STRIP -->
@@ -2354,6 +2337,8 @@
           <div class='stat-card'>
             <div class='stat-val'>24/7</div>
             <div class='stat-lbl'>Scalable Engineering</div>
+          </div>
+        </div>
         <!-- Portfolio Control Toolbar -->
         <div class='portfolio-controls reveal'>
           <input class='portfolio-search-input' id='repoSearchInput' placeholder='Search repositories...' type='text'/>
