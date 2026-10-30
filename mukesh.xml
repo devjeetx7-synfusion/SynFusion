@@ -218,15 +218,21 @@
   .btn-icon svg path,
   .btn-icon svg circle,
   .btn-icon svg rect,
-  .btn-icon svg polygon {
+  .btn-icon svg polygon,
+  .btn-icon svg polyline {
+    fill: none;
     stroke: #111827 !important;
+    stroke-width: 2.2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .btn-icon.active svg line,
   .btn-icon.active svg path,
   .btn-icon.active svg circle,
   .btn-icon.active svg rect,
-  .btn-icon.active svg polygon {
+  .btn-icon.active svg polygon,
+  .btn-icon.active svg polyline {
     stroke: #FFFFFF !important;
   }
 
@@ -252,7 +258,7 @@
     z-index: 1000;
   }
 
-  /* Light Intro Screen */
+  /* Light Intro Screen with Cinematic Transition */
   .intro {
     position: fixed;
     inset: 0;
@@ -260,12 +266,30 @@
     display: grid;
     place-items: center;
     padding: 24px;
-    background: radial-gradient(ellipse at 50% 35%, rgba(79, 70, 229, 0.1), transparent 60%), #FFFFFF;
-    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s;
+    background: radial-gradient(ellipse at 50% 35%, rgba(79, 70, 229, 0.12), transparent 60%), #FFFFFF;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.8s;
+    overflow: hidden;
+  }
+
+  .intro-glow-bg {
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.35), rgba(37, 99, 235, 0.2), rgba(6, 182, 212, 0.15), transparent 70%);
+    opacity: 0;
+    transform: scale(0.3);
+    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .intro.transitioning .intro-glow-bg {
+    opacity: 1;
+    transform: scale(1.8);
   }
 
   .intro.hidden {
     opacity: 0;
+    transform: scale(1.04);
     visibility: hidden;
     pointer-events: none;
   }
@@ -275,6 +299,39 @@
     max-width: 680px;
     position: relative;
     z-index: 2;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .intro.transitioning .intro-inner {
+    transform: scale(1.06) translateY(-12px);
+    opacity: 0;
+  }
+
+  #enterStudio {
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+  }
+
+  #enterStudio.active-cta {
+    transform: scale(0.95);
+    box-shadow: 0 0 35px rgba(79, 70, 229, 0.6), 0 0 60px rgba(6, 182, 212, 0.4);
+  }
+
+  body.intro-dismissed .header,
+  body.intro-dismissed .hero-copy,
+  body.intro-dismissed .visual-wrap {
+    animation: heroEntrance 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes heroEntrance {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .logo-monogram {
@@ -1302,6 +1359,7 @@
 
 <!-- Full-Screen Cinematic Intro Screen -->
 <div class='intro' id='introScreen'>
+    <div class='intro-glow-bg'></div>
   <div class='intro-orbit'></div>
   <div class='intro-inner'>
     <div class='logo-monogram'><span>S</span></div>
@@ -1345,7 +1403,7 @@
       <div class='hero-copy'>
         <span class='pill'><span class='dot'></span> INDEPENDENT CREATIVE STUDIO</span>
         <h2 class='display'>Make your<br/>brand <span class='gradient-text'>impossible</span><br/>to ignore.</h2>
-        <p>Bold graphic design, brand identities and motion-led visuals for people with something worth saying. Thoughtful ideas, made impossible to scroll past.</p>
+        <p class='hero-desc'>Graphic design, high-converting ad creatives, social media campaigns, brand identities and motion graphics for people with something worth saying. Thoughtful ideas, made impossible to scroll past.</p>
         <div class='hero-actions'>
           <a class='btn btn-primary' href='#work'>
             <span>Explore the Work</span>
@@ -1358,7 +1416,7 @@
         </div>
         <div class='hero-meta'>
           <span class='dot'></span>
-          <span><b>Design. Direction. Motion.</b> — From idea to impact.</span>
+          <span><b>Graphics. Ads. Branding. Motion.</b> — From idea to impact.</span>
         </div>
       </div>
 
@@ -1483,13 +1541,15 @@
     <div class='ticker-track'>
       <span>Graphic Design</span><b>✳</b>
       <span>Brand Identity</span><b>✳</b>
+      <span>Ads &amp; Campaigns</span><b>✳</b>
+      <span>Social Media Design</span><b>✳</b>
       <span>Motion Graphics</span><b>✳</b>
-      <span>Visual Storytelling</span><b>✳</b>
       <span>Animation &amp; Video</span><b>✳</b>
       <span>Graphic Design</span><b>✳</b>
       <span>Brand Identity</span><b>✳</b>
+      <span>Ads &amp; Campaigns</span><b>✳</b>
+      <span>Social Media Design</span><b>✳</b>
       <span>Motion Graphics</span><b>✳</b>
-      <span>Visual Storytelling</span><b>✳</b>
       <span>Animation &amp; Video</span><b>✳</b>
     </div>
   </div>
@@ -1502,36 +1562,58 @@
           <span class='eyebrow'>WHAT I DO</span>
           <h2 class='display'>Ideas first.<br/><span class='gradient-text'>Impact always.</span></h2>
         </div>
-        <p>Creative services built around a simple goal: make your message clearer, your brand stronger and your visuals more memorable.</p>
+        <p>Creative services built around a simple goal: make your message clearer, your brand stronger and your visuals more memorable across every digital channel.</p>
       </div>
 
       <div class='services'>
         <article class='service reveal'>
           <div class='service-top'>
             <div class='service-icon'>✳</div>
-            <span class='number'>01 / 04</span>
+            <span class='number'>01 / 06</span>
           </div>
           <div>
             <h3>Graphic Design</h3>
-            <p>Social media creatives, posters, thumbnails, banners, advertising graphics, and campaigns that catch immediate attention.</p>
+            <p>Posters, flyers, YouTube thumbnails, banners, promotional graphics, event visuals, and typography-based compositions designed to stand out.</p>
           </div>
         </article>
 
         <article class='service reveal'>
           <div class='service-top'>
             <div class='service-icon'>◈</div>
-            <span class='number'>02 / 04</span>
+            <span class='number'>02 / 06</span>
           </div>
           <div>
-            <h3>Brand Identity</h3>
+            <h3>Brand Identity &amp; Logo Design</h3>
             <p>Logo concepts, visual systems, typography, color palettes, and comprehensive brand direction with a distinct point of view.</p>
           </div>
         </article>
 
         <article class='service reveal'>
           <div class='service-top'>
+            <div class='service-icon'>⚡</div>
+            <span class='number'>03 / 06</span>
+          </div>
+          <div>
+            <h3>Ads &amp; Creative Campaigns</h3>
+            <p>Scroll-stopping ad creatives and promotional visuals designed to communicate your offer, strengthen your brand, and capture attention across digital platforms.</p>
+          </div>
+        </article>
+
+        <article class='service reveal'>
+          <div class='service-top'>
+            <div class='service-icon'>❖</div>
+            <span class='number'>04 / 06</span>
+          </div>
+          <div>
+            <h3>Social Media Design</h3>
+            <p>High-engagement Facebook and Instagram post sets, story templates, carousel graphics, cover artwork, and channel branding.</p>
+          </div>
+        </article>
+
+        <article class='service reveal'>
+          <div class='service-top'>
             <div class='service-icon'>〰</div>
-            <span class='number'>03 / 04</span>
+            <span class='number'>05 / 06</span>
           </div>
           <div>
             <h3>Motion Graphics</h3>
@@ -1542,11 +1624,11 @@
         <article class='service reveal'>
           <div class='service-top'>
             <div class='service-icon'>▶</div>
-            <span class='number'>04 / 04</span>
+            <span class='number'>06 / 06</span>
           </div>
           <div>
-            <h3>Animation &amp; Video</h3>
-            <p>Short-form promotional videos, creative edits, visual storytelling, and animation tailored for digital platforms.</p>
+            <h3>Animation &amp; Video Editing</h3>
+            <p>Short-form promotional videos, creative edits, visual storytelling, reels, and animation tailored for digital platforms.</p>
           </div>
         </article>
       </div>
@@ -1569,6 +1651,8 @@
         <button class='filter active' data-filter='all' type='button'>All Work</button>
         <button class='filter' data-filter='graphic' type='button'>Graphic Design</button>
         <button class='filter' data-filter='brand' type='button'>Branding</button>
+        <button class='filter' data-filter='ads' type='button'>Ads &amp; Campaigns</button>
+        <button class='filter' data-filter='social' type='button'>Social Media</button>
         <button class='filter' data-filter='motion' type='button'>Motion Graphics</button>
         <button class='filter' data-filter='3d' type='button'>3D</button>
         <button class='filter' data-filter='video' type='button'>Video</button>
@@ -1577,7 +1661,7 @@
       <!-- Portfolio Projects Grid -->
       <div class='projects'>
         <!-- Project 1 -->
-        <article class='project reveal' data-tags='graphic motion'>
+        <article class='project reveal' data-tags='graphic ads social'>
           <div class='project-art'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Bold experimental poster composition'>
               <rect width='700' height='440' fill='#F8FAFC'/>
@@ -1587,21 +1671,21 @@
               <path d='M445 45 L515 420 H620 Z' fill='#4F46E5'/>
               <text x='45' y='100' fill='#111827' font-size='52' font-family='Space Grotesk' font-weight='800'>THINK</text>
               <text x='45' y='155' fill='#4F46E5' font-size='52' font-family='Space Grotesk' font-weight='800'>LOUDER.</text>
-              <text x='48' y='390' fill='#64748B' font-size='13' letter-spacing='5'>POSTER / STUDY 001</text>
+              <text x='48' y='390' fill='#64748B' font-size='13' letter-spacing='5'>POSTER &amp; AD / STUDY 001</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
           <div class='project-info'>
             <div>
               <h3>Think Louder</h3>
-              <p>Graphic Composition &amp; Typography</p>
+              <p>Graphic Composition &amp; Campaign Poster</p>
             </div>
             <span class='project-link'>↗</span>
           </div>
         </article>
 
         <!-- Project 2 -->
-        <article class='project reveal' data-tags='brand'>
+        <article class='project reveal' data-tags='brand graphic'>
           <div class='project-art'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Minimal identity design layout'>
               <rect width='700' height='440' fill='#EEF2FF'/>
@@ -1623,6 +1707,65 @@
         </article>
 
         <!-- Project 3 -->
+        <article class='project reveal' data-tags='ads social graphic'>
+          <div class='project-art'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Vibrant promotional ad campaign graphic'>
+              <defs>
+                <linearGradient id='p3ad' x1='0' y1='0' x2='1' y2='1'>
+                  <stop stop-color='#2563EB'/>
+                  <stop offset='0.5' stop-color='#4F46E5'/>
+                  <stop offset='1' stop-color='#D946EF'/>
+                </linearGradient>
+              </defs>
+              <rect width='700' height='440' fill='#F8FAFC'/>
+              <rect x='40' y='40' width='620' height='360' rx='24' fill='url(#p3ad)'/>
+              <circle cx='540' cy='160' r='90' fill='#FFFFFF' opacity='0.2'/>
+              <text x='80' y='140' fill='#D5FF72' font-size='22' font-family='Space Grotesk' font-weight='800' letter-spacing='3'>SPECIAL PROMO</text>
+              <text x='80' y='210' fill='#FFFFFF' font-size='48' font-family='Space Grotesk' font-weight='900'>FLASH SALE</text>
+              <text x='80' y='260' fill='#F3F4F6' font-size='20'>HIGH-IMPACT AD CREATIVE CONCEPT</text>
+              <rect x='80' y='295' width='190' height='50' rx='25' fill='#FFFFFF'/>
+              <text x='175' y='328' text-anchor='middle' fill='#1E1B4B' font-size='16' font-weight='800'>CLAIM OFFER →</text>
+            </svg>
+            <span class='concept-badge'>CONCEPT STUDY</span>
+          </div>
+          <div class='project-info'>
+            <div>
+              <h3>Summer Flash Offer</h3>
+              <p>Facebook &amp; Instagram Ad Creative</p>
+            </div>
+            <span class='project-link'>↗</span>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class='project reveal' data-tags='social graphic'>
+          <div class='project-art'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Social media carousel template design'>
+              <rect width='700' height='440' fill='#F0F9FF'/>
+              <g stroke='#06B6D4' stroke-width='2' fill='none' opacity='0.2'>
+                <line x1='0' y1='110' x2='700' y2='110'/>
+                <line x1='0' y1='220' x2='700' y2='220'/>
+                <line x1='0' y1='330' x2='700' y2='330'/>
+              </g>
+              <rect x='70' y='60' width='240' height='320' rx='16' fill='#FFFFFF' stroke='#E2E8F0' stroke-width='2'/>
+              <rect x='340' y='60' width='240' height='320' rx='16' fill='#4F46E5'/>
+              <circle cx='190' cy='150' r='45' fill='#2563EB' opacity='0.15'/>
+              <text x='190' y='230' text-anchor='middle' fill='#111827' font-size='20' font-family='Space Grotesk' font-weight='800'>CAROUSEL 01</text>
+              <text x='460' y='230' text-anchor='middle' fill='#FFFFFF' font-size='20' font-family='Space Grotesk' font-weight='800'>CAROUSEL 02</text>
+              <text x='350' y='410' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='4'>SOCIAL MEDIA KIT / STUDY 004</text>
+            </svg>
+            <span class='concept-badge'>CONCEPT STUDY</span>
+          </div>
+          <div class='project-info'>
+            <div>
+              <h3>Creator Daily Set</h3>
+              <p>Social Media Carousel &amp; Posts</p>
+            </div>
+            <span class='project-link'>↗</span>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
         <article class='project reveal' data-tags='3d motion'>
           <div class='project-art'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='3D luminous sculpted orb visual'>
@@ -1637,7 +1780,7 @@
               <rect width='700' height='440' fill='#F1F5F9'/>
               <circle cx='350' cy='205' r='130' fill='url(#p3g)'/>
               <ellipse cx='350' cy='205' rx='185' ry='65' fill='none' stroke='#4F46E5' stroke-width='3' transform='rotate(-25 350 205)'/>
-              <text x='350' y='390' text-anchor='middle' fill='#64748B' font-size='14' letter-spacing='6'>SCULPTED LIGHT / 003</text>
+              <text x='350' y='390' text-anchor='middle' fill='#64748B' font-size='14' letter-spacing='6'>SCULPTED LIGHT / 005</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1650,7 +1793,7 @@
           </div>
         </article>
 
-        <!-- Project 4 -->
+        <!-- Project 6 -->
         <article class='project reveal' data-tags='video motion'>
           <div class='project-art'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Cinematic film frame artwork'>
@@ -1666,7 +1809,7 @@
               <path d='M0 335 L180 155 L300 300 L430 190 L700 350 V440 H0 Z' fill='#111827'/>
               <path d='M28 35 H100 M28 35 V95 M672 35 H600 M672 35 V95 M28 405 H100 M28 405 V345 M672 405 H600 M672 405 V345' fill='none' stroke='#FFFFFF' stroke-width='3'/>
               <text x='45' y='100' fill='#FFFFFF' font-size='36' font-family='Space Grotesk' font-weight='800'>FRAME THE FEELING</text>
-              <text x='48' y='400' fill='#94A3B8' font-size='13' letter-spacing='5'>VIDEO MOOD / 004</text>
+              <text x='48' y='400' fill='#94A3B8' font-size='13' letter-spacing='5'>VIDEO MOOD / 006</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1679,7 +1822,7 @@
           </div>
         </article>
 
-        <!-- Project 5 -->
+        <!-- Project 7 -->
         <article class='project reveal' data-tags='graphic motion'>
           <div class='project-art'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Kinetic typographic composition'>
@@ -1689,7 +1832,7 @@
                 <text x='30' y='210' fill='#4F46E5'>KINETIC TYPE</text>
                 <text x='30' y='300' fill='#2563EB' opacity='0.5'>KINETIC TYPE</text>
               </g>
-              <text x='350' y='400' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>MOTION LAB / 005</text>
+              <text x='350' y='400' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>MOTION LAB / 007</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1702,22 +1845,22 @@
           </div>
         </article>
 
-        <!-- Project 6 -->
-        <article class='project reveal' data-tags='brand graphic'>
+        <!-- Project 8 -->
+        <article class='project reveal' data-tags='brand social'>
           <div class='project-art'>
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Neon glowing identity poster design'>
               <rect width='700' height='440' fill='#FAF5FF'/>
               <circle cx='350' cy='220' r='140' fill='none' stroke='#06B6D4' stroke-width='4'/>
               <circle cx='350' cy='220' r='100' fill='none' stroke='#4F46E5' stroke-width='3' stroke-dasharray='12 8'/>
               <text x='350' y='228' text-anchor='middle' fill='#111827' font-size='42' font-family='Space Grotesk' font-weight='800'>NEON PULSE</text>
-              <text x='350' y='395' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>BRAND EXPLORATION / 006</text>
+              <text x='350' y='395' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>BRAND EXPLORATION / 008</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
           <div class='project-info'>
             <div>
               <h3>Neon Pulse Brand</h3>
-              <p>Brand Visuals &amp; Neon Aesthetics</p>
+              <p>Brand Visuals &amp; Social Covers</p>
             </div>
             <span class='project-link'>↗</span>
           </div>
@@ -1761,6 +1904,8 @@
         <p>This space is where I share design explorations and build visual experiences with a little more character and motion energy.</p>
         <div class='skills'>
           <span>Graphic Design</span>
+          <span>Advertising Creatives</span>
+          <span>Social Media Campaigns</span>
           <span>Brand Identity</span>
           <span>Motion Graphics</span>
           <span>Animation &amp; Editing</span>
@@ -1826,23 +1971,60 @@
 <script type='text/javascript'>
 //<![CDATA[
 (function(){
-  // Intro Screen handling
+// Cinematic Intro Screen handling
   var intro = document.getElementById('introScreen');
   var enterBtn = document.getElementById('enterStudio');
+var isTransitioning = false;
 
-  function dismissIntro() {
-    if (intro) intro.classList.add('hidden');
+function startCinematicTransition() {
+  if (isTransitioning) return;
+  isTransitioning = true;
+
+  if (enterBtn) {
+    enterBtn.classList.add('active-cta');
+  }
+
+  if (intro) {
+    intro.classList.add('transitioning');
+  }
+
     try { sessionStorage.setItem('scs-intro-seen', '1'); } catch(e) {}
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var duration = prefersReducedMotion ? 200 : 950;
+
+  var safetyTimer = setTimeout(finishTransition, duration + 150);
+
+  function finishTransition() {
+    clearTimeout(safetyTimer);
+    if (intro) {
+      intro.classList.add('hidden');
+      intro.classList.remove('transitioning');
+    }
+    document.body.classList.add('intro-dismissed');
+    document.body.style.overflow = '';
+  }
+
+  setTimeout(finishTransition, duration);
   }
 
   try {
     if (sessionStorage.getItem('scs-intro-seen') === '1' && intro) {
       intro.classList.add('hidden');
+    document.body.classList.add('intro-dismissed');
+    document.body.style.overflow = '';
+  } else {
+    document.body.style.overflow = 'hidden';
     }
-  } catch(e) {}
+} catch(e) {
+  document.body.style.overflow = '';
+}
 
   if (enterBtn) {
-    enterBtn.addEventListener('click', dismissIntro);
+  enterBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    startCinematicTransition();
+  });
   }
 
   // Mobile Navigation Toggle
