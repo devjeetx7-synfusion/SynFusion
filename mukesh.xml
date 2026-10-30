@@ -4,7 +4,7 @@
 <head>
 <meta content='width=device-width, initial-scale=1, maximum-scale=5' name='viewport'/>
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-<meta content='#080B14' name='theme-color'/>
+<meta content='#FFFFFF' name='theme-color'/>
 <meta content='Singh Creative Studio — MUKESH SINGH. Ideas Made Visible. Graphic design, brand identity, motion graphics, animation and visual storytelling.' name='description'/>
 <title>Singh Creative Studio — MUKESH SINGH</title>
 <b:include data='blog' name='all-head-content'/>
@@ -16,34 +16,25 @@
 
 <b:skin><![CDATA[
   /*
-    Theme Name: Singh Creative Studio Premium Portfolio
+    Theme Name: Singh Creative Studio Premium Light Portfolio
     Founder: MUKESH SINGH
     Tagline: Ideas Made Visible.
   */
-  body {
-    background-color: #080B14;
-    color: #F6F7FB;
-    font-family: 'DM Sans', sans-serif;
-  }
-]]></b:skin>
-
-<b:template-skin><![CDATA[
-  /* Blogger Template Skin */
-]]></b:template-skin>
-
-<style type='text/css'>
-  /*<![CDATA[*/
   :root {
-    --bg: #080B14;
-    --panel: #101522;
-    --card: #151C2C;
-    --card-border: rgba(255, 255, 255, 0.1);
-    --blue: #4F7CFF;
-    --cyan: #65E5FF;
-    --lime: #D5FF72;
-    --white: #F6F7FB;
-    --muted: #A1A9BB;
-    --line: rgba(255, 255, 255, 0.12);
+    --bg: #FFFFFF;
+    --panel: #F5F8FF;
+    --card: #FFFFFF;
+    --primary: #4F46E5;
+    --electric: #2563EB;
+    --cyan: #06B6D4;
+    --violet: #8B5CF6;
+    --text: #111827;
+    --muted: #64748B;
+    --border: #E5EAF3;
+    --glow: rgba(79, 70, 229, 0.14);
+    --shadow-sm: 0 4px 12px rgba(17, 24, 39, 0.04);
+    --shadow-md: 0 12px 28px rgba(79, 70, 229, 0.08);
+    --shadow-lg: 0 20px 48px rgba(79, 70, 229, 0.12);
     --max: 1280px;
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'DM Sans', sans-serif;
@@ -64,7 +55,7 @@
 
   body {
     background: var(--bg);
-    color: var(--white);
+    color: var(--text);
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
@@ -84,10 +75,14 @@
     color: inherit;
   }
 
-  img, svg {
+  img {
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  svg {
+    max-width: 100%;
   }
 
   .container {
@@ -102,25 +97,17 @@
   }
 
   .gradient-text {
-    background: linear-gradient(110deg, #FFFFFF 10%, #65E5FF 50%, #4F7CFF 90%);
+    background: linear-gradient(135deg, #4F46E5 0%, #2563EB 50%, #06B6D4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .lime-text {
-    color: var(--lime);
-  }
-
-  .cyan-text {
-    color: var(--cyan);
-  }
-
   .eyebrow {
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--cyan);
+    color: var(--primary);
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -130,7 +117,7 @@
     content: '';
     width: 24px;
     height: 2px;
-    background: var(--cyan);
+    background: var(--primary);
     border-radius: 2px;
   }
 
@@ -138,34 +125,34 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 16px;
-    border: 1px solid var(--line);
-    border-radius: 99px;
-    color: #DBE2F4;
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--primary);
     font-size: 0.78rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.05em;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
+    background: #FFFFFF;
+    box-shadow: var(--shadow-sm);
   }
 
   .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--lime);
-    box-shadow: 0 0 12px var(--lime);
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
     flex-shrink: 0;
   }
 
-  /* Buttons */
+  /* Buttons & Interactive Elements */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 14px 24px;
-    border-radius: 12px;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 999px;
     font-weight: 700;
     font-size: 0.92rem;
     letter-spacing: -0.01em;
@@ -180,43 +167,92 @@
   }
 
   .btn-primary {
-    background: var(--lime);
-    color: #080B14;
-    box-shadow: 0 8px 30px rgba(213, 255, 114, 0.2);
+    background: linear-gradient(135deg, #4F46E5, #2563EB, #06B6D4);
+    color: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25);
   }
 
   .btn-primary:hover {
-    background: #E2FF9E;
-    box-shadow: 0 12px 40px rgba(213, 255, 114, 0.35);
+    box-shadow: 0 12px 32px rgba(79, 70, 229, 0.4);
+    color: #FFFFFF;
   }
 
   .btn-ghost {
-    border-color: var(--line);
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--white);
+    border-color: var(--primary);
+    background: #FFFFFF;
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
   }
 
   .btn-ghost:hover {
-    border-color: var(--cyan);
-    color: var(--cyan);
-    background: rgba(101, 229, 255, 0.08);
+    background: rgba(79, 70, 229, 0.06);
+    border-color: var(--electric);
+    color: var(--electric);
   }
 
-  .btn-sm {
-    padding: 10px 18px;
-    font-size: 0.84rem;
-    border-radius: 8px;
+  /* Circular Icon Buttons */
+  .btn-icon {
+    width: 46px;
+    height: 46px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #FFFFFF;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+    flex-shrink: 0;
   }
 
-  /* Topline indicator */
+  .btn-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .btn-icon svg line,
+  .btn-icon svg path,
+  .btn-icon svg circle,
+  .btn-icon svg rect,
+  .btn-icon svg polygon {
+    stroke: #111827 !important;
+  }
+
+  .btn-icon.active svg line,
+  .btn-icon.active svg path,
+  .btn-icon.active svg circle,
+  .btn-icon.active svg rect,
+  .btn-icon.active svg polygon {
+    stroke: #FFFFFF !important;
+  }
+
+  .btn-icon:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(79, 70, 229, 0.05);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-icon.active {
+    background: linear-gradient(135deg, #4F46E5, #2563EB);
+    color: #FFFFFF;
+    border-color: transparent;
+  }
+
+  /* Topline Accent Bar */
   .topline {
     height: 3px;
-    background: linear-gradient(90deg, var(--blue), var(--cyan), var(--lime));
+    background: linear-gradient(90deg, var(--primary), var(--cyan), var(--violet));
     position: relative;
     z-index: 1000;
   }
 
-  /* Intro Screen */
+  /* Light Intro Screen */
   .intro {
     position: fixed;
     inset: 0;
@@ -224,7 +260,7 @@
     display: grid;
     place-items: center;
     padding: 24px;
-    background: radial-gradient(ellipse at 50% 35%, rgba(79, 124, 255, 0.22), transparent 50%), #080B14;
+    background: radial-gradient(ellipse at 50% 35%, rgba(79, 70, 229, 0.1), transparent 60%), #FFFFFF;
     transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s;
   }
 
@@ -248,10 +284,10 @@
     margin: 0 auto 24px;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, var(--lime) 0%, var(--cyan) 50%, var(--blue) 100%);
-    color: #080B14;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--electric) 50%, var(--cyan) 100%);
+    color: #FFFFFF;
     font: 800 2.6rem var(--font-heading);
-    box-shadow: 0 0 80px rgba(79, 124, 255, 0.4);
+    box-shadow: 0 12px 36px rgba(79, 70, 229, 0.3);
     transform: rotate(-6deg);
     transition: transform 0.4s ease;
   }
@@ -269,13 +305,14 @@
     font: 800 clamp(2.4rem, 7.5vw, 4.8rem) / 1.02 var(--font-heading);
     letter-spacing: -0.06em;
     margin: 0;
+    color: var(--text);
   }
 
   .intro .founder {
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.35em;
-    color: var(--cyan);
+    color: var(--primary);
     margin: 18px 0 6px;
     text-transform: uppercase;
   }
@@ -290,7 +327,7 @@
     position: absolute;
     width: min(85vw, 650px);
     height: min(85vw, 650px);
-    border: 1px solid rgba(101, 229, 255, 0.12);
+    border: 1px solid rgba(79, 70, 229, 0.12);
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
@@ -300,7 +337,7 @@
     content: '';
     position: absolute;
     inset: 12%;
-    border: 1px dashed rgba(79, 124, 255, 0.25);
+    border: 1px dashed rgba(6, 182, 212, 0.25);
     border-radius: 50%;
     animation: spin 35s linear infinite;
   }
@@ -310,10 +347,10 @@
     position: sticky;
     top: 0;
     z-index: 900;
-    background: rgba(8, 11, 20, 0.85);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--border);
   }
 
   .nav {
@@ -330,12 +367,12 @@
     gap: 12px;
     font: 700 1.15rem var(--font-heading);
     letter-spacing: -0.03em;
-    color: var(--white);
+    color: var(--text);
     transition: opacity 0.2s;
   }
 
   .brand:hover {
-    opacity: 0.9;
+    opacity: 0.85;
   }
 
   .brand-icon {
@@ -344,19 +381,19 @@
     border-radius: 12px;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, var(--lime), var(--cyan));
-    color: #080B14;
+    background: linear-gradient(135deg, var(--primary), var(--cyan));
+    color: #FFFFFF;
     font: 800 1.3rem var(--font-heading);
-    box-shadow: 0 4px 16px rgba(101, 229, 255, 0.25);
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.2);
   }
 
   .navlinks {
     display: flex;
     align-items: center;
     gap: 32px;
-    color: #C4CAD8;
+    color: var(--muted);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .navlinks a {
@@ -364,42 +401,45 @@
   }
 
   .navlinks a:hover {
-    color: var(--cyan);
+    color: var(--primary);
   }
 
   .navlinks .navcta {
-    background: var(--lime);
-    color: #080B14;
-    padding: 10px 18px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #4F46E5, #2563EB);
+    color: #FFFFFF;
+    padding: 10px 22px;
+    border-radius: 999px;
     font-weight: 700;
     font-size: 0.88rem;
-    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .navlinks .navcta:hover {
-    background: #E2FF9E;
-    color: #080B14;
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+    color: #FFFFFF;
   }
 
   .menu-toggle {
     display: none;
-    border: 1px solid var(--line);
-    background: var(--panel);
-    color: var(--white);
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-weight: 700;
-    font-size: 0.88rem;
-    cursor: pointer;
   }
 
-  /* Hero Section */
+  .menu-toggle svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    stroke: var(--text-main);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+
+  /* Light Hero Section */
   .hero {
     position: relative;
     padding: 90px 0 75px;
     overflow: hidden;
+    background: radial-gradient(circle at 80% 20%, rgba(79, 70, 229, 0.06) 0%, transparent 60%), #FFFFFF;
   }
 
   .hero::before {
@@ -409,20 +449,7 @@
     height: 550px;
     right: -200px;
     top: -150px;
-    background: rgba(79, 124, 255, 0.16);
-    filter: blur(120px);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    left: -180px;
-    bottom: -200px;
-    width: 450px;
-    height: 450px;
-    background: rgba(101, 229, 255, 0.1);
+    background: rgba(79, 70, 229, 0.08);
     filter: blur(120px);
     border-radius: 50%;
     pointer-events: none;
@@ -441,6 +468,7 @@
     font: 800 clamp(3.2rem, 5.8vw, 5.8rem) / 0.98 var(--font-heading);
     letter-spacing: -0.065em;
     margin: 22px 0;
+    color: var(--text);
   }
 
   .hero-copy p {
@@ -462,12 +490,12 @@
     align-items: center;
     gap: 12px;
     margin-top: 36px;
-    color: #B4BDCE;
+    color: var(--muted);
     font-size: 0.85rem;
   }
 
   .hero-meta b {
-    color: var(--lime);
+    color: var(--primary);
     font-weight: 700;
   }
 
@@ -476,17 +504,17 @@
     position: relative;
     min-width: 0;
     padding: 18px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     border-radius: 28px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+    background: #FFFFFF;
+    box-shadow: var(--shadow-lg);
   }
 
   .visual-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #AEB7CA;
+    color: var(--muted);
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.15em;
@@ -502,20 +530,21 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #4A5568;
+    background: #CBD5E1;
     display: block;
   }
 
-  .window-dots i:first-child { background: var(--lime); }
-  .window-dots i:nth-child(2) { background: var(--cyan); }
-  .window-dots i:nth-child(3) { background: var(--blue); }
+  .window-dots i:first-child { background: var(--primary); }
+  .window-dots i:nth-child(2) { background: var(--electric); }
+  .window-dots i:nth-child(3) { background: var(--cyan); }
 
   .visual-canvas {
     position: relative;
     overflow: hidden;
     aspect-ratio: 1.1 / 1;
     border-radius: 18px;
-    background: #101626;
+    background: #F8FAFC;
+    border: 1px solid var(--border);
     isolation: isolate;
   }
 
@@ -539,18 +568,20 @@
   .scene svg {
     width: 100%;
     height: 100%;
+    display: block;
   }
 
   .float-tag {
     position: absolute;
     z-index: 10;
     padding: 10px 16px;
-    background: rgba(16, 21, 34, 0.9);
-    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--border);
     border-radius: 14px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-md);
     font-size: 0.75rem;
     font-weight: 700;
+    color: var(--text);
     backdrop-filter: blur(12px);
     animation: float 5s ease-in-out infinite;
     display: flex;
@@ -566,8 +597,8 @@
     place-items: center;
     width: 24px;
     height: 24px;
-    background: var(--lime);
-    color: #080B14;
+    background: linear-gradient(135deg, var(--primary), var(--electric));
+    color: #FFFFFF;
     border-radius: 6px;
     font-weight: 900;
     font-size: 0.8rem;
@@ -584,7 +615,7 @@
   .carousel-info strong {
     font: 700 1.05rem var(--font-heading);
     display: block;
-    color: var(--white);
+    color: var(--text);
   }
 
   .carousel-info span {
@@ -595,32 +626,12 @@
   .carousel-controls {
     display: flex;
     align-items: center;
-    gap: 8px;
-  }
-
-  .carousel-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--white);
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    font-weight: 700;
-    transition: all 0.2s;
-  }
-
-  .carousel-btn:hover {
-    border-color: var(--cyan);
-    color: var(--cyan);
-    background: rgba(101, 229, 255, 0.1);
+    gap: 10px;
   }
 
   .carousel-progress {
     height: 3px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--border);
     border-radius: 3px;
     margin-top: 10px;
     overflow: hidden;
@@ -629,15 +640,15 @@
   .carousel-progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, var(--lime), var(--cyan));
+    background: linear-gradient(90deg, var(--primary), var(--cyan));
     transition: width 0.3s linear;
   }
 
   /* Ticker Banner */
   .ticker {
     overflow: hidden;
-    border-block: 1px solid var(--line);
-    background: #0C101B;
+    border-block: 1px solid var(--border);
+    background: var(--panel);
     user-select: none;
   }
 
@@ -654,12 +665,12 @@
     font: 700 0.88rem var(--font-heading);
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #C4CCDD;
+    color: var(--text);
     white-space: nowrap;
   }
 
   .ticker-track b {
-    color: var(--lime);
+    color: var(--primary);
     font-size: 1.1rem;
   }
 
@@ -680,6 +691,7 @@
     font: 800 clamp(2.4rem, 5vw, 4.2rem) / 1.02 var(--font-heading);
     letter-spacing: -0.06em;
     margin: 14px 0 0;
+    color: var(--text);
   }
 
   .section-head p {
@@ -701,10 +713,11 @@
     overflow: hidden;
     min-height: 260px;
     padding: 28px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     border-radius: 20px;
-    background: linear-gradient(145deg, #141A29, #0D111C);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+    background: var(--card);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -718,7 +731,7 @@
     right: -60px;
     bottom: -60px;
     border-radius: 50%;
-    background: var(--blue);
+    background: var(--primary);
     filter: blur(45px);
     opacity: 0;
     transition: opacity 0.3s;
@@ -727,11 +740,12 @@
 
   .service:hover {
     transform: translateY(-8px);
-    border-color: rgba(101, 229, 255, 0.5);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
   }
 
   .service:hover::after {
-    opacity: 0.5;
+    opacity: 0.15;
   }
 
   .service-top {
@@ -745,16 +759,15 @@
     height: 50px;
     display: grid;
     place-items: center;
-    border: 1px solid rgba(101, 229, 255, 0.25);
     border-radius: 14px;
-    background: rgba(79, 124, 255, 0.12);
-    color: var(--cyan);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(6, 182, 212, 0.1));
+    color: var(--primary);
     font-size: 1.4rem;
     font-weight: 700;
   }
 
   .service .number {
-    color: #606A7E;
+    color: var(--muted);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -763,7 +776,7 @@
   .service h3 {
     font: 700 1.25rem var(--font-heading);
     margin: 24px 0 10px;
-    color: var(--white);
+    color: var(--text);
   }
 
   .service p {
@@ -775,8 +788,8 @@
 
   /* Portfolio Section */
   .work-section {
-    background: #0B0F19;
-    border-block: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--panel);
+    border-block: 1px solid var(--border);
   }
 
   .filters {
@@ -787,22 +800,23 @@
   }
 
   .filter {
-    border: 1px solid var(--line);
-    border-radius: 99px;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.02);
-    color: #C7CEDE;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 10px 22px;
+    background: #FFFFFF;
+    color: var(--text);
     cursor: pointer;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
     transition: all 0.25s ease;
   }
 
   .filter.active, .filter:hover {
-    background: var(--lime);
-    border-color: var(--lime);
-    color: #080B14;
-    box-shadow: 0 4px 20px rgba(213, 255, 114, 0.25);
+    background: linear-gradient(135deg, #4F46E5, #2563EB);
+    border-color: transparent;
+    color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
   }
 
   .projects {
@@ -813,17 +827,19 @@
 
   .project {
     overflow: hidden;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     border-radius: 20px;
-    background: #111725;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s;
+    background: #FFFFFF;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, box-shadow 0.35s;
     display: flex;
     flex-direction: column;
   }
 
   .project:hover {
     transform: translateY(-7px);
-    border-color: rgba(101, 229, 255, 0.45);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
   }
 
   .project[hidden] {
@@ -834,7 +850,9 @@
     position: relative;
     overflow: hidden;
     aspect-ratio: 1.45 / 1;
-    background: #131B2C;
+    background: #F8FAFC;
+    width: 100%;
+    height: 100%;
   }
 
   .project-art svg {
@@ -853,14 +871,15 @@
     bottom: 14px;
     left: 14px;
     font-size: 0.62rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.15em;
-    color: var(--white);
-    background: rgba(8, 11, 20, 0.82);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--border);
     border-radius: 6px;
     padding: 5px 10px;
     backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-sm);
   }
 
   .project-info {
@@ -869,14 +888,14 @@
     justify-content: space-between;
     gap: 14px;
     padding: 20px 22px;
-    background: #111725;
+    background: #FFFFFF;
     margin-top: auto;
   }
 
   .project-info h3 {
     font: 700 1.15rem var(--font-heading);
     margin: 0;
-    color: var(--white);
+    color: var(--text);
   }
 
   .project-info p {
@@ -888,19 +907,19 @@
   .project-link {
     width: 38px;
     height: 38px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     border-radius: 50%;
     display: grid;
     place-items: center;
-    color: var(--lime);
+    color: var(--primary);
     flex-shrink: 0;
-    transition: background 0.2s, border-color 0.2s;
+    transition: all 0.2s;
   }
 
   .project:hover .project-link {
-    background: var(--lime);
-    color: #080B14;
-    border-color: var(--lime);
+    background: var(--primary);
+    color: #FFFFFF;
+    border-color: var(--primary);
   }
 
   /* Motion Lab Section */
@@ -910,17 +929,19 @@
     gap: 48px;
     align-items: center;
     padding: 56px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     border-radius: 28px;
-    background: radial-gradient(ellipse at 90% 30%, rgba(79, 124, 255, 0.2), transparent 50%), #101522;
+    background: radial-gradient(ellipse at 90% 30%, rgba(79, 70, 229, 0.08), transparent 50%), #F5F8FF;
     overflow: hidden;
     position: relative;
+    box-shadow: var(--shadow-sm);
   }
 
   .feature h2 {
     font: 800 clamp(2.5rem, 5vw, 4.4rem) / 1 var(--font-heading);
     letter-spacing: -0.06em;
     margin: 16px 0 20px;
+    color: var(--text);
   }
 
   .feature p {
@@ -941,8 +962,8 @@
     width: 190px;
     height: 190px;
     border-radius: 40%;
-    background: linear-gradient(140deg, #D5FF72 0%, #65E5FF 35%, #4F7CFF 70%, #392A79 100%);
-    box-shadow: inset -20px -22px 45px rgba(8, 11, 20, 0.6), 0 0 80px rgba(79, 124, 255, 0.35);
+    background: linear-gradient(140deg, #4F46E5 0%, #2563EB 35%, #06B6D4 70%, #8B5CF6 100%);
+    box-shadow: inset -15px -15px 35px rgba(255, 255, 255, 0.4), 0 12px 40px rgba(79, 70, 229, 0.25);
     transform: rotate(25deg);
     animation: float 6s ease-in-out infinite;
   }
@@ -951,7 +972,7 @@
     position: absolute;
     width: 300px;
     height: 120px;
-    border: 2px solid rgba(101, 229, 255, 0.6);
+    border: 2px solid rgba(79, 70, 229, 0.4);
     border-radius: 50%;
     transform: rotate(-28deg);
     animation: spin 24s linear infinite;
@@ -961,7 +982,7 @@
     width: 320px;
     height: 140px;
     transform: rotate(55deg);
-    border-color: rgba(213, 255, 114, 0.5);
+    border-color: rgba(6, 182, 212, 0.4);
     animation-direction: reverse;
   }
 
@@ -978,9 +999,9 @@
     position: relative;
     display: grid;
     place-items: center;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     border-radius: 24px;
-    background: radial-gradient(circle at 50% 40%, rgba(79, 124, 255, 0.22), transparent 55%), #101522;
+    background: radial-gradient(circle at 50% 40%, rgba(79, 70, 229, 0.1), transparent 60%), #F5F8FF;
     overflow: hidden;
   }
 
@@ -990,17 +1011,17 @@
     bottom: 22px;
     left: 22px;
     font-size: 0.68rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.2em;
-    color: #8E9AB2;
+    color: var(--muted);
   }
 
   .monogram {
     font: 900 clamp(7rem, 16vw, 13rem) / 1 var(--font-heading);
     letter-spacing: -0.12em;
     color: transparent;
-    -webkit-text-stroke: 2px var(--cyan);
-    text-shadow: 12px 12px 0 rgba(79, 124, 255, 0.25);
+    -webkit-text-stroke: 2px var(--primary);
+    text-shadow: 10px 10px 0 rgba(79, 70, 229, 0.12);
     transform: rotate(-6deg);
     user-select: none;
   }
@@ -1009,6 +1030,7 @@
     font: 800 clamp(2.5rem, 5vw, 4.2rem) / 1.02 var(--font-heading);
     letter-spacing: -0.06em;
     margin: 16px 0;
+    color: var(--text);
   }
 
   .about-copy p {
@@ -1025,26 +1047,28 @@
   }
 
   .skills span {
-    border: 1px solid var(--line);
+    border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 8px 14px;
-    color: #CBD3E2;
+    padding: 8px 16px;
+    color: var(--text);
     font-size: 0.82rem;
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.02);
+    font-weight: 700;
+    background: #FFFFFF;
+    box-shadow: var(--shadow-sm);
   }
 
   /* Contact Section & Footer */
   .contact {
     padding: 110px 0;
     text-align: center;
-    background: radial-gradient(ellipse at 50% 100%, rgba(79, 124, 255, 0.22), transparent 60%);
+    background: radial-gradient(ellipse at 50% 100%, rgba(79, 70, 229, 0.08), transparent 65%), #FFFFFF;
   }
 
   .contact h2 {
     font: 800 clamp(2.8rem, 7vw, 5.8rem) / 0.98 var(--font-heading);
     letter-spacing: -0.06em;
     margin: 20px 0;
+    color: var(--text);
   }
 
   .contact p {
@@ -1062,11 +1086,11 @@
   }
 
   .footer {
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--border);
     padding: 32px 0;
     color: var(--muted);
-    font-size: 0.82rem;
-    background: #06080F;
+    font-size: 0.85rem;
+    background: #F8FAFC;
   }
 
   .footer-inner {
@@ -1079,25 +1103,6 @@
   .socials {
     display: flex;
     gap: 10px;
-  }
-
-  .socials a {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    color: #CBD3E2;
-    font-size: 0.82rem;
-    font-weight: 700;
-    transition: all 0.2s;
-  }
-
-  .socials a:hover {
-    border-color: var(--cyan);
-    color: var(--cyan);
-    background: rgba(101, 229, 255, 0.1);
   }
 
   /* Reveal animation */
@@ -1117,11 +1122,6 @@
   }
 
   /* Animations */
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-14px); }
@@ -1177,7 +1177,7 @@
       height: 70px;
     }
     .menu-toggle {
-      display: block;
+      display: inline-flex !important;
     }
     .navlinks {
       display: none;
@@ -1186,12 +1186,12 @@
       right: 0;
       top: 70px;
       padding: 24px;
-      background: #0E1320;
-      border-bottom: 1px solid var(--line);
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
       flex-direction: column;
       align-items: stretch;
       gap: 18px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: var(--shadow-lg);
     }
     .navlinks.open {
       display: flex;
@@ -1290,8 +1290,11 @@
       transform: none;
     }
   }
-  /*]]>*/
-</style>
+]]></b:skin>
+
+<b:template-skin><![CDATA[
+  /* Blogger Template Skin */
+]]></b:template-skin>
 </head>
 <body>
 <!-- Topline Accent Bar -->
@@ -1306,7 +1309,10 @@
     <p class='founder'>MUKESH SINGH</p>
     <p class='tagline'>Ideas Made Visible.</p>
     <button class='btn btn-primary' id='enterStudio' type='button'>
-      START YOUR DESIGN <span>→</span>
+      <span>START YOUR DESIGN</span>
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='18'>
+        <line x1='5' x2='19' y1='12' y2='12'/><polyline points='12 5 19 12 12 19'/>
+      </svg>
     </button>
   </div>
 </div>
@@ -1318,8 +1324,8 @@
       <span class='brand-icon'>S</span>
       <span>Singh Creative Studio</span>
     </a>
-    <button class='menu-toggle' id='menuToggle' aria-expanded='false' aria-controls='navLinks' type='button'>
-      ☰ Menu
+    <button class='btn-icon menu-toggle' id='menuToggle' aria-expanded='false' aria-controls='navLinks' aria-label='Toggle Menu' type='button'>
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='#111827' stroke-linecap='round' stroke-width='2.5' viewBox='0 0 24 24'><line x1='4' x2='20' y1='12' y2='12'/><line x1='4' x2='20' y1='6' y2='6'/><line x1='4' x2='20' y1='18' y2='18'/></svg>
     </button>
     <nav class='navlinks' id='navLinks' aria-label='Main navigation'>
       <a href='#services'>Services</a>
@@ -1341,8 +1347,14 @@
         <h2 class='display'>Make your<br/>brand <span class='gradient-text'>impossible</span><br/>to ignore.</h2>
         <p>Bold graphic design, brand identities and motion-led visuals for people with something worth saying. Thoughtful ideas, made impossible to scroll past.</p>
         <div class='hero-actions'>
-          <a class='btn btn-primary' href='#work'>Explore the Work <span>↗</span></a>
-          <a class='btn btn-ghost' href='#contact'>Have a Project? <span>＋</span></a>
+          <a class='btn btn-primary' href='#work'>
+            <span>Explore the Work</span>
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='7' x2='17' y1='17' y2='7'/><polyline points='7 7 17 7 17 17'/></svg>
+          </a>
+          <a class='btn btn-ghost' href='#contact'>
+            <span>Have a Project?</span>
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='12' x2='12' y1='5' y2='19'/><line x1='5' x2='19' y1='12' y2='12'/></svg>
+          </a>
         </div>
         <div class='hero-meta'>
           <span class='dot'></span>
@@ -1359,81 +1371,81 @@
         <div class='visual-canvas' id='visualCanvas' aria-label='Visual Showcase Carousel'>
           <!-- Slide 1 -->
           <div class='scene active' data-title='Shape the Future' data-sub='Graphic direction · 01 / 04'>
-            <svg viewBox='0 0 560 520' role='img' aria-label='Abstract graphic poster layout'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 520' role='img' aria-label='Abstract graphic poster layout'>
               <defs>
                 <linearGradient id='g1' x1='0' y1='0' x2='1' y2='1'>
-                  <stop stop-color='#D5FF72'/>
-                  <stop offset='0.5' stop-color='#65E5FF'/>
-                  <stop offset='1' stop-color='#4F7CFF'/>
+                  <stop stop-color='#4F46E5'/>
+                  <stop offset='0.5' stop-color='#2563EB'/>
+                  <stop offset='1' stop-color='#06B6D4'/>
                 </linearGradient>
               </defs>
-              <rect width='560' height='520' fill='#101726'/>
-              <circle cx='360' cy='220' r='170' fill='none' stroke='#65E5FF' stroke-opacity='0.25' stroke-width='2'/>
-              <circle cx='360' cy='220' r='120' fill='none' stroke='#4F7CFF' stroke-opacity='0.5' stroke-width='2'/>
+              <rect width='560' height='520' fill='#F8FAFC'/>
+              <circle cx='360' cy='220' r='170' fill='none' stroke='#4F46E5' stroke-opacity='0.15' stroke-width='2'/>
+              <circle cx='360' cy='220' r='120' fill='none' stroke='#2563EB' stroke-opacity='0.25' stroke-width='2'/>
               <path d='M170 390 L325 65 L485 390 Z' fill='url(#g1)'/>
-              <path d='M325 65 L390 390 H485 Z' fill='#4F7CFF' opacity='0.55'/>
-              <circle cx='325' cy='255' r='54' fill='#F6F7FB'/>
-              <circle cx='325' cy='255' r='25' fill='#101726'/>
-              <text x='42' y='95' font-family='Space Grotesk' font-size='34' font-weight='800' fill='#FFFFFF'>SHAPE</text>
-              <text x='42' y='132' font-family='Space Grotesk' font-size='34' font-weight='800' fill='#D5FF72'>THE FUTURE.</text>
-              <text x='44' y='467' font-size='12' letter-spacing='4' fill='#B5C3DE'>CREATIVE STUDY / 001</text>
+              <path d='M325 65 L390 390 H485 Z' fill='#4F46E5' opacity='0.3'/>
+              <circle cx='325' cy='255' r='54' fill='#FFFFFF'/>
+              <circle cx='325' cy='255' r='25' fill='#111827'/>
+              <text x='42' y='95' font-family='Space Grotesk' font-size='34' font-weight='800' fill='#111827'>SHAPE</text>
+              <text x='42' y='132' font-family='Space Grotesk' font-size='34' font-weight='800' fill='#4F46E5'>THE FUTURE.</text>
+              <text x='44' y='467' font-size='12' letter-spacing='4' fill='#64748B'>CREATIVE STUDY / 001</text>
             </svg>
           </div>
 
           <!-- Slide 2 -->
           <div class='scene' data-title='North Studio System' data-sub='Brand Identity · 02 / 04'>
-            <svg viewBox='0 0 560 520' role='img' aria-label='Minimal brand identity vector visual'>
-              <rect width='560' height='520' fill='#E8F2E8'/>
-              <circle cx='280' cy='210' r='120' fill='#101522'/>
-              <path d='M220 270 L280 120 L340 270 Z' fill='#D5FF72'/>
-              <circle cx='340' cy='165' r='26' fill='#65E5FF'/>
-              <text x='50' y='390' font-family='Space Grotesk' font-size='32' font-weight='800' fill='#101522'>NORTH / STUDIO</text>
-              <text x='52' y='425' font-size='13' letter-spacing='4' fill='#475569'>IDENTITY DIRECTION</text>
-              <path d='M50 450 H510' stroke='#101522' stroke-opacity='0.2'/>
-              <text x='50' y='480' font-size='11' letter-spacing='3' fill='#475569'>BRAND SYSTEM / 002</text>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 520' role='img' aria-label='Minimal brand identity vector visual'>
+              <rect width='560' height='520' fill='#EEF2FF'/>
+              <circle cx='280' cy='210' r='120' fill='#111827'/>
+              <path d='M220 270 L280 120 L340 270 Z' fill='#4F46E5'/>
+              <circle cx='340' cy='165' r='26' fill='#06B6D4'/>
+              <text x='50' y='390' font-family='Space Grotesk' font-size='32' font-weight='800' fill='#111827'>NORTH / STUDIO</text>
+              <text x='52' y='425' font-size='13' letter-spacing='4' fill='#64748B'>IDENTITY DIRECTION</text>
+              <path d='M50 450 H510' stroke='#111827' stroke-opacity='0.15'/>
+              <text x='50' y='480' font-size='11' letter-spacing='3' fill='#64748B'>BRAND SYSTEM / 002</text>
             </svg>
           </div>
 
           <!-- Slide 3 -->
           <div class='scene' data-title='Motion in Light' data-sub='Motion Graphics · 03 / 04'>
-            <svg viewBox='0 0 560 520' role='img' aria-label='Motion graphics visual with radiant arcs'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 520' role='img' aria-label='Motion graphics visual with radiant arcs'>
               <defs>
                 <linearGradient id='g3' x1='0' y1='0' x2='1' y2='0'>
-                  <stop stop-color='#D5FF72'/>
-                  <stop offset='0.5' stop-color='#65E5FF'/>
-                  <stop offset='1' stop-color='#4F7CFF'/>
+                  <stop stop-color='#4F46E5'/>
+                  <stop offset='0.5' stop-color='#2563EB'/>
+                  <stop offset='1' stop-color='#06B6D4'/>
                 </linearGradient>
               </defs>
-              <rect width='560' height='520' fill='#0D1424'/>
+              <rect width='560' height='520' fill='#F0F9FF'/>
               <g fill='none' stroke='url(#g3)' stroke-width='18' stroke-linecap='round'>
                 <path d='M100 130 Q280 -5 460 130'/>
                 <path d='M72 210 Q280 45 488 210' opacity='0.8'/>
                 <path d='M65 290 Q280 115 495 290' opacity='0.6'/>
                 <path d='M95 370 Q280 220 465 370' opacity='0.4'/>
               </g>
-              <circle cx='280' cy='255' r='54' fill='#F5F7FB'/>
-              <circle cx='280' cy='255' r='26' fill='#4F7CFF'/>
-              <text x='280' y='460' text-anchor='middle' font-size='13' letter-spacing='5' fill='#D5E3FF'>MOTION STUDY / 003</text>
+              <circle cx='280' cy='255' r='54' fill='#FFFFFF'/>
+              <circle cx='280' cy='255' r='26' fill='#4F46E5'/>
+              <text x='280' y='460' text-anchor='middle' font-size='13' letter-spacing='5' fill='#475569'>MOTION STUDY / 003</text>
             </svg>
           </div>
 
           <!-- Slide 4 -->
           <div class='scene' data-title='Sculpted Dimension' data-sub='3D &amp; Visual Art · 04 / 04'>
-            <svg viewBox='0 0 560 520' role='img' aria-label='3D sculpted dimensional orb'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 520' role='img' aria-label='3D sculpted dimensional orb'>
               <defs>
                 <radialGradient id='g4' cx='0.3' cy='0.25' r='0.8'>
                   <stop stop-color='#FFFFFF'/>
-                  <stop offset='0.2' stop-color='#D5FF72'/>
-                  <stop offset='0.45' stop-color='#65E5FF'/>
-                  <stop offset='0.75' stop-color='#4F7CFF'/>
-                  <stop offset='1' stop-color='#1B2250'/>
+                  <stop offset='0.2' stop-color='#06B6D4'/>
+                  <stop offset='0.5' stop-color='#2563EB'/>
+                  <stop offset='0.85' stop-color='#4F46E5'/>
+                  <stop offset='1' stop-color='#1E1B4B'/>
                 </radialGradient>
               </defs>
-              <rect width='560' height='520' fill='#101726'/>
-              <ellipse cx='280' cy='405' rx='155' ry='27' fill='#000000' opacity='0.45'/>
+              <rect width='560' height='520' fill='#F8FAFC'/>
+              <ellipse cx='280' cy='405' rx='155' ry='27' fill='#000000' opacity='0.15'/>
               <circle cx='280' cy='245' r='135' fill='url(#g4)'/>
-              <ellipse cx='280' cy='245' rx='170' ry='66' fill='none' stroke='#D5FF72' stroke-width='2' stroke-opacity='0.7' transform='rotate(-25 280 245)'/>
-              <text x='280' y='465' text-anchor='middle' font-size='13' letter-spacing='5' fill='#D5E3FF'>DIMENSION / 004</text>
+              <ellipse cx='280' cy='245' rx='170' ry='66' fill='none' stroke='#4F46E5' stroke-width='2' stroke-opacity='0.6' transform='rotate(-25 280 245)'/>
+              <text x='280' y='465' text-anchor='middle' font-size='13' letter-spacing='5' fill='#64748B'>DIMENSION / 004</text>
             </svg>
           </div>
         </div>
@@ -1448,9 +1460,15 @@
             <span id='carouselSub'>Graphic direction · 01 / 04</span>
           </div>
           <div class='carousel-controls'>
-            <button class='carousel-btn' id='carouselPrev' aria-label='Previous slide' type='button'>←</button>
-            <button class='carousel-btn' id='carouselToggle' aria-label='Pause carousel' type='button'>⏸</button>
-            <button class='carousel-btn' id='carouselNext' aria-label='Next slide' type='button'>→</button>
+            <button class='btn-icon' id='carouselPrev' aria-label='Previous slide' type='button'>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><line x1='19' x2='5' y1='12' y2='12'/><polyline points='12 19 5 12 12 5'/></svg>
+            </button>
+            <button class='btn-icon' id='carouselToggle' aria-label='Pause carousel' type='button'>
+              <svg xmlns='http://www.w3.org/2000/svg' id='togglePauseIcon' viewBox='0 0 24 24'><rect x='6' y='4' width='4' height='16'/><rect x='14' y='4' width='4' height='16'/></svg>
+            </button>
+            <button class='btn-icon' id='carouselNext' aria-label='Next slide' type='button'>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><line x1='5' x2='19' y1='12' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>
+            </button>
           </div>
         </div>
         <div class='carousel-progress'>
@@ -1561,15 +1579,15 @@
         <!-- Project 1 -->
         <article class='project reveal' data-tags='graphic motion'>
           <div class='project-art'>
-            <svg viewBox='0 0 700 440' role='img' aria-label='Bold experimental poster composition'>
-              <rect width='700' height='440' fill='#101522'/>
-              <circle cx='490' cy='220' r='170' fill='#4F7CFF'/>
-              <circle cx='490' cy='220' r='115' fill='none' stroke='#D5FF72' stroke-width='2'/>
-              <path d='M280 420 L445 45 L620 420 Z' fill='#65E5FF' opacity='0.85'/>
-              <path d='M445 45 L515 420 H620 Z' fill='#4F7CFF'/>
-              <text x='45' y='100' fill='#FFFFFF' font-size='52' font-family='Space Grotesk' font-weight='800'>THINK</text>
-              <text x='45' y='155' fill='#D5FF72' font-size='52' font-family='Space Grotesk' font-weight='800'>LOUDER.</text>
-              <text x='48' y='390' fill='#D4DEF2' font-size='13' letter-spacing='5'>POSTER / STUDY 001</text>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Bold experimental poster composition'>
+              <rect width='700' height='440' fill='#F8FAFC'/>
+              <circle cx='490' cy='220' r='170' fill='#4F46E5' opacity='0.85'/>
+              <circle cx='490' cy='220' r='115' fill='none' stroke='#06B6D4' stroke-width='3'/>
+              <path d='M280 420 L445 45 L620 420 Z' fill='#2563EB' opacity='0.75'/>
+              <path d='M445 45 L515 420 H620 Z' fill='#4F46E5'/>
+              <text x='45' y='100' fill='#111827' font-size='52' font-family='Space Grotesk' font-weight='800'>THINK</text>
+              <text x='45' y='155' fill='#4F46E5' font-size='52' font-family='Space Grotesk' font-weight='800'>LOUDER.</text>
+              <text x='48' y='390' fill='#64748B' font-size='13' letter-spacing='5'>POSTER / STUDY 001</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1585,13 +1603,13 @@
         <!-- Project 2 -->
         <article class='project reveal' data-tags='brand'>
           <div class='project-art'>
-            <svg viewBox='0 0 700 440' role='img' aria-label='Minimal identity design layout'>
-              <rect width='700' height='440' fill='#E8F2E8'/>
-              <circle cx='350' cy='175' r='105' fill='#101522'/>
-              <path d='M300 225 L350 100 L400 225 Z' fill='#D5FF72'/>
-              <circle cx='401' cy='136' r='24' fill='#65E5FF'/>
-              <text x='350' y='325' text-anchor='middle' fill='#101522' font-size='38' font-family='Space Grotesk' font-weight='800'>NORTH STUDIO</text>
-              <text x='350' y='362' text-anchor='middle' fill='#526071' font-size='13' letter-spacing='5'>IDENTITY SYSTEM / 002</text>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Minimal identity design layout'>
+              <rect width='700' height='440' fill='#EEF2FF'/>
+              <circle cx='350' cy='175' r='105' fill='#111827'/>
+              <path d='M300 225 L350 100 L400 225 Z' fill='#4F46E5'/>
+              <circle cx='401' cy='136' r='24' fill='#06B6D4'/>
+              <text x='350' y='325' text-anchor='middle' fill='#111827' font-size='38' font-family='Space Grotesk' font-weight='800'>NORTH STUDIO</text>
+              <text x='350' y='362' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>IDENTITY SYSTEM / 002</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1607,19 +1625,19 @@
         <!-- Project 3 -->
         <article class='project reveal' data-tags='3d motion'>
           <div class='project-art'>
-            <svg viewBox='0 0 700 440' role='img' aria-label='3D luminous sculpted orb visual'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='3D luminous sculpted orb visual'>
               <defs>
                 <radialGradient id='p3g' cx='0.3' cy='0.2' r='0.85'>
                   <stop stop-color='#FFFFFF'/>
-                  <stop offset='0.2' stop-color='#D5FF72'/>
-                  <stop offset='0.5' stop-color='#65E5FF'/>
-                  <stop offset='1' stop-color='#4F7CFF'/>
+                  <stop offset='0.25' stop-color='#06B6D4'/>
+                  <stop offset='0.6' stop-color='#2563EB'/>
+                  <stop offset='1' stop-color='#4F46E5'/>
                 </radialGradient>
               </defs>
-              <rect width='700' height='440' fill='#0D1322'/>
+              <rect width='700' height='440' fill='#F1F5F9'/>
               <circle cx='350' cy='205' r='130' fill='url(#p3g)'/>
-              <ellipse cx='350' cy='205' rx='185' ry='65' fill='none' stroke='#D5FF72' stroke-width='3' transform='rotate(-25 350 205)'/>
-              <text x='350' y='390' text-anchor='middle' fill='#E0E8FA' font-size='14' letter-spacing='6'>SCULPTED LIGHT / 003</text>
+              <ellipse cx='350' cy='205' rx='185' ry='65' fill='none' stroke='#4F46E5' stroke-width='3' transform='rotate(-25 350 205)'/>
+              <text x='350' y='390' text-anchor='middle' fill='#64748B' font-size='14' letter-spacing='6'>SCULPTED LIGHT / 003</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1635,20 +1653,20 @@
         <!-- Project 4 -->
         <article class='project reveal' data-tags='video motion'>
           <div class='project-art'>
-            <svg viewBox='0 0 700 440' role='img' aria-label='Cinematic film frame artwork'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Cinematic film frame artwork'>
               <defs>
                 <linearGradient id='p4g' x1='0' y1='0' x2='1' y2='1'>
-                  <stop stop-color='#101522'/>
-                  <stop offset='0.55' stop-color='#4F7CFF'/>
-                  <stop offset='1' stop-color='#65E5FF'/>
+                  <stop stop-color='#E0E7FF'/>
+                  <stop offset='0.55' stop-color='#4F46E5'/>
+                  <stop offset='1' stop-color='#06B6D4'/>
                 </linearGradient>
               </defs>
               <rect width='700' height='440' fill='url(#p4g)'/>
-              <circle cx='500' cy='130' r='75' fill='#D5FF72' opacity='0.85'/>
-              <path d='M0 335 L180 155 L300 300 L430 190 L700 350 V440 H0 Z' fill='#101522'/>
+              <circle cx='500' cy='130' r='75' fill='#FFFFFF' opacity='0.85'/>
+              <path d='M0 335 L180 155 L300 300 L430 190 L700 350 V440 H0 Z' fill='#111827'/>
               <path d='M28 35 H100 M28 35 V95 M672 35 H600 M672 35 V95 M28 405 H100 M28 405 V345 M672 405 H600 M672 405 V345' fill='none' stroke='#FFFFFF' stroke-width='3'/>
               <text x='45' y='100' fill='#FFFFFF' font-size='36' font-family='Space Grotesk' font-weight='800'>FRAME THE FEELING</text>
-              <text x='48' y='400' fill='#E0E8FA' font-size='13' letter-spacing='5'>VIDEO MOOD / 004</text>
+              <text x='48' y='400' fill='#94A3B8' font-size='13' letter-spacing='5'>VIDEO MOOD / 004</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1664,14 +1682,14 @@
         <!-- Project 5 -->
         <article class='project reveal' data-tags='graphic motion'>
           <div class='project-art'>
-            <svg viewBox='0 0 700 440' role='img' aria-label='Kinetic typographic composition'>
-              <rect width='700' height='440' fill='#0B0E17'/>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Kinetic typographic composition'>
+              <rect width='700' height='440' fill='#F8FAFC'/>
               <g font-family='Space Grotesk' font-weight='900' font-size='72'>
-                <text x='30' y='120' fill='#65E5FF' opacity='0.3'>KINETIC TYPE</text>
-                <text x='30' y='210' fill='#D5FF72'>KINETIC TYPE</text>
-                <text x='30' y='300' fill='#4F7CFF' opacity='0.5'>KINETIC TYPE</text>
+                <text x='30' y='120' fill='#06B6D4' opacity='0.3'>KINETIC TYPE</text>
+                <text x='30' y='210' fill='#4F46E5'>KINETIC TYPE</text>
+                <text x='30' y='300' fill='#2563EB' opacity='0.5'>KINETIC TYPE</text>
               </g>
-              <text x='350' y='400' text-anchor='middle' fill='#A1A9BB' font-size='13' letter-spacing='5'>MOTION LAB / 005</text>
+              <text x='350' y='400' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>MOTION LAB / 005</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1687,12 +1705,12 @@
         <!-- Project 6 -->
         <article class='project reveal' data-tags='brand graphic'>
           <div class='project-art'>
-            <svg viewBox='0 0 700 440' role='img' aria-label='Neon glowing identity poster design'>
-              <rect width='700' height='440' fill='#150D2A'/>
-              <circle cx='350' cy='220' r='140' fill='none' stroke='#65E5FF' stroke-width='4'/>
-              <circle cx='350' cy='220' r='100' fill='none' stroke='#D5FF72' stroke-width='3' stroke-dasharray='12 8'/>
-              <text x='350' y='228' text-anchor='middle' fill='#FFFFFF' font-size='42' font-family='Space Grotesk' font-weight='800'>NEON PULSE</text>
-              <text x='350' y='395' text-anchor='middle' fill='#C3B5E3' font-size='13' letter-spacing='5'>BRAND EXPLORATION / 006</text>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Neon glowing identity poster design'>
+              <rect width='700' height='440' fill='#FAF5FF'/>
+              <circle cx='350' cy='220' r='140' fill='none' stroke='#06B6D4' stroke-width='4'/>
+              <circle cx='350' cy='220' r='100' fill='none' stroke='#4F46E5' stroke-width='3' stroke-dasharray='12 8'/>
+              <text x='350' y='228' text-anchor='middle' fill='#111827' font-size='42' font-family='Space Grotesk' font-weight='800'>NEON PULSE</text>
+              <text x='350' y='395' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>BRAND EXPLORATION / 006</text>
             </svg>
             <span class='concept-badge'>CONCEPT STUDY</span>
           </div>
@@ -1716,7 +1734,10 @@
           <span class='eyebrow'>MOTION LAB</span>
           <h2 class='display'>Still design.<br/><span class='gradient-text'>Moving energy.</span></h2>
           <p>Movement adds meaning. I explore the space between graphic design and animation — where simple shapes become stories and every frame has a feeling.</p>
-          <a class='btn btn-primary' href='#contact'>Let's Animate an Idea ↗</a>
+          <a class='btn btn-primary' href='#contact'>
+            <span>Let's Animate an Idea</span>
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='5' x2='19' y1='12' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>
+          </a>
         </div>
         <div class='feature-art' aria-hidden='true'>
           <div class='orb'></div>
@@ -1745,7 +1766,10 @@
           <span>Animation &amp; Editing</span>
           <span>Visual Storytelling</span>
         </div>
-        <a class='btn btn-ghost' href='#contact'>Let's Connect <span>↗</span></a>
+        <a class='btn btn-ghost' href='#contact'>
+          <span>Let's Connect</span>
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='7' x2='17' y1='17' y2='7'/><polyline points='7 7 17 7 17 17'/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1757,8 +1781,14 @@
       <h2 class='display'>Let's make it<br/><span class='gradient-text'>mean something.</span></h2>
       <p>Have a brand, campaign or creative idea in mind? Let's turn that first spark into something people remember.</p>
       <div class='contact-actions'>
-        <a class='btn btn-primary' href='mailto:hello@example.com'>Start a Conversation ↗</a>
-        <a class='btn btn-ghost' href='#work'>See the Concepts ↓</a>
+        <a class='btn btn-primary' href='mailto:hello@example.com'>
+          <span>Start a Conversation</span>
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='5' x2='19' y1='12' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>
+        </a>
+        <a class='btn btn-ghost' href='#work'>
+          <span>See the Concepts</span>
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='12' x2='12' y1='5' y2='19'/><polyline points='19 12 12 15 5 12'/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1769,10 +1799,18 @@
   <div class='container footer-inner'>
     <span>© <span id='yearNow'>2026</span> Singh Creative Studio · MUKESH SINGH</span>
     <div class='socials'>
-      <a href='#contact' aria-label='Instagram' title='Instagram'>ig</a>
-      <a href='#contact' aria-label='Behance' title='Behance'>Be</a>
-      <a href='#contact' aria-label='YouTube' title='YouTube'>yt</a>
-      <a href='#contact' aria-label='LinkedIn' title='LinkedIn'>in</a>
+      <a class='btn-icon' href='#contact' aria-label='Instagram' title='Instagram'>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='2' width='20' height='20' rx='5' ry='5'/><path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'/><line x1='17.5' x2='17.51' y1='6.5' y2='6.5'/></svg>
+      </a>
+      <a class='btn-icon' href='#contact' aria-label='Behance' title='Behance'>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M3 7h5a3 3 0 0 1 0 6H3zm0 6h6a3.5 3.5 0 0 1 0 7H3z'/><path d='M13 14a4 4 0 1 0 4-4h-4zm0 0h8'/><line x1='14' x2='18' y1='7' y2='7'/></svg>
+      </a>
+      <a class='btn-icon' href='#contact' aria-label='YouTube' title='YouTube'>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z'/><polygon points='9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02'/></svg>
+      </a>
+      <a class='btn-icon' href='#contact' aria-label='LinkedIn' title='LinkedIn'>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z'/><rect x='2' y='9' width='4' height='12'/><circle cx='4' cy='4' r='2'/></svg>
+      </a>
     </div>
   </div>
 </footer>
@@ -1833,6 +1871,7 @@
   var btnPrev = document.getElementById('carouselPrev');
   var btnNext = document.getElementById('carouselNext');
   var btnToggle = document.getElementById('carouselToggle');
+  var togglePauseIcon = document.getElementById('togglePauseIcon');
 
   var curIdx = 0;
   var timer = null;
@@ -1899,8 +1938,12 @@
     if (btnToggle) {
       btnToggle.addEventListener('click', function(){
         isPaused = !isPaused;
-        btnToggle.textContent = isPaused ? '▶' : '⏸';
         btnToggle.setAttribute('aria-label', isPaused ? 'Play carousel' : 'Pause carousel');
+        if (togglePauseIcon) {
+          togglePauseIcon.innerHTML = isPaused ?
+            "<polygon points='5 3 19 12 5 21 5 3'/>" :
+            "<rect x='6' y='4' width='4' height='16'/><rect x='14' y='4' width='4' height='16'/>";
+        }
         if (isPaused) stopCarousel();
         else startCarousel();
       });
