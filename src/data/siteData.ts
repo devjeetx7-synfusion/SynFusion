@@ -1,11 +1,36 @@
-import { NavLink, ServiceItem, ProcessStep, ProjectItem, PrincipleItem, FAQItem } from "@/types";
+import { NavLink, ServiceItem, ProcessStep, PrincipleItem, FAQItem } from "@/types";
+
+export const BRAND_ASSETS = {
+  logo: "https://i.postimg.cc/7PNN0DMg/file-000000006e788243a3aaf94a91b6f9db.png",
+  name: "SynFusion",
+  tagline: "We Build. We Innovate. We Scale.",
+  handle: "@getsynfusion",
+};
+
+export const SOCIAL_LINKS = {
+  github: "https://github.com/devjeetx7-synfusion",
+  instagram: "https://www.instagram.com/getsynfusion/",
+  facebook: "https://www.facebook.com/getsynfusion",
+  youtube: "https://www.youtube.com/@getsynfusion",
+  telegram: "https://t.me/getsynfusion",
+  whatsapp: "https://wa.me/919334603912",
+};
+
+export const CONTACT_INFO = {
+  phone: "+91 9334603912",
+  phoneDisplay: "+91 93346 03912",
+  email: "dharmjeetsingh958@gmail.com",
+  whatsappUrl: "https://wa.me/919334603912?text=Hi%20SynFusion,%20I%20would%20like%20to%20discuss%20a%20project.",
+  githubUsername: "devjeetx7-synfusion",
+};
 
 export const NAV_LINKS: NavLink[] = [
   { name: "Services", href: "#services" },
+  { name: "Projects", href: "#portfolio" },
   { name: "About", href: "#about" },
   { name: "Process", href: "#process" },
-  { name: "Portfolio", href: "#portfolio" },
   { name: "Why Us", href: "#why-us" },
+  { name: "Blog", href: "#blog" },
   { name: "FAQ", href: "#faq" },
   { name: "Contact", href: "#contact" },
 ];
@@ -193,61 +218,6 @@ export const PROCESS_DATA: ProcessStep[] = [
   },
 ];
 
-export const PORTFOLIO_DATA: ProjectItem[] = [
-  {
-    id: "workdaily",
-    name: "WorkDaily",
-    category: "Mobile Apps",
-    categoryKey: "mobile",
-    description:
-      "Daily work log & productivity tracking mobile app designed for teams and field workers with offline support.",
-    fullDescription:
-      "WorkDaily helps teams track daily logs, tasks, and site updates smoothly. Built with native performance and offline local persistence.",
-    technologies: ["Android", "Kotlin", "Room DB", "Jetpack Compose", "REST API"],
-    isConcept: true,
-    highlight: "Productivity & Team Management",
-  },
-  {
-    id: "jump-adventure",
-    name: "Jump Adventure",
-    category: "Websites",
-    categoryKey: "website",
-    description:
-      "High-energy, immersive booking website for an adventure park featuring interactive activity schedules and instant ticket booking.",
-    fullDescription:
-      "Custom responsive web portal created to showcase adventure activities, provide pricing packages, and drive visitor conversions.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "GSAP", "Framer Motion"],
-    isConcept: true,
-    highlight: "Interactive Web Experience",
-  },
-  {
-    id: "edusathi",
-    name: "EduSathi",
-    category: "Web Applications",
-    categoryKey: "webapp",
-    description:
-      "Comprehensive digital education portal providing course management, interactive study material, and student progress tracking.",
-    fullDescription:
-      "EduSathi offers structured learning pathways, live class scheduling, quiz modules, and real-time student analytics.",
-    technologies: ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS"],
-    isConcept: true,
-    highlight: "EdTech & Analytics Platform",
-  },
-  {
-    id: "synfusion-ai-assistant",
-    name: "AI Workflow Automation Suite",
-    category: "Web Applications",
-    categoryKey: "webapp",
-    description:
-      "Intelligent document parser and workflow automation dashboard powered by custom LLM prompt pipelines.",
-    fullDescription:
-      "Concept platform showing automated data extraction, document categorization, and intelligent summary generation.",
-    technologies: ["Next.js", "TypeScript", "OpenAI API", "Tailwind CSS", "Vector Search"],
-    isConcept: true,
-    highlight: "Generative AI Integration",
-  },
-];
-
 export const WHY_SYNFUSION_POINTS = [
   {
     title: "Clean & Maintainable Code",
@@ -313,10 +283,3 @@ export const FAQ_DATA: FAQItem[] = [
       "Yes. We offer post-launch support and maintenance agreements to ensure system security, OS update compatibility, and continuous optimization.",
   },
 ];
-
-export const CONTACT_INFO = {
-  phone: "+91 9334603912",
-  phoneDisplay: "+91 93346 03912",
-  email: "dharmjeetsingh958@gmail.com",
-  whatsappUrl: "https://wa.me/919334603912?text=Hi%20SynFusion,%20I%20would%20like%20to%20discuss%20a%20project.",
-};
