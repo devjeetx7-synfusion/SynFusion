@@ -91,7 +91,7 @@
 
     @media (max-width: 767px) {
       body {
-        padding-bottom: 72px;
+        padding-bottom: 80px;
       }
     }
 
@@ -400,14 +400,14 @@
       transition: width 0.1s ease-out;
     }
 
-    /* Post Reader Enhancements */
+    /* Post Reader Isolation & Formatting */
     .post-view-container {
       max-width: 860px;
       margin: 0 auto;
       padding: 3rem 1.5rem 5rem 1.5rem;
     }
 
-    .post-header-badge {
+    .post-view-container .post-header-badge {
       display: inline-block;
       padding: 0.3rem 0.9rem;
       background: var(--bg-alt);
@@ -421,7 +421,7 @@
       margin-bottom: 1.25rem;
     }
 
-    .post-title {
+    .post-view-container .post-title {
       font-size: 2.75rem;
       font-weight: 900;
       color: var(--text-main);
@@ -431,12 +431,12 @@
     }
 
     @media (max-width: 768px) {
-      .post-title {
+      .post-view-container .post-title {
         font-size: 2rem;
       }
     }
 
-    .post-meta-strip {
+    .post-view-container .post-meta-strip {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -448,15 +448,15 @@
       margin-bottom: 2.5rem;
     }
 
-    .post-meta-item {
+    .post-view-container .post-meta-item {
       display: flex;
       align-items: center;
       gap: 0.4rem;
       font-weight: 500;
     }
 
-    /* Table of Contents */
-    .post-toc-box {
+    /* Article Table of Contents */
+    .post-view-container .post-toc-box {
       background: var(--bg-alt);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
@@ -464,7 +464,7 @@
       margin-bottom: 2.5rem;
     }
 
-    .post-toc-title {
+    .post-view-container .post-toc-title {
       font-size: 1rem;
       font-weight: 800;
       color: var(--text-main);
@@ -474,37 +474,37 @@
       justify-content: space-between;
     }
 
-    .post-toc-list {
+    .post-view-container .post-toc-list {
       list-style: none;
       padding-left: 0;
       margin: 0;
       space-y: 0.5rem;
     }
 
-    .post-toc-list li {
+    .post-view-container .post-toc-list li {
       margin-bottom: 0.4rem;
       font-size: 0.875rem;
     }
 
-    .post-toc-list a {
+    .post-view-container .post-toc-list a {
       color: var(--text-muted);
       font-weight: 500;
       transition: color 0.2s ease;
     }
 
-    .post-toc-list a:hover, .post-toc-list a.active {
+    .post-view-container .post-toc-list a:hover, .post-view-container .post-toc-list a.active {
       color: var(--primary);
       font-weight: 700;
     }
 
-    /* Post Content Typography */
-    .post-body-content {
+    /* Scoped Post Body Content Typography */
+    .post-view-container .post-body-content {
       font-size: 1.125rem;
       line-height: 1.8;
       color: #24372C;
     }
 
-    .post-body-content h2 {
+    .post-view-container .post-body-content h2 {
       font-size: 1.85rem;
       font-weight: 800;
       color: var(--text-main);
@@ -512,18 +512,18 @@
       line-height: 1.3;
     }
 
-    .post-body-content h3 {
+    .post-view-container .post-body-content h3 {
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--text-main);
       margin: 2rem 0 0.85rem 0;
     }
 
-    .post-body-content p {
+    .post-view-container .post-body-content p {
       margin-bottom: 1.5rem;
     }
 
-    .post-body-content blockquote {
+    .post-view-container .post-body-content blockquote {
       border-left: 4px solid var(--primary);
       background: var(--bg-alt);
       padding: 1.25rem 1.5rem;
@@ -533,8 +533,8 @@
       margin: 2rem 0;
     }
 
-    /* Technical Code Blocks */
-    .post-body-content pre {
+    /* Technical Code Blocks scoped to Post View */
+    .post-view-container .post-body-content pre {
       position: relative;
       background: var(--dark-bg);
       color: #E2E8F0;
@@ -548,7 +548,7 @@
       border: 1px solid var(--dark-border);
     }
 
-    .code-copy-btn {
+    .post-view-container .code-copy-btn {
       position: absolute;
       top: 0.75rem;
       right: 0.75rem;
@@ -563,13 +563,13 @@
       transition: all 0.2s ease;
     }
 
-    .code-copy-btn:hover {
+    .post-view-container .code-copy-btn:hover {
       background: var(--primary);
       border-color: var(--primary);
     }
 
     /* Article Sharing Bar */
-    .post-share-bar {
+    .post-view-container .post-share-bar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -580,7 +580,7 @@
       border-bottom: 1px solid var(--border-color);
     }
 
-    .post-share-title {
+    .post-view-container .post-share-title {
       font-size: 0.875rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -589,7 +589,7 @@
       margin-right: 0.5rem;
     }
 
-    .share-btn {
+    .post-view-container .share-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -601,9 +601,10 @@
       border: 1px solid var(--border-color);
       color: var(--text-main);
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
-    .share-btn:hover {
+    .post-view-container .share-btn:hover {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
@@ -737,6 +738,77 @@
       font-size: 0.85rem;
       background: #ffffff;
       font-weight: 600;
+    }
+
+    /* Process Section */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 1024px) {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .process-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .process-number {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ Accordion */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.925rem;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
     }
 
     /* Footer */
@@ -969,7 +1041,10 @@
         <a class='nav-link' href='#services'>Services</a>
         <a class='nav-link' href='#portfolio'>Projects</a>
         <a class='nav-link' href='#about'>About</a>
+        <a class='nav-link' href='#process'>Process</a>
+        <a class='nav-link' href='#why-us'>Why Us</a>
         <a class='nav-link' href='#blog'>Blog</a>
+        <a class='nav-link' href='#faq'>FAQ</a>
         <a class='nav-link' href='#contact'>Contact</a>
       </nav>
 
@@ -1013,6 +1088,30 @@
           <a class='btn btn-outline' href='#portfolio'>
             <span>Explore Repositories</span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class='section-padding' style='padding: 2.5rem 0; background: var(--bg-alt); border-bottom: 1px solid var(--border-color);'>
+      <div class='container'>
+        <div style='display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1.5rem; text-align: center;'>
+          <div>
+            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>Modern Stack</div>
+            <div style='font-size: 0.85rem; color: var(--text-muted);'>Next.js &amp; Kotlin</div>
+          </div>
+          <div>
+            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>User-Focused</div>
+            <div style='font-size: 0.85rem; color: var(--text-muted);'>Clean UI/UX Design</div>
+          </div>
+          <div>
+            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>Scalable Engine</div>
+            <div style='font-size: 0.85rem; color: var(--text-muted);'>High Availability</div>
+          </div>
+          <div>
+            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>Agile Delivery</div>
+            <div style='font-size: 0.85rem; color: var(--text-muted);'>Transparent Sprints</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1061,9 +1160,10 @@
           <span class='section-badge'>Live Source Code</span>
           <h2 class='section-title'>Automated GitHub Portfolio</h2>
           <p class='section-subtitle'>Public repositories auto-fetched directly from official account (@devjeetx7-synfusion).</p>
+          <div id='ghProfileBadgeContainer' style='margin-top: 0.75rem;'/>
         </div>
 
-        {/* Portfolio Control Toolbar */}
+        <!-- Portfolio Control Toolbar -->
         <div class='portfolio-controls reveal'>
           <input class='portfolio-search-input' id='repoSearchInput' placeholder='Search repositories...' type='text'/>
 
@@ -1090,20 +1190,59 @@
           </div>
         </div>
 
-        {/* Dynamic Repository Cards Container */}
+        <!-- Dynamic Repository Cards Container -->
         <div class='portfolio-grid' id='githubRepoGrid'>
           <div style='grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--text-muted);'>
             Fetching public GitHub repositories...
           </div>
         </div>
 
-        {/* Pagination Container */}
+        <!-- Pagination Container -->
         <div id='repoPaginationContainer' style='display: flex; justify-content: center; gap: 0.5rem; margin-top: 2.5rem;'/>
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class='section-padding' id='about'>
+    <!-- PROCESS SECTION -->
+    <section class='section-padding' id='process'>
+      <div class='container'>
+        <div class='section-header reveal'>
+          <span class='section-badge'>5-Step Delivery</span>
+          <h2 class='section-title'>How We Build Software</h2>
+          <p class='section-subtitle'>Structured, transparent development workflow for reliable execution.</p>
+        </div>
+
+        <div class='process-grid'>
+          <div class='process-card reveal'>
+            <div class='process-number'>01</div>
+            <h3 style='font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem;'>Discover</h3>
+            <p style='font-size: 0.85rem; color: var(--text-muted);'>Define product scope, goals, and technical feasibility.</p>
+          </div>
+          <div class='process-card reveal'>
+            <div class='process-number'>02</div>
+            <h3 style='font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem;'>Plan</h3>
+            <p style='font-size: 0.85rem; color: var(--text-muted);'>System architecture, tech stack &amp; milestone schedule.</p>
+          </div>
+          <div class='process-card reveal'>
+            <div class='process-number'>03</div>
+            <h3 style='font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem;'>Design</h3>
+            <p style='font-size: 0.85rem; color: var(--text-muted);'>User journeys, Figma wireframes &amp; UI prototypes.</p>
+          </div>
+          <div class='process-card reveal'>
+            <div class='process-number'>04</div>
+            <h3 style='font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem;'>Develop</h3>
+            <p style='font-size: 0.85rem; color: var(--text-muted);'>Agile coding sprints with continuous automated testing.</p>
+          </div>
+          <div class='process-card reveal'>
+            <div class='process-number'>05</div>
+            <h3 style='font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem;'>Launch</h3>
+            <p style='font-size: 0.85rem; color: var(--text-muted);'>Deployment to servers / stores with post-launch support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US SECTION -->
+    <section class='section-padding' id='why-us' style='background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);'>
       <div class='container'>
         <div class='section-header reveal'>
           <span class='section-badge'>Engineering Principles</span>
@@ -1240,6 +1379,49 @@
   </section>
 
   <b:if cond='data:view.isHomepage'>
+    <!-- FAQ SECTION -->
+    <section class='section-padding' id='faq' style='border-top: 1px solid var(--border-color);'>
+      <div class='container'>
+        <div class='section-header reveal'>
+          <span class='section-badge'>Got Questions?</span>
+          <h2 class='section-title'>Frequently Asked Questions</h2>
+          <p class='section-subtitle'>Everything you need to know about engaging SynFusion for your project.</p>
+        </div>
+
+        <div class='faq-container'>
+          <div class='faq-item reveal'>
+            <div class='faq-question' onclick='toggleFAQ(this)'>
+              <span>What services does SynFusion provide?</span>
+              <span>+</span>
+            </div>
+            <div class='faq-answer'>
+              SynFusion specializes in Android app development, custom website development, full-stack web applications, UI/UX design systems, and custom backend software integrations.
+            </div>
+          </div>
+
+          <div class='faq-item reveal'>
+            <div class='faq-question' onclick='toggleFAQ(this)'>
+              <span>How does the development process work?</span>
+              <span>+</span>
+            </div>
+            <div class='faq-answer'>
+              We follow a structured 5-step process: Discover (understanding requirements), Plan (architecture &amp; roadmap), Design (UI/UX prototypes), Develop (agile coding), and Launch (zero-downtime deployment).
+            </div>
+          </div>
+
+          <div class='faq-item reveal'>
+            <div class='faq-question' onclick='toggleFAQ(this)'>
+              <span>How long does a typical project take?</span>
+              <span>+</span>
+            </div>
+            <div class='faq-answer'>
+              Timelines vary based on feature scope. Simple websites take 2-4 weeks, while complex full-stack web or native Android applications take 2-3 months.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT SECTION -->
     <section class='section-padding' id='contact' style='background-color: var(--bg-alt); border-top: 1px solid var(--border-color);'>
       <div class='container'>
@@ -1421,6 +1603,20 @@
       var forkToggle = document.getElementById('repoForkToggle');
       var refreshBtn = document.getElementById('repoRefreshBtn');
       var paginationContainer = document.getElementById('repoPaginationContainer');
+      var profileBadgeContainer = document.getElementById('ghProfileBadgeContainer');
+
+      // Fetch Profile Details
+      fetch('https://api.github.com/users/' + username)
+        .then(function(res) { if (res.ok) return res.json(); return null; })
+        .then(function(user) {
+          if (user && profileBadgeContainer) {
+            profileBadgeContainer.innerHTML = "<div style='display: inline-flex; align-items: center; gap: 0.5rem; background: #ffffff; padding: 0.4rem 1rem; border-radius: 9999px; border: 1px solid var(--border-color); font-size: 0.8rem; font-weight: 700; shadow: var(--shadow-sm);'>" +
+              "<span style='width: 8px; height: 8px; border-radius: 50%; background: #84CC16;'></span>" +
+              "<span>GitHub: <a href='" + user.html_url + "' target='_blank' style='color: var(--primary);'>@" + user.login + "</a> (" + user.public_repos + " Public Repositories)</span>" +
+              "</div>";
+          }
+        })
+        .catch(function() {});
 
       function fetchGitHubRepos() {
         if (!repoGrid) return;
@@ -1438,11 +1634,26 @@
           } catch(e) {}
         }
 
-        fetch('https://api.github.com/users/' + username + '/repos?per_page=100&sort=updated')
-          .then(function(res) {
-            if (!res.ok) throw new Error('Status ' + res.status);
-            return res.json();
-          })
+        var fetchedRepos = [];
+        function fetchPage(page) {
+          return fetch('https://api.github.com/users/' + username + '/repos?per_page=100&sort=updated&page=' + page)
+            .then(function(res) {
+              if (!res.ok) throw new Error('Status ' + res.status);
+              return res.json();
+            })
+            .then(function(pageRepos) {
+              if (!Array.isArray(pageRepos) || pageRepos.length === 0) {
+                return fetchedRepos;
+              }
+              fetchedRepos = fetchedRepos.concat(pageRepos);
+              if (pageRepos.length === 100) {
+                return fetchPage(page + 1);
+              }
+              return fetchedRepos;
+            });
+        }
+
+        fetchPage(1)
           .then(function(data) {
             allRepos = data;
             try {
@@ -1581,6 +1792,17 @@
       });
 
       if (repoGrid) fetchGitHubRepos();
+
+      // FAQ Accordion Toggle
+      window.toggleFAQ = function(element) {
+        var faqItem = element.parentElement;
+        var isActive = faqItem.classList.contains('active');
+        var allItems = document.querySelectorAll('.faq-item');
+        allItems.forEach(function(item) { item.classList.remove('active'); });
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      };
 
       // -------------------------------------------------------------
       // POST READER ENHANCEMENTS (Progress, TOC, Code Copy, Sharing)

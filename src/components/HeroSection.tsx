@@ -16,7 +16,7 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 overflow-hidden bg-gradient-to-b from-white via-[#F3FAF5]/60 to-white">
+    <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-16 lg:pb-24 overflow-hidden bg-gradient-to-b from-white via-[#F3FAF5]/60 to-white">
       {/* Background Fine Grid Pattern & Ambient Green Glows */}
       <div className="absolute inset-0 bg-[radial-gradient(#008F4C_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.05] pointer-events-none" />
       <div className="absolute top-1/4 right-0 -z-10 w-96 h-96 bg-[#008F4C]/10 rounded-full blur-3xl pointer-events-none" />
@@ -78,7 +78,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column - Visual Composition with Glassmorphism & Original Interface Mockups */}
-          <div className="lg:col-span-6 relative">
+          <div className="lg:col-span-6 relative overflow-hidden lg:overflow-visible">
             <div className="relative mx-auto max-w-md lg:max-w-none">
 
               {/* Main Desktop Browser Window Mockup */}
