@@ -32,7 +32,78 @@
       color: #17251E;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
-  ]]></b:skin>
+  ]]>
+    /* Mobile viewport recovery: prevent the floating CTA from pushing off-screen. */
+    @media screen and (max-width: 767px) {
+      html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        padding-bottom: calc(96px + env(safe-area-inset-bottom));
+      }
+
+      .mobile-contact-bar {
+        box-sizing: border-box;
+        left: 12px;
+        right: 12px;
+        bottom: calc(10px + env(safe-area-inset-bottom));
+        width: auto;
+        max-width: none;
+        transform: none;
+        min-width: 0;
+        gap: 6px;
+        padding: 6px;
+      }
+
+      .mobile-contact-bar *,
+      .mobile-bar-btn {
+        box-sizing: border-box;
+        min-width: 0;
+      }
+
+      .mobile-bar-btn {
+        flex: 1 1 0;
+        width: 0;
+        padding: 0.7rem 0.25rem;
+        gap: 0.25rem;
+        font-size: clamp(0.68rem, 3vw, 0.8rem);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .mobile-contact-bar a {
+        max-width: 100%;
+      }
+
+      /* Do not let entrance effects leave content invisible on mobile. */
+      .reveal,
+      .reveal.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      .mobile-contact-bar {
+        left: 8px;
+        right: 8px;
+        gap: 4px;
+        padding: 5px;
+      }
+
+      .mobile-bar-btn {
+        font-size: 0.68rem;
+        padding-left: 0.15rem;
+        padding-right: 0.15rem;
+      }
+    }
+
+</b:skin>
 
   <b:template-skin><![CDATA[
     /* Template Skin */
