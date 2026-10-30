@@ -10,7 +10,7 @@ const checks = [
   { name: 'Skin Block', test: xml.includes('<b:skin>') },
   { name: 'Blog Widget', test: xml.includes("type='Blog'") },
   { name: 'SynFusion Tagline', test: xml.includes('We Build. We Innovate. We Scale.') },
-  { name: 'Primary Color #FF6347', test: xml.includes('#FF6347') },
+  { name: 'Primary Color #008F4C', test: xml.includes('#008F4C') },
   { name: 'Phone Number', test: xml.includes('+91 93346 03912') },
   { name: 'Email Address', test: xml.includes('dharmjeetsingh958@gmail.com') },
   { name: 'WhatsApp Link', test: xml.includes('wa.me/919334603912') },

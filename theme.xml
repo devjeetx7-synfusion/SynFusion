@@ -29,7 +29,7 @@
       margin: 0;
       padding: 0;
       background-color: #ffffff;
-      color: #172033;
+      color: #17251E;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
   ]]></b:skin>
@@ -41,19 +41,19 @@
   <style type='text/css'>
     /*<![CDATA[*/
     :root {
-      --primary: #FF6347;
-      --primary-hover: #E94B35;
-      --primary-light: #FFF8F6;
-      --primary-border: rgba(255, 99, 71, 0.25);
-      --dark-bg: #171717;
-      --dark-card: rgba(34, 34, 34, 0.85);
-      --dark-border: rgba(255, 255, 255, 0.1);
-      --text-main: #172033;
-      --text-muted: #64748B;
+      --primary: #008F4C;
+      --primary-hover: #064E32;
+      --primary-light: #F3FAF5;
+      --primary-border: rgba(0, 143, 76, 0.25);
+      --dark-bg: #071C16;
+      --dark-card: rgba(11, 41, 32, 0.85);
+      --dark-border: rgba(6, 78, 50, 0.5);
+      --text-main: #17251E;
+      --text-muted: #64736A;
       --text-light: #94A3B8;
       --bg-main: #FFFFFF;
-      --bg-alt: #FFF8F6;
-      --border-color: rgba(226, 232, 240, 0.8);
+      --bg-alt: #F3FAF5;
+      --border-color: #E2ECE6;
       --glass-bg: rgba(255, 255, 255, 0.75);
       --glass-border: rgba(255, 255, 255, 0.6);
       --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
@@ -63,7 +63,7 @@
       --radius-full: 9999px;
       --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
       --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 20px 40px rgba(255, 99, 71, 0.15);
+      --shadow-lg: 0 20px 40px rgba(0, 143, 76, 0.15);
       --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --container-max: 1280px;
     }
@@ -182,7 +182,7 @@
 
     /* Gradient Text */
     .text-gradient {
-      background: linear-gradient(135deg, var(--primary) 0%, #FF8C00 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, #84CC16 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -207,12 +207,12 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
       color: #ffffff;
-      box-shadow: 0 8px 20px rgba(255, 99, 71, 0.35);
+      box-shadow: 0 8px 20px rgba(0, 143, 76, 0.35);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 28px rgba(255, 99, 71, 0.45);
+      box-shadow: 0 12px 28px rgba(0, 143, 76, 0.45);
     }
 
     .btn-primary svg {
@@ -312,7 +312,7 @@
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      box-shadow: 0 4px 10px rgba(255, 99, 71, 0.3);
+      box-shadow: 0 4px 10px rgba(0, 143, 76, 0.3);
     }
 
     .nav-links {
@@ -390,7 +390,7 @@
     /* Hero Section */
     .hero {
       padding: 4rem 0 6rem 0;
-      background: radial-gradient(circle at 50% 0%, rgba(255, 99, 71, 0.09) 0%, rgba(255, 248, 246, 0.4) 60%, rgba(255, 255, 255, 1) 100%);
+      background: radial-gradient(circle at 50% 0%, rgba(0, 143, 76, 0.09) 0%, rgba(255, 248, 246, 0.4) 60%, rgba(255, 255, 255, 1) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -589,10 +589,10 @@
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 99, 71, 0.3);
+      border: 1px solid rgba(0, 143, 76, 0.3);
       border-radius: var(--radius-md);
       padding: 0.875rem 1.1rem;
-      box-shadow: 0 12px 30px rgba(255, 99, 71, 0.15);
+      box-shadow: 0 12px 30px rgba(0, 143, 76, 0.15);
       z-index: 4;
       display: flex;
       align-items: center;
@@ -974,7 +974,7 @@
     .process-num {
       font-size: 2.5rem;
       font-weight: 900;
-      color: rgba(255, 99, 71, 0.2);
+      color: rgba(0, 143, 76, 0.2);
       line-height: 1;
       margin-bottom: 1rem;
     }
@@ -1033,7 +1033,7 @@
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(255, 99, 71, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 143, 76, 0.3);
     }
 
     .portfolio-grid {
@@ -1090,7 +1090,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 100% 0%, rgba(255, 99, 71, 0.2) 0%, transparent 60%);
+      background: radial-gradient(circle at 100% 0%, rgba(0, 143, 76, 0.2) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -1117,9 +1117,9 @@
       font-weight: 600;
       padding: 0.25rem 0.5rem;
       border-radius: 4px;
-      background: rgba(255, 99, 71, 0.25);
-      color: #FF8C75;
-      border: 1px solid rgba(255, 99, 71, 0.4);
+      background: rgba(0, 143, 76, 0.25);
+      color: #84CC16;
+      border: 1px solid rgba(0, 143, 76, 0.4);
     }
 
     .portfolio-mock-ui {
@@ -1219,7 +1219,7 @@
     .why-card-icon {
       width: 48px;
       height: 48px;
-      background: rgba(255, 99, 71, 0.15);
+      background: rgba(0, 143, 76, 0.15);
       border-radius: var(--radius-md);
       color: var(--primary);
       display: flex;
@@ -1444,7 +1444,7 @@
     .form-control:focus {
       background: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.15);
+      box-shadow: 0 0 0 3px rgba(0, 143, 76, 0.15);
     }
 
     textarea.form-control {
@@ -1559,7 +1559,7 @@
       }
 
       .mobile-bar-call {
-        background: linear-gradient(135deg, #172033 0%, #0F172A 100%);
+        background: linear-gradient(135deg, #17251E 0%, #0F172A 100%);
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
     }
@@ -2293,7 +2293,7 @@
     <section class='why-section' id='why-us'>
       <div class='container'>
         <div class='section-header reveal'>
-          <span class='section-badge' style='background: rgba(255,99,71,0.15); border-color: rgba(255,99,71,0.3); color: #FF8C75;'>Our Core Advantage</span>
+          <span class='section-badge' style='background: rgba(0,143,76,0.15); border-color: rgba(0,143,76,0.3); color: #84CC16;'>Our Core Advantage</span>
           <h2 class='section-title'>Built With Purpose. Designed for People.</h2>
           <p class='section-subtitle'>We combine technical craftsmanship with product clarity to deliver software that scales effortlessly.</p>
         </div>
@@ -2385,7 +2385,7 @@
         <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2'>
           <b:widget-settings>
             <b:widget-setting name='showDateHeader'>true</b:widget-setting>
-            <b:widget-setting name='style.textcolor'>#172033</b:widget-setting>
+            <b:widget-setting name='style.textcolor'>#17251E</b:widget-setting>
 
             <b:widget-setting name='showShareButtons'>true</b:widget-setting>
 
@@ -2397,9 +2397,9 @@
 
             <b:widget-setting name='showCommentLink'>true</b:widget-setting>
 
-            <b:widget-setting name='style.linkcolor'>#FF6347</b:widget-setting>
+            <b:widget-setting name='style.linkcolor'>#008F4C</b:widget-setting>
 
-            <b:widget-setting name='style.unvisitedlinkcolor'>#FF6347</b:widget-setting>
+            <b:widget-setting name='style.unvisitedlinkcolor'>#008F4C</b:widget-setting>
 
             <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
 
@@ -2862,7 +2862,7 @@
         if (!name || !email || !service || !message) {
           if (statusEl) {
             statusEl.style.display = 'block';
-            statusEl.style.color = '#E94B35';
+            statusEl.style.color = '#064E32';
             statusEl.textContent = 'Please fill in all required fields.';
           }
           return;
