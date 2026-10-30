@@ -251,6 +251,168 @@
       .section-header { margin-bottom: 1.5rem; }
     }
 
+
+    /* Refined mobile-first section layouts: About, GitHub portfolio and blog cards */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: start;
+    }
+    .about-content-title {
+      max-width: 13ch;
+      font-size: clamp(2rem, 4.2vw, 3.35rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin: 1rem 0 1.25rem;
+    }
+    .about-p {
+      font-size: 1rem;
+      line-height: 1.75;
+      padding-top: 1rem;
+      margin: 0;
+      border-top: 1px solid var(--border-color);
+    }
+    .about-p + .about-p { margin-top: 0.9rem; }
+    .about-principles { display: grid; gap: 1rem; }
+    .principle-item {
+      display: grid;
+      grid-template-columns: 44px minmax(0,1fr);
+      align-items: start;
+      gap: 1rem;
+      margin: 0;
+      padding: 1.35rem;
+      border-radius: 22px;
+      border: 1px solid var(--border-color);
+      background: linear-gradient(145deg,#ffffff 0%,var(--bg-alt) 100%);
+      box-shadow: 0 8px 24px rgba(15,35,25,0.035);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .principle-item:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-md);
+    }
+    .principle-num {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg,var(--primary),var(--primary-hover));
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 900;
+    }
+    .principle-title { font-size: 1.08rem; font-weight: 800; line-height: 1.35; margin: .15rem 0 .45rem; }
+    .principle-desc { font-size: .94rem; line-height: 1.65; color: var(--text-muted); }
+
+    .stats-grid {
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
+    }
+    .stat-card { min-width: 0; padding: 1.4rem 1rem; border-radius: 20px; }
+    .stat-val { font-size: clamp(1.65rem,3vw,2.25rem); }
+    .stat-lbl { line-height: 1.4; }
+    .portfolio-controls { gap: .85rem; margin-bottom: 1.25rem; }
+    .portfolio-controls > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem !important;
+      align-items: center;
+    }
+    .portfolio-search-input { box-sizing: border-box; width: min(100%, 420px); min-height: 48px; }
+    .portfolio-select { box-sizing: border-box; max-width: 100%; min-height: 46px; }
+    .gh-card {
+      min-width: 0;
+      padding: clamp(1rem,2.5vw,1.5rem);
+      border-radius: 20px;
+      overflow-wrap: anywhere;
+    }
+    .gh-card > div:first-child { min-width: 0; }
+    .gh-repo-title { line-height: 1.35; overflow-wrap: anywhere; }
+    .gh-repo-desc { min-height: 0; margin-top: .65rem; margin-bottom: 1rem; }
+    .gh-meta { display: flex; flex-wrap: wrap; gap: .65rem 1rem; align-items: center; font-size: .82rem; }
+    .gh-meta a { overflow-wrap: anywhere; }
+    .blog-list-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+    .blog-list-card {
+      display: grid;
+      grid-template-columns: 132px minmax(0,1fr);
+      gap: 1.1rem;
+      align-items: stretch;
+      padding: .85rem;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      background: #fff;
+      min-width: 0;
+      overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .blog-list-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary-border); }
+    .blog-thumb-link { display: block; min-width: 0; min-height: 132px; }
+    .blog-thumb {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 132px;
+      max-height: 190px;
+      object-fit: cover;
+      border-radius: 14px;
+      background: var(--bg-alt);
+    }
+    .blog-thumb-fallback {
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg,#e8f7ef,#f6fbf8);
+    }
+    .blog-list-content { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; padding: .15rem .2rem .2rem 0; }
+    .blog-list-content .blog-date { margin-bottom: .4rem; }
+    .blog-list-content .blog-card-title { font-size: 1.05rem; line-height: 1.35; margin: 0 0 .5rem; overflow-wrap: anywhere; }
+    .blog-list-content .blog-card-title a { color: var(--text-main); text-decoration: none; }
+    .blog-list-content .blog-card-snippet { font-size: .86rem; line-height: 1.5; margin: 0 0 .65rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-read-link { margin-top: auto; display: inline-flex; gap: .4rem; align-items: center; color: var(--primary); font-weight: 800; font-size: .88rem; text-decoration: none; }
+
+    @media screen and (max-width: 767px) {
+      .section-padding { padding-top: 2.75rem; padding-bottom: 2.75rem; }
+      .container { width: calc(100% - 2rem); }
+      #about .about-grid { grid-template-columns: minmax(0,1fr); gap: 1.5rem; }
+      #about .about-content-title { max-width: 100%; font-size: clamp(2rem,7vw,2.65rem); margin-top: .85rem; }
+      #about .about-p { font-size: .98rem; line-height: 1.7; }
+      #about .about-principles { gap: .8rem; }
+      #about .principle-item { grid-template-columns: 38px minmax(0,1fr); gap: .8rem; padding: 1rem; border-radius: 18px; }
+      #about .principle-num { width: 36px; height: 36px; border-radius: 12px; }
+      .stats-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: .75rem; margin: 1.25rem 0; }
+      .stat-card { padding: 1.1rem .65rem; }
+      .stat-val { font-size: 1.65rem; margin-bottom: .25rem; }
+      .stat-lbl { font-size: .78rem; }
+      .portfolio-controls { width: 100%; }
+      .portfolio-controls > div { display: grid !important; grid-template-columns: minmax(0,1fr); gap: .65rem !important; }
+      .portfolio-controls select, .portfolio-controls button, .portfolio-search-input { width: 100% !important; max-width: 100%; }
+      .portfolio-controls label { padding: .35rem 0; }
+      .portfolio-grid { grid-template-columns: minmax(0,1fr) !important; gap: .85rem; }
+      .gh-card { padding: 1.1rem; }
+      .gh-meta { gap: .5rem .8rem; line-height: 1.5; }
+      .blog-list-grid { grid-template-columns: minmax(0,1fr); gap: .8rem; }
+      .blog-list-card { grid-template-columns: 108px minmax(0,1fr); gap: .8rem; padding: .7rem; border-radius: 17px; }
+      .blog-thumb-link, .blog-thumb { min-height: 116px; }
+      .blog-thumb { height: 116px; }
+      .blog-list-content .blog-card-title { font-size: .98rem; }
+      .blog-list-content .blog-card-snippet { font-size: .81rem; -webkit-line-clamp: 2; }
+    }
+    @media screen and (max-width: 380px) {
+      .container { width: calc(100% - 1.25rem); }
+      .blog-list-card { grid-template-columns: 92px minmax(0,1fr); gap: .65rem; padding: .6rem; }
+      .blog-thumb-link, .blog-thumb { min-height: 100px; }
+      .blog-thumb { height: 100px; }
+      .blog-list-content .blog-card-title { font-size: .92rem; }
+      .blog-list-content .blog-card-snippet { font-size: .78rem; }
+      .portfolio-controls > div { grid-template-columns: minmax(0,1fr); }
+    }
+
 </b:skin>
 
   <b:template-skin><![CDATA[
@@ -2887,23 +3049,28 @@
                   <p class='section-subtitle'>Insights on Android development, web performance, and AI workflows.</p>
                 </div>
 
-                <div style='display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.75rem;'>
+                <div class='blog-list-grid'>
                   <b:loop values='data:posts' var='post'>
-                    <article class='feature-card reveal'>
-                      <div style='font-size: 0.8rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;'>
-                        <data:post.dateHeader/>
-                      </div>
-                      <h3 style='font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem;'>
-                        <a expr:href='data:post.url'><data:post.title/></a>
-                      </h3>
-                      <p style='font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.6;'>
-                        <b:if cond='data:post.snippet'>
-                          <data:post.snippet/>
+                    <article class='blog-list-card reveal'>
+                      <a class='blog-thumb-link' expr:href='data:post.url' expr:aria-label='data:post.title'>
+                        <b:if cond='data:post.featuredImage'>
+                          <img class='blog-thumb' expr:src='data:post.featuredImage' expr:alt='data:post.title' loading='lazy'/>
                         <b:else/>
-                          Read complete article on SynFusion digital agency blog...
+                          <span class='blog-thumb blog-thumb-fallback' aria-hidden='true'><span>SF</span></span>
                         </b:if>
-                      </p>
-                      <a class='btn btn-outline btn-sm' expr:href='data:post.url'>Read Article &#8594;</a>
+                      </a>
+                      <div class='blog-list-content'>
+                        <div class='blog-date'><data:post.dateHeader/></div>
+                        <h3 class='blog-card-title'><a expr:href='data:post.url'><data:post.title/></a></h3>
+                        <p class='blog-card-snippet'>
+                          <b:if cond='data:post.snippet'>
+                            <data:post.snippet/>
+                          <b:else/>
+                            Read the latest insights from SynFusion.
+                          </b:if>
+                        </p>
+                        <a class='blog-read-link' expr:href='data:post.url'>Read article <span aria-hidden='true'>&#8594;</span></a>
+                      </div>
                     </article>
                   </b:loop>
                 </div>
