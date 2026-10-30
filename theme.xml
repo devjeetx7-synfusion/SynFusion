@@ -413,6 +413,191 @@
       .portfolio-controls > div { grid-template-columns: minmax(0,1fr); }
     }
 
+
+    /* Final mobile polish based on real-device screenshots */
+    @media screen and (max-width: 767px) {
+      .hero {
+        padding: 2.25rem 0 2rem !important;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0,1fr);
+        gap: 1.1rem !important;
+        align-items: start;
+      }
+      .hero-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .hero-eyebrow {
+        max-width: 100%;
+        width: fit-content;
+        margin: 0 auto 1.1rem;
+        padding: .65rem 1rem;
+        font-size: clamp(.68rem,3.2vw,.82rem);
+        letter-spacing: .07em;
+        line-height: 1.35;
+        white-space: normal;
+      }
+      .hero-title {
+        max-width: 100%;
+        margin: 0 auto 1rem !important;
+        font-size: clamp(2.15rem,8.3vw,3rem) !important;
+        line-height: 1.08 !important;
+        letter-spacing: -.045em;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+      .hero-desc {
+        display: block;
+        max-width: 34rem;
+        width: 100%;
+        margin: 0 auto 1.15rem !important;
+        padding: 0 .15rem;
+        box-sizing: border-box;
+        font-size: clamp(.98rem,4vw,1.08rem) !important;
+        line-height: 1.62 !important;
+        overflow: visible;
+        height: auto !important;
+        max-height: none !important;
+      }
+      .hero-ctas {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .65rem !important;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 26rem;
+      }
+      .hero-ctas .btn {
+        min-height: 54px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .hero-visual {
+        width: 100%;
+        max-width: 100%;
+        margin: .15rem auto 0 !important;
+        overflow: visible;
+      }
+      .hero-phones-wrap {
+        height: 250px !important;
+        max-width: 360px;
+        margin: 0 auto -12px !important;
+        transform: scale(.72) !important;
+        transform-origin: top center;
+      }
+      .hero-visual .phone-center {
+        transform-origin: top center;
+      }
+      .hero-visual + * { margin-top: 0; }
+
+      /* Reduce the empty gap between the hero mockup and the feature strip. */
+      .hero + section,
+      .hero ~ section {
+        scroll-margin-top: 90px;
+      }
+      .hero + .feature-strip,
+      .hero + section.feature-strip {
+        padding-top: 1.25rem !important;
+      }
+
+      /* Statistics cards: compact height, legible labels and consistent spacing. */
+      #portfolio .section-header {
+        margin-bottom: 1.25rem !important;
+      }
+      #portfolio .section-title {
+        font-size: clamp(2rem,7.4vw,2.65rem) !important;
+        line-height: 1.12 !important;
+        margin-bottom: .7rem;
+      }
+      #portfolio .section-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.55 !important;
+        max-width: 34rem;
+        margin: 0 auto;
+      }
+      #portfolio .stats-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+        gap: .7rem !important;
+        margin: 1.1rem 0 1.25rem !important;
+        align-items: stretch;
+      }
+      #portfolio .stat-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+        min-height: 138px;
+        padding: 1rem .7rem !important;
+        border-radius: 18px;
+      }
+      #portfolio .stat-val {
+        font-size: clamp(1.7rem,7vw,2.35rem) !important;
+        line-height: 1.08;
+        margin-bottom: .5rem !important;
+        overflow-wrap: anywhere;
+      }
+      #portfolio .stat-lbl {
+        font-size: clamp(.8rem,3.5vw,.95rem) !important;
+        line-height: 1.4;
+      }
+
+      /* Keep the floating contact bar from obscuring the last section content. */
+      body {
+        padding-bottom: calc(112px + env(safe-area-inset-bottom)) !important;
+      }
+      .mobile-contact-bar {
+        bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+      }
+      .section-padding {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+      }
+    }
+
+    @media screen and (max-width: 380px) {
+      .hero { padding-top: 1.75rem !important; }
+      .hero-title { font-size: clamp(2rem,8.4vw,2.4rem) !important; }
+      .hero-phones-wrap {
+        height: 220px !important;
+        transform: scale(.64) !important;
+        margin-bottom: -22px !important;
+      }
+      #portfolio .stat-card { min-height: 124px; padding: .8rem .55rem !important; }
+      #portfolio .stat-val { font-size: 1.7rem !important; }
+      #portfolio .stat-lbl { font-size: .78rem !important; }
+    }
+
+    /* Footer social connect: add a proper LinkedIn destination and compact icon row. */
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .65rem;
+    }
+    .social-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 50%;
+      font-size: .78rem;
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .social-icon-btn:hover { transform: translateY(-3px); }
+    @media screen and (max-width: 767px) {
+      .social-row { gap: .55rem; }
+      .social-icon-btn { width: 40px; height: 40px; flex-basis: 40px; }
+    }
+
 </b:skin>
 
   <b:template-skin><![CDATA[
@@ -3218,7 +3403,8 @@
             <a aria-label='Instagram' class='social-icon-btn' href='https://www.instagram.com/getsynfusion/' target='_blank'>IG</a>
             <a aria-label='Facebook' class='social-icon-btn' href='https://www.facebook.com/getsynfusion' target='_blank'>FB</a>
             <a aria-label='YouTube' class='social-icon-btn' href='https://www.youtube.com/@getsynfusion' target='_blank'>YT</a>
-            <a aria-label='WhatsApp' class='social-icon-btn' href='https://wa.me/919334603912' target='_blank'>WA</a>
+            <a aria-label='WhatsApp' class='social-icon-btn' href='https://wa.me/919334603912' target='_blank' rel='noopener noreferrer'>WA</a>
+            <a aria-label='LinkedIn' class='social-icon-btn' href='https://www.linkedin.com/' target='_blank' rel='noopener noreferrer'>in</a>
           </div>
         </div>
 
