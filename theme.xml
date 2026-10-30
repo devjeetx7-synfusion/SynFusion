@@ -814,6 +814,142 @@
       .social-icon-btn svg { width: 18px; height: 18px; }
     }
 
+
+    /* Stable mobile hero and phone showcase layout.
+       Keep the wrapper in normal document flow; scale the phones, not the wrapper. */
+    @media screen and (max-width: 767px) {
+      .hero {
+        padding: 1.5rem 0 2rem !important;
+        overflow: hidden;
+      }
+      .hero-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0,1fr) !important;
+        align-items: start !important;
+        gap: 0 !important;
+      }
+      .hero-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        text-align: center;
+      }
+      .hero-eyebrow {
+        max-width: 100%;
+        margin: 0 auto 1rem !important;
+        line-height: 1.4;
+      }
+      .hero-title {
+        margin: 0 auto 1.15rem !important;
+        max-width: 15ch;
+        font-size: clamp(2.15rem,8.5vw,3rem) !important;
+        line-height: 1.08 !important;
+      }
+      .hero-ctas {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: .7rem !important;
+        width: 100%;
+        max-width: 31rem;
+        margin: 0 auto !important;
+      }
+      .hero-ctas .btn {
+        width: 100%;
+        min-height: 54px;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      .hero-visual {
+        width: 100%;
+        max-width: 440px;
+        min-height: 0 !important;
+        margin: 1.25rem auto 0 !important;
+        padding: 0 !important;
+        overflow: visible;
+      }
+      .hero-phones-wrap {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        max-width: 440px;
+        height: 325px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+        animation: none !important;
+        overflow: visible;
+      }
+      .hero-visual .phone-center {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: auto;
+        width: 210px;
+        height: 390px;
+        transform: translateX(-50%) scale(.78) !important;
+        transform-origin: top center !important;
+        margin: 0;
+        z-index: 3;
+      }
+      .hero-visual .phone-bg-left {
+        top: 15px;
+        left: calc(50% - 150px);
+        right: auto;
+        transform: rotate(-12deg) scale(.78) !important;
+        transform-origin: top center;
+        z-index: 1;
+      }
+      .hero-visual .phone-bg-right {
+        top: 15px;
+        right: calc(50% - 150px);
+        left: auto;
+        transform: rotate(12deg) scale(.78) !important;
+        transform-origin: top center;
+        z-index: 1;
+      }
+      .hero-visual .glass-notif,
+      .hero-visual .glass-project-card {
+        display: none !important;
+      }
+      .hero + .trust-strip,
+      .hero + section.feature-strip,
+      .hero + .feature-strip {
+        margin-top: 0 !important;
+        padding-top: 2rem !important;
+      }
+      .trust-strip {
+        position: relative;
+        padding: 2rem 0 !important;
+      }
+      .trust-strip .container {
+        width: calc(100% - 2rem);
+      }
+    }
+    @media screen and (max-width: 380px) {
+      .hero { padding-top: 1.1rem !important; }
+      .hero-title {
+        font-size: clamp(2rem,8.4vw,2.4rem) !important;
+        line-height: 1.09 !important;
+      }
+      .hero-visual { margin-top: 1rem !important; }
+      .hero-phones-wrap { height: 285px !important; }
+      .hero-visual .phone-center {
+        transform: translateX(-50%) scale(.69) !important;
+      }
+      .hero-visual .phone-bg-left {
+        left: calc(50% - 138px);
+        transform: rotate(-12deg) scale(.69) !important;
+      }
+      .hero-visual .phone-bg-right {
+        right: calc(50% - 138px);
+        transform: rotate(12deg) scale(.69) !important;
+      }
+    }
+
 </b:skin>
 
   <b:template-skin><![CDATA[
