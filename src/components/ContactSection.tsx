@@ -31,7 +31,6 @@ export default function ContactSection() {
     setErrorMessage("");
     setSuccessMessage("");
 
-    // Client side quick validation
     if (!formData.name.trim()) {
       setStatus("error");
       setErrorMessage("Please enter your full name.");
@@ -86,39 +85,39 @@ export default function ContactSection() {
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8F6] border border-[#FF6347]/20 text-[#E94B35] text-xs font-semibold tracking-wide uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#FF6347]" />
-            <span>GET IN TOUCH</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3FAF5] border border-[#008F4C]/20 text-[#064E32] text-xs font-semibold tracking-wide uppercase shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#008F4C]" />
+            <span>CONTACT US</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#172033] tracking-tight">
-            Have an Idea? <span className="text-[#FF6347]">Let&apos;s Build It.</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#17251E] tracking-tight">
+            Have a Project in Mind? <span className="text-[#008F4C]">Let&apos;s Build It.</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#64748B]">
-            Reach out directly or send us your project requirements for a quick consultation and roadmap proposal.
+          <p className="text-base sm:text-lg text-[#64736A]">
+            Send us your project scope or reach out directly for a fast technical proposal and roadmap.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-          {/* Left Column: Direct Contact Info & WhatsApp Button */}
+          {/* Left Column: Direct Contact Info & WhatsApp */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-[#FFF8F6] rounded-3xl p-8 border border-[#FF6347]/20 space-y-6">
-              <h3 className="text-xl font-bold text-[#172033]">Direct Communication</h3>
-              <p className="text-sm text-[#64748B]">
-                We respond to all project inquiries within 24 hours on business days.
+            <div className="bg-[#F3FAF5] rounded-3xl p-8 border border-[#008F4C]/20 space-y-6">
+              <h3 className="text-xl font-bold text-[#17251E]">Direct Contact Details</h3>
+              <p className="text-sm text-[#64736A]">
+                Reach out to our team directly via phone, email, or instant WhatsApp consultation.
               </p>
 
               <div className="space-y-4 pt-2">
                 <a
                   href={`tel:${CONTACT_INFO.phone}`}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white border border-[#E8E8EC] hover:border-[#FF6347] transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white border border-[#E2ECE6] hover:border-[#008F4C] transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#FFF8F6] border border-[#FF6347]/20 flex items-center justify-center text-[#FF6347] group-hover:bg-[#FF6347] group-hover:text-white transition-colors">
+                  <div className="w-10 h-10 rounded-lg bg-[#F3FAF5] border border-[#008F4C]/20 flex items-center justify-center text-[#008F4C] group-hover:bg-[#008F4C] group-hover:text-white transition-colors">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">Phone</div>
-                    <div className="text-sm font-bold text-[#172033] group-hover:text-[#FF6347] transition-colors">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-[#64736A]">Phone</div>
+                    <div className="text-sm font-bold text-[#17251E] group-hover:text-[#008F4C] transition-colors">
                       {CONTACT_INFO.phoneDisplay}
                     </div>
                   </div>
@@ -126,22 +125,22 @@ export default function ContactSection() {
 
                 <a
                   href={`mailto:${CONTACT_INFO.email}`}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white border border-[#E8E8EC] hover:border-[#FF6347] transition-colors group"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white border border-[#E2ECE6] hover:border-[#008F4C] transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#FFF8F6] border border-[#FF6347]/20 flex items-center justify-center text-[#FF6347] group-hover:bg-[#FF6347] group-hover:text-white transition-colors">
+                  <div className="w-10 h-10 rounded-lg bg-[#F3FAF5] border border-[#008F4C]/20 flex items-center justify-center text-[#008F4C] group-hover:bg-[#008F4C] group-hover:text-white transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">Email</div>
-                    <div className="text-sm font-bold text-[#172033] group-hover:text-[#FF6347] transition-colors break-all">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-[#64736A]">Email</div>
+                    <div className="text-sm font-bold text-[#17251E] group-hover:text-[#008F4C] transition-colors break-all">
                       {CONTACT_INFO.email}
                     </div>
                   </div>
                 </a>
               </div>
 
-              {/* Direct WhatsApp Button */}
-              <div className="pt-4 border-t border-[#E8E8EC]">
+              {/* Direct WhatsApp Action Button */}
+              <div className="pt-4 border-t border-[#E2ECE6]">
                 <a
                   href={CONTACT_INFO.whatsappUrl}
                   target="_blank"
@@ -155,11 +154,11 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Contact Form */}
+          {/* Right Column: Project Enquiry Form */}
           <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E8E8EC] shadow-xl space-y-6">
+            <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2ECE6] shadow-xl space-y-6">
 
-              {/* Spam Protection Honeypot field */}
+              {/* Honeypot field */}
               <input
                 type="text"
                 name="honeypot"
@@ -171,10 +170,10 @@ export default function ContactSection() {
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* Name */}
+                {/* Full Name */}
                 <div>
-                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-[#172033] mb-2">
-                    Full Name <span className="text-[#FF6347]">*</span>
+                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-[#17251E] mb-2">
+                    Full Name <span className="text-[#008F4C]">*</span>
                   </label>
                   <input
                     type="text"
@@ -184,14 +183,14 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-xl border border-[#E8E8EC] focus:outline-hidden focus:ring-2 focus:ring-[#FF6347] focus:border-transparent text-sm text-[#172033]"
+                    className="w-full px-4 py-3 rounded-xl border border-[#E2ECE6] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] focus:border-transparent text-sm text-[#17251E]"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-[#172033] mb-2">
-                    Email Address <span className="text-[#FF6347]">*</span>
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-[#17251E] mb-2">
+                    Email Address <span className="text-[#008F4C]">*</span>
                   </label>
                   <input
                     type="email"
@@ -201,7 +200,7 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-[#E8E8EC] focus:outline-hidden focus:ring-2 focus:ring-[#FF6347] focus:border-transparent text-sm text-[#172033]"
+                    className="w-full px-4 py-3 rounded-xl border border-[#E2ECE6] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] focus:border-transparent text-sm text-[#17251E]"
                   />
                 </div>
               </div>
@@ -209,8 +208,8 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-[#172033] mb-2">
-                    Phone Number <span className="text-[#64748B] font-normal">(Optional)</span>
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-[#17251E] mb-2">
+                    Phone Number <span className="text-[#64736A] font-normal">(Optional)</span>
                   </label>
                   <input
                     type="tel"
@@ -218,22 +217,22 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+1 (555) 000-0000"
-                    className="w-full px-4 py-3 rounded-xl border border-[#E8E8EC] focus:outline-hidden focus:ring-2 focus:ring-[#FF6347] focus:border-transparent text-sm text-[#172033]"
+                    placeholder="+91 0000000000"
+                    className="w-full px-4 py-3 rounded-xl border border-[#E2ECE6] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] focus:border-transparent text-sm text-[#17251E]"
                   />
                 </div>
 
                 {/* Service Selection */}
                 <div>
-                  <label htmlFor="service" className="block text-xs font-bold uppercase tracking-wider text-[#172033] mb-2">
-                    Service Required <span className="text-[#FF6347]">*</span>
+                  <label htmlFor="service" className="block text-xs font-bold uppercase tracking-wider text-[#17251E] mb-2">
+                    Service Required <span className="text-[#008F4C]">*</span>
                   </label>
                   <select
                     id="service"
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-[#E8E8EC] focus:outline-hidden focus:ring-2 focus:ring-[#FF6347] focus:border-transparent text-sm text-[#172033] bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-[#E2ECE6] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] focus:border-transparent text-sm text-[#17251E] bg-white"
                   >
                     {SERVICES_DATA.map((srv) => (
                       <option key={srv.id} value={srv.title}>
@@ -246,15 +245,15 @@ export default function ContactSection() {
 
               {/* Budget */}
               <div>
-                <label htmlFor="budget" className="block text-xs font-bold uppercase tracking-wider text-[#172033] mb-2">
-                  Project Budget <span className="text-[#64748B] font-normal">(Optional)</span>
+                <label htmlFor="budget" className="block text-xs font-bold uppercase tracking-wider text-[#17251E] mb-2">
+                  Project Scope / Budget <span className="text-[#64736A] font-normal">(Optional)</span>
                 </label>
                 <select
                   id="budget"
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-[#E8E8EC] focus:outline-hidden focus:ring-2 focus:ring-[#FF6347] focus:border-transparent text-sm text-[#172033] bg-white"
+                  className="w-full px-4 py-3 rounded-xl border border-[#E2ECE6] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] focus:border-transparent text-sm text-[#17251E] bg-white"
                 >
                   <option value="Under $5,000">Under $5,000</option>
                   <option value="$5,000 - $10,000">$5,000 - $10,000</option>
@@ -265,8 +264,8 @@ export default function ContactSection() {
 
               {/* Description */}
               <div>
-                <label htmlFor="description" className="block text-xs font-bold uppercase tracking-wider text-[#172033] mb-2">
-                  Project Description <span className="text-[#FF6347]">*</span>
+                <label htmlFor="description" className="block text-xs font-bold uppercase tracking-wider text-[#17251E] mb-2">
+                  Project Description <span className="text-[#008F4C]">*</span>
                 </label>
                 <textarea
                   id="description"
@@ -275,12 +274,12 @@ export default function ContactSection() {
                   rows={4}
                   value={formData.description}
                   onChange={handleChange}
-                  placeholder="Tell us about your project goals, desired features, timeline, or key target audience..."
-                  className="w-full px-4 py-3 rounded-xl border border-[#E8E8EC] focus:outline-hidden focus:ring-2 focus:ring-[#FF6347] focus:border-transparent text-sm text-[#172033]"
+                  placeholder="Describe your project goals, required features, timeline, or key target audience..."
+                  className="w-full px-4 py-3 rounded-xl border border-[#E2ECE6] focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] focus:border-transparent text-sm text-[#17251E]"
                 />
               </div>
 
-              {/* Success / Error Messages */}
+              {/* Status Notifications */}
               {status === "error" && (
                 <div className="flex items-center gap-2 p-4 rounded-xl bg-red-50 text-red-700 text-sm border border-red-200">
                   <AlertCircle className="w-5 h-5 shrink-0 text-red-600" />
@@ -289,7 +288,7 @@ export default function ContactSection() {
               )}
 
               {status === "success" && (
-                <div className="flex items-center gap-2 p-4 rounded-xl bg-emerald-50 text-emerald-700 text-sm border border-emerald-200">
+                <div className="flex items-center gap-2 p-4 rounded-xl bg-emerald-50 text-emerald-800 text-sm border border-emerald-200">
                   <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-600" />
                   <span>{successMessage}</span>
                 </div>
@@ -299,7 +298,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#FF6347] hover:bg-[#E94B35] text-white font-bold text-base transition-all duration-300 shadow-lg shadow-[#FF6347]/25 hover:shadow-xl hover:shadow-[#FF6347]/35 focus:outline-hidden focus:ring-2 focus:ring-[#FF6347] focus:ring-offset-2 disabled:opacity-60 cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#008F4C] to-[#064E32] hover:from-[#064E32] hover:to-[#008F4C] text-white font-bold text-base transition-all duration-300 shadow-lg shadow-[#008F4C]/25 hover:shadow-xl focus:outline-hidden focus:ring-2 focus:ring-[#008F4C] focus:ring-offset-2 disabled:opacity-60 cursor-pointer"
               >
                 {status === "loading" ? (
                   <>
@@ -308,7 +307,7 @@ export default function ContactSection() {
                   </>
                 ) : (
                   <>
-                    <span>Send Project Request</span>
+                    <span>Start a Project</span>
                     <Send className="w-4 h-4" />
                   </>
                 )}

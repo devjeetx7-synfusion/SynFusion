@@ -6,24 +6,24 @@ import { Sparkles, ShieldCheck, Zap, Code2, Cpu } from "lucide-react";
 
 export default function WhySynFusionSection() {
   return (
-    <section id="why-us" className="py-20 lg:py-28 bg-[#171717] text-white relative overflow-hidden">
-      {/* Background Decorative Accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF6347]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#FF6347]/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="why-us" className="py-20 lg:py-28 bg-[#071C16] text-white relative overflow-hidden border-t border-[#064E32]">
+      {/* Background Subtle Green Accents */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#008F4C]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#84CC16]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#FF6347] text-xs font-semibold tracking-wide uppercase backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-[#FF6347]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#064E32]/60 border border-[#008F4C]/40 text-[#84CC16] text-xs font-semibold tracking-wide uppercase backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-[#84CC16]" />
             <span>THE SYNFUSION ADVANTAGE</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-            Built With Purpose. <span className="text-[#FF6347]">Designed for People.</span>
+            Built With Purpose. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008F4C] to-[#84CC16]">Designed for People.</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-400">
-            We focus on software excellence, clean execution, and transparent partnerships.
+          <p className="text-base sm:text-lg text-emerald-100/70">
+            We prioritize software excellence, clean architecture, and transparent engineering partnerships.
           </p>
         </div>
 
@@ -32,9 +32,9 @@ export default function WhySynFusionSection() {
           {WHY_SYNFUSION_POINTS.map((point, idx) => (
             <div
               key={point.title}
-              className="bg-gray-900/80 rounded-2xl border border-gray-800 p-8 transition-all duration-300 hover:border-[#FF6347]/50 hover:bg-gray-900/90 group"
+              className="bg-[#0b2920]/80 rounded-2xl border border-[#064E32] p-8 transition-all duration-300 hover:border-[#008F4C] hover:bg-[#0b2920] group"
             >
-              <div className="w-12 h-12 rounded-xl bg-gray-800/80 border border-gray-700 flex items-center justify-center text-[#FF6347] group-hover:bg-[#FF6347] group-hover:text-white transition-colors duration-300 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-[#071C16] border border-[#064E32] flex items-center justify-center text-[#84CC16] group-hover:bg-[#008F4C] group-hover:text-white transition-colors duration-300 mb-6">
                 {idx % 3 === 0 ? (
                   <Code2 className="w-6 h-6" />
                 ) : idx % 3 === 1 ? (
@@ -43,32 +43,32 @@ export default function WhySynFusionSection() {
                   <Zap className="w-6 h-6" />
                 )}
               </div>
-              <h3 className="text-xl font-bold text-white group-hover:text-[#FF6347] transition-colors mb-3">
+              <h3 className="text-xl font-bold text-white group-hover:text-[#84CC16] transition-colors mb-3">
                 {point.title}
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <p className="text-sm text-emerald-100/70 leading-relaxed">
                 {point.desc}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Restrained Accent Metric / Highlight Bar */}
-        <div className="mt-16 bg-gradient-to-r from-gray-900 via-[#FF6347]/10 to-gray-900 border border-gray-800 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Direct Technical Access Bar */}
+        <div className="mt-16 bg-gradient-to-r from-[#0b2920] via-[#064E32] to-[#0b2920] border border-[#008F4C]/40 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#FF6347] flex items-center justify-center text-white shrink-0 shadow-lg shadow-[#FF6347]/30">
-              <Cpu className="w-6 h-6" />
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#008F4C] to-[#064E32] flex items-center justify-center text-white shrink-0 shadow-lg shadow-[#008F4C]/30">
+              <Cpu className="w-6 h-6 text-[#84CC16]" />
             </div>
             <div>
               <h4 className="text-lg font-bold text-white">Direct Technical Access</h4>
-              <p className="text-xs sm:text-sm text-gray-400">
-                You work directly with engineers and designers — no middle layers.
+              <p className="text-xs sm:text-sm text-emerald-100/80">
+                You work directly with principal engineers and designers — no middle layers.
               </p>
             </div>
           </div>
           <a
             href="#contact"
-            className="px-6 py-3 rounded-xl bg-[#FF6347] hover:bg-[#E94B35] text-white text-sm font-semibold transition-colors shrink-0 shadow-md"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#008F4C] to-[#064E32] hover:from-[#064E32] hover:to-[#008F4C] text-white text-sm font-semibold transition-all shrink-0 shadow-md border border-[#008F4C]/30"
           >
             Schedule Technical Call
           </a>
