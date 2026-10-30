@@ -1718,19 +1718,6 @@
       margin: 1.5rem 0;
     }
 
-    /* Contact Section */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3.5rem;
-    }
-
-    @media (max-width: 992px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .contact-info-card {
       background: var(--bg-alt);
       border: 1px solid var(--primary-border);
