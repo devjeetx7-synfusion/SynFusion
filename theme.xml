@@ -689,6 +689,59 @@
       #portfolio .stat-lbl { font-size: .78rem !important; }
     }
 
+
+    /* Clean mobile hero label and refined compact project statistic cards */
+    @media screen and (max-width: 767px) {
+      .hero { padding-top: .85rem !important; }
+      .hero-grid { gap: .5rem !important; }
+      .hero-content { padding-top: 0 !important; }
+      .hero-eyebrow {
+        display: block;
+        width: auto !important;
+        max-width: 100%;
+        margin: 0 auto .85rem !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        font-size: .76rem !important;
+        line-height: 1.4 !important;
+        letter-spacing: .08em !important;
+      }
+      #portfolio .stats-grid { gap: .75rem !important; }
+      #portfolio .stat-card {
+        align-items: flex-start;
+        justify-content: space-between;
+        text-align: left;
+        min-height: 126px !important;
+        padding: 1rem !important;
+        border: 1px solid rgba(0,128,82,.16);
+        border-radius: 16px !important;
+        background: linear-gradient(145deg,#fff 0%,#f5fbf7 100%);
+        box-shadow: 0 6px 18px rgba(12,54,35,.045);
+      }
+      #portfolio .stat-val {
+        font-size: clamp(1.25rem,5.5vw,1.8rem) !important;
+        line-height: 1.1 !important;
+        letter-spacing: -.035em;
+        margin: 0 0 .6rem !important;
+        color: var(--primary);
+        overflow-wrap: anywhere;
+      }
+      #portfolio .stat-lbl {
+        font-size: .88rem !important;
+        font-weight: 650;
+        line-height: 1.45 !important;
+        color: var(--text-main);
+        max-width: 24ch;
+      }
+    }
+    @media screen and (max-width: 380px) {
+      #portfolio .stat-card { min-height: 116px !important; padding: .85rem !important; }
+      #portfolio .stat-val { font-size: 1.2rem !important; }
+      #portfolio .stat-lbl { font-size: .82rem !important; }
+    }
 </b:skin>
 
   <b:template-skin><![CDATA[
