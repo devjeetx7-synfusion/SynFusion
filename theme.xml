@@ -598,6 +598,97 @@
       .social-icon-btn { width: 40px; height: 40px; flex-basis: 40px; }
     }
 
+
+    /* Hero copy should sit directly on the page, not inside a rounded panel. */
+    .hero .hero-desc {
+      border: 0 !important;
+      outline: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      background: transparent !important;
+    }
+
+    /* Simple, polished capability highlights instead of oversized metric boxes. */
+    #portfolio .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+    #portfolio .stat-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      min-width: 0;
+      min-height: 150px;
+      padding: 1.4rem 1.25rem;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(10,40,25,.045);
+      text-align: left;
+      overflow: hidden;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    #portfolio .stat-card::before {
+      content: '';
+      display: block;
+      width: 34px;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--primary);
+      margin-bottom: .9rem;
+    }
+    #portfolio .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-md);
+    }
+    #portfolio .stat-val {
+      color: var(--primary);
+      font-size: clamp(1.25rem,2vw,1.7rem) !important;
+      line-height: 1.2;
+      font-weight: 850;
+      letter-spacing: -.025em;
+      margin: 0 0 .45rem !important;
+      overflow-wrap: anywhere;
+    }
+    #portfolio .stat-lbl {
+      color: var(--text-muted);
+      font-size: .92rem !important;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    @media screen and (max-width: 767px) {
+      #portfolio .stats-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+        gap: .75rem !important;
+        margin: 1.1rem 0 1.25rem !important;
+      }
+      #portfolio .stat-card {
+        min-height: 122px;
+        padding: 1rem .9rem !important;
+        border-radius: 16px;
+      }
+      #portfolio .stat-card::before { width: 28px; margin-bottom: .7rem; }
+      #portfolio .stat-val {
+        font-size: clamp(1.08rem,4.8vw,1.4rem) !important;
+        line-height: 1.2;
+      }
+      #portfolio .stat-lbl {
+        font-size: .82rem !important;
+        line-height: 1.4;
+      }
+    }
+    @media screen and (max-width: 380px) {
+      #portfolio .stats-grid { gap: .6rem !important; }
+      #portfolio .stat-card { min-height: 112px; padding: .85rem .7rem !important; }
+      #portfolio .stat-val { font-size: 1.05rem !important; }
+      #portfolio .stat-lbl { font-size: .78rem !important; }
+    }
+
 </b:skin>
 
   <b:template-skin><![CDATA[
@@ -2987,23 +3078,23 @@
           <p class='section-subtitle'>A selection of projects and experiments from our development work.</p>
         </div>
 
-        <!-- Glass Capability Statistics Grid -->
+        <!-- Simple capability highlights -->
         <div class='stats-grid reveal'>
           <div class='stat-card'>
-            <div class='stat-val'>100%</div>
-            <div class='stat-lbl'>Native &amp; Modern Tech</div>
+            <div class='stat-val'>Modern Technology</div>
+            <div class='stat-lbl'>Apps and websites built with up-to-date tools.</div>
           </div>
           <div class='stat-card'>
-            <div class='stat-val'>Multi</div>
-            <div class='stat-lbl'>Domain Expertise</div>
+            <div class='stat-val'>Many Industries</div>
+            <div class='stat-lbl'>Digital solutions for different business needs.</div>
           </div>
           <div class='stat-card'>
-            <div class='stat-val'>Agile</div>
-            <div class='stat-lbl'>Client-Centric Process</div>
+            <div class='stat-val'>Flexible Process</div>
+            <div class='stat-lbl'>Regular updates and clear project steps.</div>
           </div>
           <div class='stat-card'>
-            <div class='stat-val'>24/7</div>
-            <div class='stat-lbl'>Scalable Engineering</div>
+            <div class='stat-val'>Built to Grow</div>
+            <div class='stat-lbl'>Software designed to grow with your business.</div>
           </div>
         </div>
         <!-- Portfolio Control Toolbar -->
