@@ -2424,7 +2424,7 @@
       </div>
     </section>
 
-    <!-- AUTOMATIC GITHUB PUBLIC REPOSITORY PORTFOLIO -->
+    <!-- PROJECT PORTFOLIO -->
     <section class='section-padding' id='portfolio' style='background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);'>
       <div class='container'>
         <div class='section-header reveal'>
@@ -2925,9 +2925,7 @@
         });
       }
 
-      // -------------------------------------------------------------
-      // AUTOMATIC GITHUB PORTFOLIO ENGINE (@devjeetx7-synfusion)
-      // -------------------------------------------------------------
+      // Public repository portfolio
       var username = 'devjeetx7-synfusion';
       var allRepos = [];
       var filteredRepos = [];
