@@ -103,6 +103,154 @@
       }
     }
 
+
+    /* Brand wordmark and consistent logo sizing */
+    .navbar .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+      min-width: 0;
+      text-decoration: none;
+    }
+    .navbar .brand-logo img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      flex: 0 0 38px;
+    }
+    .brand-name {
+      display: inline-block;
+      color: var(--text-main);
+      font-size: clamp(1.15rem, 4vw, 1.45rem);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
+    }
+    .footer-brand .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-height: 48px;
+    }
+    .footer-brand .brand-logo img {
+      display: block;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      object-fit: contain;
+      border-radius: 50%;
+      padding: 5px;
+      box-sizing: border-box;
+      background: #ffffff;
+      border: 2px solid rgba(255,255,255,0.75);
+      filter: none !important;
+    }
+    .footer-brand .brand-logo .brand-name { color: #ffffff; }
+
+    /* FAQ: reliable plus/minus, smooth expansion, no clipped answers */
+    .faq-item { overflow: hidden; }
+    .faq-question {
+      width: 100%;
+      box-sizing: border-box;
+      gap: 1rem;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .faq-question > span:first-child {
+      flex: 1 1 auto;
+      min-width: 0;
+      line-height: 1.45;
+    }
+    .faq-toggle-icon {
+      flex: 0 0 30px;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      color: var(--primary);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .faq-item .faq-answer {
+      display: block !important;
+      box-sizing: border-box;
+      max-height: 0;
+      padding: 0 1.25rem;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: max-height 0.28s ease, padding 0.28s ease, opacity 0.2s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 1000px;
+      padding: 0 1.25rem 1.25rem;
+      visibility: visible;
+      opacity: 1;
+    }
+    .faq-item.active .faq-toggle-icon {
+      background: var(--primary);
+      color: #ffffff;
+      transform: rotate(180deg);
+    }
+
+    /* Responsive typography, section spacing and page width */
+    @media screen and (max-width: 767px) {
+      .section-padding {
+        padding-top: clamp(2.75rem, 8vw, 4rem);
+        padding-bottom: clamp(2.75rem, 8vw, 4rem);
+      }
+      .section-title {
+        font-size: clamp(1.65rem, 6vw, 2.25rem);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+      }
+      .section-subtitle {
+        font-size: clamp(0.92rem, 3.8vw, 1.05rem);
+        line-height: 1.6;
+      }
+      .section-header { margin-bottom: 2rem; }
+      .faq-question {
+        padding: 1rem !important;
+        font-size: clamp(0.95rem, 4vw, 1.05rem) !important;
+      }
+      .faq-item.active .faq-answer {
+        padding: 0 1rem 1rem !important;
+        font-size: 0.94rem;
+        line-height: 1.65;
+      }
+      .navbar .brand-logo { gap: 0.45rem; }
+      .navbar .brand-logo img {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+      }
+      .brand-name { font-size: clamp(1.05rem, 4.5vw, 1.25rem); }
+      .footer { padding: 3.25rem 0 2rem; }
+      .footer-brand .brand-logo img {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+      }
+    }
+    @media screen and (max-width: 360px) {
+      .navbar .brand-logo { gap: 0.35rem; }
+      .navbar .brand-logo img {
+        width: 28px;
+        height: 28px;
+        flex-basis: 28px;
+      }
+      .brand-name { font-size: 1rem; }
+      .section-header { margin-bottom: 1.5rem; }
+    }
+
 </b:skin>
 
   <b:template-skin><![CDATA[
@@ -2286,8 +2434,9 @@
   <!-- Sticky Responsive Navbar -->
   <header class='navbar'>
     <div class='container navbar-inner'>
-      <a class='brand-logo' href='/'>
+      <a class='brand-logo' href='/' aria-label='SynFusion Home'>
         <img alt='SynFusion Logo' src='https://i.postimg.cc/7PNN0DMg/file-000000006e788243a3aaf94a91b6f9db.png'/>
+        <span class='brand-name'>SynFusion</span>
       </a>
 
       <nav class='nav-links' id='navLinks'>
@@ -2434,11 +2583,11 @@
             <div style='font-size: 0.85rem; color: var(--text-muted);'>Clean UI/UX Design</div>
           </div>
           <div>
-            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>Scalable Engine</div>
+            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>Built to Grow</div>
             <div style='font-size: 0.85rem; color: var(--text-muted);'>High Availability</div>
           </div>
           <div>
-            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>Agile Delivery</div>
+            <div style='font-weight: 800; color: var(--primary); font-size: 1.1rem;'>Fast, Flexible Work</div>
             <div style='font-size: 0.85rem; color: var(--text-muted);'>Transparent Sprints</div>
           </div>
         </div>
@@ -2780,7 +2929,7 @@
           <div class='faq-item reveal'>
             <div class='faq-question' onclick='toggleFAQ(this)'>
               <span>What services does SynFusion provide?</span>
-              <span>+</span>
+              <span class='faq-toggle-icon' aria-hidden='true'>+</span>
             </div>
             <div class='faq-answer'>
               SynFusion specializes in Android app development, custom website development, full-stack web applications, UI/UX design systems, and custom backend software integrations.
@@ -2790,7 +2939,7 @@
           <div class='faq-item reveal'>
             <div class='faq-question' onclick='toggleFAQ(this)'>
               <span>How does the development process work?</span>
-              <span>+</span>
+              <span class='faq-toggle-icon' aria-hidden='true'>+</span>
             </div>
             <div class='faq-answer'>
               We follow a structured 5-step process: Discover (understanding requirements), Plan (architecture &amp; roadmap), Design (UI/UX prototypes), Develop (agile coding), and Launch (zero-downtime deployment).
@@ -2800,7 +2949,7 @@
           <div class='faq-item reveal'>
             <div class='faq-question' onclick='toggleFAQ(this)'>
               <span>How long does a typical project take?</span>
-              <span>+</span>
+              <span class='faq-toggle-icon' aria-hidden='true'>+</span>
             </div>
             <div class='faq-answer'>
               Timelines vary based on feature scope. Simple websites take 2-4 weeks, while complex full-stack web or native Android applications take 2-3 months.
@@ -3175,14 +3324,38 @@
 
       // FAQ Accordion Toggle
       window.toggleFAQ = function(element) {
-        var faqItem = element.parentElement;
-        var isActive = faqItem.classList.contains('active');
-        var allItems = document.querySelectorAll('.faq-item');
-        allItems.forEach(function(item) { item.classList.remove('active'); });
-        if (!isActive) {
+        var faqItem = element.closest('.faq-item');
+        if (!faqItem) return;
+        var shouldOpen = !faqItem.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(function(item) {
+          item.classList.remove('active');
+          var question = item.querySelector('.faq-question');
+          if (question) {
+            question.setAttribute('aria-expanded', 'false');
+            var icon = question.querySelector('.faq-toggle-icon');
+            if (icon) icon.textContent = '+';
+          }
+        });
+        if (shouldOpen) {
           faqItem.classList.add('active');
+          element.setAttribute('aria-expanded', 'true');
+          var activeIcon = element.querySelector('.faq-toggle-icon');
+          if (activeIcon) activeIcon.textContent = '−';
         }
       };
+
+      // Keep FAQ toggles functional if the page is opened with keyboard or assistive tech.
+      document.querySelectorAll('.faq-question').forEach(function(question) {
+        question.setAttribute('role', 'button');
+        question.setAttribute('tabindex', '0');
+        question.setAttribute('aria-expanded', question.closest('.faq-item') && question.closest('.faq-item').classList.contains('active') ? 'true' : 'false');
+        question.addEventListener('keydown', function(event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            window.toggleFAQ(question);
+          }
+        });
+      });
 
       // -------------------------------------------------------------
       // POST READER ENHANCEMENTS (Progress, TOC, Code Copy, Sharing)
