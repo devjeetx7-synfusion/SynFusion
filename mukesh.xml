@@ -2683,17 +2683,6 @@
         <p>Visual identities, social media creatives, thumbnails, and advertising assets crafted for brands that demand distinction.</p>
       </div>
 
-      <!-- Graphic Category Filters -->
-      <div class='filters reveal' id='graphicsFilterGroup' role='group' aria-label='Filter graphic designs by category'>
-        <button class='filter active' data-gfx-filter='all' type='button'>All Graphics</button>
-        <button class='filter' data-gfx-filter='logo' type='button'>Logo Design</button>
-        <button class='filter' data-gfx-filter='social' type='button'>Social Media Posts</button>
-        <button class='filter' data-gfx-filter='thumbnail' type='button'>YouTube Thumbnails</button>
-        <button class='filter' data-gfx-filter='poster' type='button'>Posters &amp; Banners</button>
-        <button class='filter' data-gfx-filter='ads' type='button'>Advertising Creatives</button>
-
-      </div>
-
       <!-- Graphics Responsive Grid -->
       <div class='graphics-grid' id='graphicsGrid'>
         <!-- Populated dynamically / statically via JS -->
@@ -4516,9 +4505,9 @@
     filteredReels = REELS_DATA.slice();
   }
 
+  // Category chips are intentionally removed; show every published graphic.
   function applyGraphicsFilter() {
-    var category = getActiveFilterValue('#graphicsFilterGroup .filter.active', 'data-gfx-filter');
-    filteredGraphics = category === 'all' ? GRAPHICS_DATA.slice() : GRAPHICS_DATA.filter(function(g) { return g.category === category; });
+    filteredGraphics = GRAPHICS_DATA.slice();
   }
 
   function renderGraphicsGrid() {
@@ -4556,7 +4545,7 @@
         // Graphics exist, but none in the selected category
         grid.innerHTML = "<div style='grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: var(--card); border: 1px dashed var(--border); border-radius: 20px; color: var(--muted);'>" +
           "<h3 style='font-family: var(--font-heading); font-size: 1.1rem; color: var(--text); margin-bottom: 8px;'>No Graphics in This Category Yet</h3>" +
-          "<p style='font-size: 0.88rem; max-width: 460px; margin: 0 auto;'>Choose <strong>All Graphics</strong> to see every published design.</p>" +
+          "<p style='font-size: 0.88rem; max-width: 460px; margin: 0 auto;'>All published designs will appear here.</p>" +
           "</div>";
       } else {
         grid.innerHTML = "<div style='grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: var(--card); border: 1px dashed var(--border); border-radius: 20px; color: var(--muted);'>" +
