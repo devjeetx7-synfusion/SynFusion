@@ -2147,12 +2147,14 @@
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 0.1em;
-    color: var(--primary);
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 4px 8px;
-    backdrop-filter: blur(8px);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    border-radius: 999px;
+    padding: 6px 11px;
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.28);
     z-index: 2;
   }
 
@@ -4580,7 +4582,7 @@
       html += "</div>";
       html += "<div class='graphic-info'>";
       if (gfx.title) html += "<h3>" + escapeHtml(gfx.title) + "</h3>";
-      html += "<p>" + escapeHtml(gfx.categoryLabel || 'Graphics') + "</p>";
+      // Category label is intentionally hidden below the title; keep only the image badge.
       if (!hasImage && gfx.postUrl) {
         html += "<a class='graphic-post-link' href='" + escapeHtml(gfx.postUrl) + "' target='_blank' rel='noopener noreferrer'>Open post</a>";
       }
@@ -4635,7 +4637,7 @@
     body.appendChild(img);
 
     if (titleEl) titleEl.textContent = gfx.title || '';
-    if (catEl) catEl.textContent = gfx.categoryLabel || 'Graphics';
+    if (catEl) catEl.textContent = '';
     if (!modal.classList.contains('open')) {
       savedLightboxScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
       modal.classList.add('open');
