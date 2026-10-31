@@ -2820,25 +2820,6 @@
     </div>
   </section>
 
-  <!-- Portfolio Section -->
-  <section class='section work-section' id='work'>
-    <div class='container'>
-      <div class='section-head reveal'>
-        <div>
-          <span class='eyebrow'>THE PORTFOLIO</span>
-          <h2 class='display'>Selected <span class='gradient-text'>experiments.</span></h2>
-        </div>
-        <p>A visual playground exploring bold typography, color systems, visual systems and dimensional forms. These concept studies demonstrate design capability.</p>
-      </div>
-
-      <!-- Demo portfolio cards removed. Real artwork is populated from published posts in the Graphics gallery. -->
-      <div class='portfolio-live-notice' style='padding:32px 24px; text-align:center; border:1px dashed var(--border); border-radius:20px; background:var(--card); color:var(--muted);'>
-        <p>Portfolio artwork is loaded automatically from published published posts. See the live Graphics gallery below.</p>
-        <a class='btn btn-primary' href='#graphics' style='margin-top:16px;'>View Graphics Gallery</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Motion Lab Section -->
   <section class='section' id='motion'>
     <div class='container'>
