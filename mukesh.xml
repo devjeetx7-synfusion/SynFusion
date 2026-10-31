@@ -2309,18 +2309,6 @@
     margin-top: 2px;
   }
 
-  .lightbox-post-link {
-    flex-shrink: 0;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--primary);
-    white-space: nowrap;
-  }
-
-  .lightbox-post-link[hidden] {
-    display: none;
-  }
-
   .lightbox-close-btn {
     position: absolute;
     top: 16px;
