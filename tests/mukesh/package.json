@@ -1,0 +1,12 @@
+{
+  "name": "mukesh-theme-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Automated DOM tests for mukesh.xml (Singh Creative Studio Blogger theme) using mocked Blogger feeds.",
+  "scripts": {
+    "test": "node test.js && node regression.js"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3"
+  }
+}
