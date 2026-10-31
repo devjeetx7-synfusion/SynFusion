@@ -1142,6 +1142,228 @@
     flex-wrap: wrap;
   }
 
+  /* WhatsApp Quotation Form Styles */
+  .quote-card {
+    max-width: 680px;
+    margin: 48px auto 40px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 44px 36px;
+    box-shadow: 0 20px 48px rgba(79, 70, 229, 0.08), 0 4px 12px rgba(17, 24, 39, 0.03);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4F46E5, #2563EB, #06B6D4);
+  }
+
+  .quote-card-head {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .quote-card-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3.2vw, 2rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+
+  .quote-card-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .form-label .req {
+    color: #EF4444;
+    margin-left: 2px;
+  }
+
+  .form-control {
+    width: 100%;
+    background: #F8FAFC;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  .form-control::placeholder {
+    color: #94A3B8;
+  }
+
+  .form-control:focus {
+    background: #FFFFFF;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  }
+
+  .form-control.field-error {
+    border-color: #EF4444;
+    background: #FFFBFB;
+  }
+
+  .form-control.field-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+  }
+
+  select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.55;
+  }
+
+  .field-error-msg {
+    font-size: 0.82rem;
+    color: #EF4444;
+    display: none;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .field-error-msg.visible {
+    display: block;
+  }
+
+  .btn-whatsapp-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: 1.02rem;
+    font-weight: 600;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    margin-top: 6px;
+  }
+
+  .btn-whatsapp-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.35);
+    filter: brightness(1.03);
+  }
+
+  .btn-whatsapp-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.24);
+  }
+
+  .btn-whatsapp-submit:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.4);
+  }
+
+  .btn-whatsapp-submit svg {
+    width: 22px;
+    height: 22px;
+    fill: #FFFFFF;
+    flex-shrink: 0;
+  }
+
+  .quote-status-feedback {
+    font-size: 0.9rem;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 8px;
+    display: none;
+    line-height: 1.45;
+  }
+
+  .quote-status-feedback.info {
+    display: block;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    color: #1D4ED8;
+  }
+
+  .quote-status-feedback.error {
+    display: block;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    color: #B91C1C;
+  }
+
+  @media (max-width: 640px) {
+    .quote-card {
+      padding: 32px 20px;
+      margin: 36px auto 32px;
+      border-radius: 20px;
+    }
+    .btn-whatsapp-submit {
+      padding: 14px 20px;
+      font-size: 0.96rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-whatsapp-submit,
+    .form-control {
+      transition: none !important;
+    }
+    .btn-whatsapp-submit:hover {
+      transform: none !important;
+    }
+  }
+
+
   /* Premium Responsive Footer Styles */
   .footer {
     border-top: 1px solid var(--border);
@@ -2760,6 +2982,61 @@
       <span class='eyebrow'>HAVE SOMETHING IN MIND?</span>
       <h2 class='display'>Let's make it<br/><span class='gradient-text'>mean something.</span></h2>
       <p>Have a brand, campaign or creative idea in mind? Let's turn that first spark into something people remember.</p>
+      <!-- WhatsApp Project Quotation Form Card -->
+      <div class='quote-card' id='quoteCard'>
+        <div class='quote-card-head'>
+          <h3 class='quote-card-title'>Let's Discuss Your Project</h3>
+          <p class='quote-card-sub'>Request a personalized custom quotation for your creative project. Fill out the details below to start a chat directly on WhatsApp.</p>
+        </div>
+
+        <form class='quote-form' id='whatsappQuoteForm' novalidate='novalidate'>
+          <!-- 1. Name -->
+          <div class='form-group'>
+            <label class='form-label' for='quoteName'>Name <span class='req' aria-hidden='true'>*</span></label>
+            <input class='form-control' id='quoteName' name='name' type='text' placeholder='Enter your full name' required='required' autocomplete='name'/>
+            <div class='field-error-msg' id='quoteNameError' role='alert' aria-live='polite'>Please enter your name.</div>
+          </div>
+
+          <!-- 2. Field / Service -->
+          <div class='form-group'>
+            <label class='form-label' for='quoteService'>Field / Service <span class='req' aria-hidden='true'>*</span></label>
+            <select class='form-control' id='quoteService' name='service' required='required'>
+              <option value='' disabled='disabled' selected='selected'>Select a service</option>
+              <option value='2D Animation'>2D Animation</option>
+              <option value='3D Animation'>3D Animation</option>
+              <option value='Graphic Design'>Graphic Design</option>
+              <option value='Video Editing'>Video Editing</option>
+              <option value='Digital Marketing'>Digital Marketing</option>
+              <option value='AI Product Advertisement'>AI Product Advertisement</option>
+              <option value='Social Media Management'>Social Media Management</option>
+              <option value='Logo &amp; Brand Identity'>Logo &amp; Brand Identity</option>
+              <option value='Motion Graphics'>Motion Graphics</option>
+              <option value='Reels &amp; Shorts'>Reels &amp; Shorts</option>
+              <option value='Other'>Other</option>
+            </select>
+            <div class='field-error-msg' id='quoteServiceError' role='alert' aria-live='polite'>Please select a service or field.</div>
+          </div>
+
+          <!-- 3. Detailed Requirements -->
+          <div class='form-group'>
+            <label class='form-label' for='quoteRequirements'>Detailed Requirements <span class='req' aria-hidden='true'>*</span></label>
+            <textarea class='form-control' id='quoteRequirements' name='requirements' rows='4' placeholder='Describe your project, requirements, ideas, expected deliverables or reference links...' required='required'></textarea>
+            <div class='field-error-msg' id='quoteRequirementsError' role='alert' aria-live='polite'>Please provide project requirements or description.</div>
+          </div>
+
+          <!-- WhatsApp Submit CTA Button -->
+          <button class='btn-whatsapp-submit' id='quoteSubmitBtn' type='submit'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'>
+              <path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/>
+            </svg>
+            <span>Request Quote on WhatsApp</span>
+          </button>
+
+          <!-- Status / Feedback Live Region -->
+          <div class='quote-status-feedback' id='quoteStatusFeedback' role='status' aria-live='polite'></div>
+        </form>
+      </div>
+
       <div class='contact-actions'>
         <a class='btn btn-primary' id='mainContactEmailBtn' href='mailto:dharmjeetsingh958@gmail.com'>
           <span>Start a Conversation</span>
@@ -3265,6 +3542,32 @@
   var activeYtIframeId = null;
   var isMuted = false;
 
+  // Smart Reel Playback State Management
+  // Tracks per-reel playback state to support visibility-based auto-pause/resume
+  var reelPlaybackStates = {};
+  var activePlayingReelId = null;
+  var isAutoPausingOrResuming = false;
+  var reelsIntersectionObserver = null;
+
+  function getReelPlaybackState(reelId) {
+    if (!reelPlaybackStates[reelId]) {
+      reelPlaybackStates[reelId] = {
+        reelId: reelId,
+        wasPlayingBeforeHidden: false,
+        isAutoPaused: false,
+        isManuallyPaused: false,
+        isPlaying: false,
+        isReady: false,
+        resumePending: false,
+        player: null,
+        containerId: null,
+        index: -1
+      };
+    }
+    return reelPlaybackStates[reelId];
+  }
+
+
   // Active Reels Carousel State
   var filteredReels = REELS_DATA.slice();
   var activeReelIndex = 0;
@@ -3319,7 +3622,21 @@
   }
 
   // Centralized YouTube Player Cleanup & Stop
-  function cleanupActivePlayer() {
+  function cleanupActivePlayer(options) {
+    var opts = options || {};
+    var preserveState = opts.preserveState === true;
+
+    if (activePlayingReelId && !preserveState) {
+      var oldState = getReelPlaybackState(activePlayingReelId);
+      oldState.isPlaying = false;
+      oldState.wasPlayingBeforeHidden = false;
+      oldState.isAutoPaused = false;
+      oldState.isManuallyPaused = false;
+      oldState.isReady = false;
+      oldState.resumePending = false;
+      oldState.player = null;
+    }
+
     if (activeYtPlayer) {
       try {
         if (typeof activeYtPlayer.stopVideo === 'function') {
@@ -3332,6 +3649,9 @@
       activeYtPlayer = null;
     }
     activeYtIframeId = null;
+    if (!preserveState) {
+      activePlayingReelId = null;
+    }
 
     // Reset iframe containers visually
     var iframeContainers = document.querySelectorAll('.reel-iframe-container');
@@ -3401,7 +3721,7 @@
       html += "<div class='reel-thumbnail-wrap' id='reelThumb-" + idx + "' style=\"background-image: url('" + thumbUrl + "'), url('" + fallbackThumbUrl + "'), url('" + svgFallback + "');\">";
       html += "<span class='reel-badge-category'>" + reel.category + "</span>";
       html += "<div class='reel-play-btn-wrap' data-play-index='" + idx + "' title='Play Reel'>";
-      html += "<div class='reel-play-btn'><svg viewBox='0 0 24 24'><polygon points='5 3 19 12 5 21 5 3'/></svg></div>";
+      html += "<div class='reel-play-btn'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polygon points='5 3 19 12 5 21 5 3'/></svg></div>";
       html += "</div>";
       html += "<div class='reel-meta-bottom'>";
       html += "<div class='reel-meta-title'>" + reel.title + "</div>";
@@ -3500,9 +3820,77 @@
     }
   }
 
-  function playReel(index) {
+  function playReel(index, options) {
     var reel = filteredReels[index];
     if (!reel || !reel.youtubeId) return;
+
+    var opts = options || {};
+    var isResume = opts.isResume === true;
+    var reelId = reel.id;
+    var state = getReelPlaybackState(reelId);
+    state.index = index;
+
+    // If this Reel is already active and playing, toggle pause (manual user action)
+    if (!isResume && activePlayingReelId === reelId && activeYtPlayer) {
+      if (typeof activeYtPlayer.getPlayerState === 'function') {
+        var currentState = activeYtPlayer.getPlayerState();
+        if (window.YT && window.YT.PlayerState) {
+          if (currentState === window.YT.PlayerState.PLAYING || currentState === window.YT.PlayerState.BUFFERING) {
+            // Manual user pause: clear auto-pause intent so it stays paused when scrolling
+            state.wasPlayingBeforeHidden = false;
+            state.isAutoPaused = false;
+            state.isManuallyPaused = true;
+            state.isPlaying = false;
+            try {
+              activeYtPlayer.pauseVideo();
+            } catch (err) {}
+            var currentThumb = document.getElementById('reelThumb-' + index);
+            if (currentThumb) {
+              currentThumb.style.opacity = '1';
+              currentThumb.style.pointerEvents = 'auto';
+            }
+            return;
+          } else if (currentState === window.YT.PlayerState.PAUSED) {
+            // Manual user resume
+            state.wasPlayingBeforeHidden = false;
+            state.isAutoPaused = false;
+            state.isManuallyPaused = false;
+            state.isPlaying = true;
+            var currentThumbWrap = document.getElementById('reelThumb-' + index);
+            if (currentThumbWrap) {
+              currentThumbWrap.style.opacity = '0';
+              currentThumbWrap.style.pointerEvents = 'none';
+            }
+            try {
+              activeYtPlayer.playVideo();
+            } catch (err) {}
+            return;
+          }
+        }
+      }
+    }
+
+    // If starting a different reel or starting fresh, cleanup any other playing reel
+    if (activePlayingReelId && activePlayingReelId !== reelId) {
+      var prevReelState = getReelPlaybackState(activePlayingReelId);
+      prevReelState.isPlaying = false;
+      prevReelState.wasPlayingBeforeHidden = false;
+      prevReelState.isAutoPaused = false;
+      prevReelState.isManuallyPaused = false;
+      prevReelState.resumePending = false;
+      prevReelState.isReady = false;
+      prevReelState.player = null;
+      cleanupActivePlayer({ preserveState: false });
+    }
+
+    // Set as currently intended playing reel
+    activePlayingReelId = reelId;
+    state.isManuallyPaused = false;
+    state.isPlaying = true;
+    if (!isResume) {
+      state.wasPlayingBeforeHidden = false;
+      state.isAutoPaused = false;
+    }
 
     var iframeBox = document.getElementById('reelIframeBox-' + index);
     var thumbWrap = document.getElementById('reelThumb-' + index);
@@ -3512,6 +3900,24 @@
 
     if (!iframeBox) return;
 
+    // If player instance already exists and is ready, resume without reloading iframe
+    if (activeYtPlayer && state.containerId === 'ytPlayerInstance-' + index && state.isReady) {
+      if (thumbWrap) {
+        thumbWrap.style.opacity = '0';
+        thumbWrap.style.pointerEvents = 'none';
+      }
+      try {
+        if (isMuted && typeof activeYtPlayer.mute === 'function') activeYtPlayer.mute();
+        activeYtPlayer.playVideo();
+      } catch (err) {
+        if (statusOverlay) {
+          statusOverlay.classList.remove('hidden');
+          if (errorText) errorText.textContent = "Unable to resume playback. Tap play button to start.";
+        }
+      }
+      return;
+    }
+
     // Show loading overlay
     if (statusOverlay) {
       statusOverlay.classList.remove('hidden');
@@ -3519,13 +3925,20 @@
       if (retryBtn) retryBtn.classList.add('hidden');
     }
 
+    state.resumePending = true;
+
     loadYouTubeIframeApi(function() {
       // If another reel was clicked while loading, abort
-      if (activeReelIndex !== index) return;
+      if (activePlayingReelId !== reelId || activeReelIndex !== index) {
+        state.resumePending = false;
+        return;
+      }
 
-      cleanupActivePlayer();
+      cleanupActivePlayer({ preserveState: true });
+      activePlayingReelId = reelId;
 
       var containerId = 'ytPlayerInstance-' + index;
+      state.containerId = containerId;
       iframeBox.innerHTML = "<div id='" + containerId + "'></div>";
 
       if (statusOverlay) statusOverlay.classList.add('hidden');
@@ -3542,20 +3955,64 @@
           playerVars: pVars,
           events: {
             onReady: function(event) {
+              state.isReady = true;
+              state.resumePending = false;
+              state.player = event.target;
               activeYtIframeId = containerId;
-              if (thumbWrap) {
-                thumbWrap.style.opacity = '0';
-                thumbWrap.style.pointerEvents = 'none';
+
+              // Ensure this is still the active reel before playing
+              if (activePlayingReelId === reelId) {
+                if (thumbWrap) {
+                  thumbWrap.style.opacity = '0';
+                  thumbWrap.style.pointerEvents = 'none';
+                }
+                try {
+                  event.target.playVideo();
+                } catch (playErr) {
+                  // Browser autoplay restriction handling
+                  if (statusOverlay) {
+                    statusOverlay.classList.remove('hidden');
+                    if (errorText) errorText.textContent = "Autoplay restricted. Tap play to view.";
+                  }
+                }
               }
-              event.target.playVideo();
             },
             onStateChange: function(event) {
-              // Prevent automatic progression to next video when current ends
-              if (event.data === (window.YT.PlayerState ? window.YT.PlayerState.ENDED : 0)) {
-                cleanupActivePlayer();
+              if (!window.YT || !window.YT.PlayerState) return;
+
+              if (event.data === window.YT.PlayerState.PLAYING) {
+                state.isPlaying = true;
+                state.isManuallyPaused = false;
+                state.isAutoPaused = false;
+                if (thumbWrap) {
+                  thumbWrap.style.opacity = '0';
+                  thumbWrap.style.pointerEvents = 'none';
+                }
+              } else if (event.data === window.YT.PlayerState.PAUSED) {
+                state.isPlaying = false;
+                // If this pause was not triggered automatically by scrolling, mark as manual pause
+                if (!isAutoPausingOrResuming) {
+                  state.isManuallyPaused = true;
+                  state.wasPlayingBeforeHidden = false;
+                  state.isAutoPaused = false;
+                  if (thumbWrap) {
+                    thumbWrap.style.opacity = '1';
+                    thumbWrap.style.pointerEvents = 'auto';
+                  }
+                }
+              } else if (event.data === window.YT.PlayerState.ENDED) {
+                // When finished, do not loop or start next reel
+                state.isPlaying = false;
+                state.wasPlayingBeforeHidden = false;
+                state.isAutoPaused = false;
+                state.isManuallyPaused = false;
+                state.resumePending = false;
+                cleanupActivePlayer({ preserveState: false });
               }
             },
             onError: function(e) {
+              state.isPlaying = false;
+              state.resumePending = false;
               if (statusOverlay) {
                 statusOverlay.classList.remove('hidden');
                 var msg = "Video unavailable or embedding restricted.";
@@ -3572,6 +4029,7 @@
           }
         });
       } catch (err) {
+        state.resumePending = false;
         if (statusOverlay) {
           statusOverlay.classList.remove('hidden');
           if (errorText) errorText.textContent = "Unable to initialize YouTube API player.";
@@ -3689,6 +4147,143 @@
         }
       }, { passive: true });
     }
+
+    // Initialize IntersectionObserver and visibility listeners for Smart Auto-Pause & Resume
+    initReelsVisibilityObserver();
+  }
+
+  // Smart Reel Visibility Management (IntersectionObserver & Page Visibility)
+  function initReelsVisibilityObserver() {
+    var reelsSection = document.getElementById('reels');
+    var reelsContainer = document.getElementById('reelsContainer') || document.getElementById('reelsTrackWrapper');
+    if (!reelsContainer && !reelsSection) return;
+
+    if (reelsIntersectionObserver) {
+      try { reelsIntersectionObserver.disconnect(); } catch (e) {}
+      reelsIntersectionObserver = null;
+    }
+
+    // Helper to pause active playing reel automatically due to visibility change
+    function handleAutoPause() {
+      if (!activePlayingReelId) return;
+      var state = getReelPlaybackState(activePlayingReelId);
+
+      // Check if player is currently playing or buffering
+      var isCurrentlyPlaying = state.isPlaying;
+      if (activeYtPlayer && typeof activeYtPlayer.getPlayerState === 'function') {
+        try {
+          var pState = activeYtPlayer.getPlayerState();
+          if (window.YT && window.YT.PlayerState) {
+            if (pState === window.YT.PlayerState.PLAYING || pState === window.YT.PlayerState.BUFFERING) {
+              isCurrentlyPlaying = true;
+            } else if (pState === window.YT.PlayerState.PAUSED) {
+              isCurrentlyPlaying = false;
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (isCurrentlyPlaying && !state.isManuallyPaused) {
+        state.wasPlayingBeforeHidden = true;
+        state.isAutoPaused = true;
+        state.isPlaying = false;
+        isAutoPausingOrResuming = true;
+        try {
+          if (activeYtPlayer && typeof activeYtPlayer.pauseVideo === 'function') {
+            activeYtPlayer.pauseVideo();
+          }
+        } catch (e) {}
+        setTimeout(function() {
+          isAutoPausingOrResuming = false;
+        }, 50);
+      }
+    }
+
+    // Helper to resume active playing reel automatically when visible again
+    function handleAutoResume() {
+      if (!activePlayingReelId) return;
+      var state = getReelPlaybackState(activePlayingReelId);
+
+      // Resume only if it was playing before becoming hidden and was not manually paused
+      if (state.wasPlayingBeforeHidden && state.isAutoPaused && !state.isManuallyPaused) {
+        state.wasPlayingBeforeHidden = false;
+        state.isAutoPaused = false;
+        state.isPlaying = true;
+        isAutoPausingOrResuming = true;
+
+        if (state.index >= 0 && state.index === activeReelIndex) {
+          playReel(state.index, { isResume: true });
+        }
+
+        setTimeout(function() {
+          isAutoPausingOrResuming = false;
+        }, 50);
+      }
+    }
+
+    // Setup IntersectionObserver if supported
+    if ('IntersectionObserver' in window) {
+      // Sensible threshold with hysteresis: pause below 0.35, resume above 0.5
+      var targetElement = reelsContainer || reelsSection;
+      try {
+        reelsIntersectionObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+              handleAutoResume();
+            } else if (!entry.isIntersecting || entry.intersectionRatio < 0.35) {
+              handleAutoPause();
+            }
+          });
+        }, {
+          root: null,
+          threshold: [0, 0.25, 0.35, 0.5, 0.75, 1.0]
+        });
+
+        reelsIntersectionObserver.observe(targetElement);
+      } catch (err) {}
+    }
+
+    // Document Visibility Change (Tab Blur / Minimization)
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        handleAutoPause();
+      } else {
+        // Tab restored: check if reel container is currently visible in viewport
+        var isVisible = true;
+        var el = reelsContainer || reelsSection;
+        if (el && typeof el.getBoundingClientRect === 'function') {
+          var rect = el.getBoundingClientRect();
+          var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+          // Sufficiently visible if at least 35% of element is in view or crosses viewport center
+          var visibleHeight = Math.max(0, Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0));
+          var ratio = rect.height > 0 ? (visibleHeight / rect.height) : 0;
+          isVisible = ratio >= 0.35;
+        }
+
+        if (isVisible) {
+          handleAutoResume();
+        }
+      }
+    });
+
+    // Window Blur/Focus fallback for older browsers or app webviews
+    window.addEventListener('blur', function() {
+      handleAutoPause();
+    });
+    window.addEventListener('focus', function() {
+      var isVisible = true;
+      var el = reelsContainer || reelsSection;
+      if (el && typeof el.getBoundingClientRect === 'function') {
+        var rect = el.getBoundingClientRect();
+        var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        var visibleHeight = Math.max(0, Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0));
+        var ratio = rect.height > 0 ? (visibleHeight / rect.height) : 0;
+        isVisible = ratio >= 0.35;
+      }
+      if (isVisible) {
+        handleAutoResume();
+      }
+    });
   }
 
   // Render Graphic Design Gallery & Lightbox Modal
@@ -3959,11 +4554,165 @@
     } catch (e) {}
   }
 
-  // Initialize Reels and Graphics Modules
+  // WhatsApp Quotation Request Form Handler
+  function setupWhatsAppQuoteForm() {
+    var form = document.getElementById('whatsappQuoteForm');
+    if (!form) return;
+
+    var nameInput = document.getElementById('quoteName');
+    var serviceSelect = document.getElementById('quoteService');
+    var reqsTextarea = document.getElementById('quoteRequirements');
+    var submitBtn = document.getElementById('quoteSubmitBtn');
+    var feedbackEl = document.getElementById('quoteStatusFeedback');
+
+    var nameError = document.getElementById('quoteNameError');
+    var serviceError = document.getElementById('quoteServiceError');
+    var reqsError = document.getElementById('quoteRequirementsError');
+
+    var isSubmitting = false;
+
+    // Helper to clear errors
+    function clearErrors() {
+      if (nameError) nameError.classList.remove('visible');
+      if (serviceError) serviceError.classList.remove('visible');
+      if (reqsError) reqsError.classList.remove('visible');
+      if (nameInput) nameInput.classList.remove('field-error');
+      if (serviceSelect) serviceSelect.classList.remove('field-error');
+      if (reqsTextarea) reqsTextarea.classList.remove('field-error');
+      if (feedbackEl) {
+        feedbackEl.className = 'quote-status-feedback';
+        feedbackEl.textContent = '';
+      }
+    }
+
+    // Real-time input listeners to clear field-level error when user starts typing/selecting
+    if (nameInput) {
+      nameInput.addEventListener('input', function() {
+        if (nameInput.value.trim().length > 0) {
+          nameInput.classList.remove('field-error');
+          if (nameError) nameError.classList.remove('visible');
+        }
+      });
+    }
+    if (serviceSelect) {
+      serviceSelect.addEventListener('change', function() {
+        if (serviceSelect.value) {
+          serviceSelect.classList.remove('field-error');
+          if (serviceError) serviceError.classList.remove('visible');
+        }
+      });
+    }
+    if (reqsTextarea) {
+      reqsTextarea.addEventListener('input', function() {
+        if (reqsTextarea.value.trim().length > 0) {
+          reqsTextarea.classList.remove('field-error');
+          if (reqsError) reqsError.classList.remove('visible');
+        }
+      });
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (isSubmitting) return;
+
+      clearErrors();
+
+      var nameVal = (nameInput && nameInput.value) ? nameInput.value.trim() : '';
+      var serviceVal = (serviceSelect && serviceSelect.value) ? serviceSelect.value.trim() : '';
+      var reqsVal = (reqsTextarea && reqsTextarea.value) ? reqsTextarea.value.trim() : '';
+
+      var firstInvalid = null;
+
+      // Validate Name
+      if (!nameVal) {
+        if (nameInput) nameInput.classList.add('field-error');
+        if (nameError) nameError.classList.add('visible');
+        if (!firstInvalid) firstInvalid = nameInput;
+      }
+
+      // Validate Field / Service
+      if (!serviceVal) {
+        if (serviceSelect) serviceSelect.classList.add('field-error');
+        if (serviceError) serviceError.classList.add('visible');
+        if (!firstInvalid) firstInvalid = serviceSelect;
+      }
+
+      // Validate Detailed Requirements
+      if (!reqsVal) {
+        if (reqsTextarea) reqsTextarea.classList.add('field-error');
+        if (reqsError) reqsError.classList.add('visible');
+        if (!firstInvalid) firstInvalid = reqsTextarea;
+      }
+
+      // Focus first invalid element
+      if (firstInvalid) {
+        try {
+          firstInvalid.focus();
+        } catch (err) {}
+        return;
+      }
+
+      // Prevent accidental rapid duplicate submissions
+      isSubmitting = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.75';
+      }
+
+      // Construct formatted WhatsApp message strictly matching specification
+      var brandName = (STUDIO_CONFIG && STUDIO_CONFIG.brandName) ? STUDIO_CONFIG.brandName : 'Singh Creative Studio';
+      var tagline = (STUDIO_CONFIG && STUDIO_CONFIG.tagline) ? STUDIO_CONFIG.tagline : 'Ideas Made Visible.';
+      var waPhone = '919334603912';
+
+      var message = '✨ NEW QUOTATION REQUEST\n' +
+        '━━━━━━━━━━━━━━━━━━\n\n' +
+        '👤 Client Name:\n' + nameVal + '\n\n' +
+        '🎯 Service / Field:\n' + serviceVal + '\n\n' +
+        '📝 Project Requirements:\n' + reqsVal + '\n\n' +
+        '━━━━━━━━━━━━━━━━━━\n' +
+        '📩 Source: ' + brandName + '\n' +
+        '💡 Tagline: ' + tagline + '\n\n' +
+        'Please review this request and share the next steps and quotation. Thank you!';
+
+      var waUrl = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(message);
+
+      // Open WhatsApp safely in mobile and desktop
+      try {
+        var openedWin = window.open(waUrl, '_blank', 'noopener,noreferrer');
+        if (!openedWin || openedWin.closed || typeof openedWin.closed === 'undefined') {
+          // If popup is blocked, redirect window location safely
+          window.location.href = waUrl;
+        }
+
+        if (feedbackEl) {
+          feedbackEl.className = 'quote-status-feedback info';
+          feedbackEl.textContent = 'Your quotation request is ready in WhatsApp. Review it and tap Send.';
+        }
+      } catch (openErr) {
+        if (feedbackEl) {
+          feedbackEl.className = 'quote-status-feedback error';
+          feedbackEl.textContent = 'Could not open WhatsApp automatically. Please click the button again or contact us directly on WhatsApp at +' + waPhone + '.';
+        }
+      }
+
+      // Re-enable button after a brief cooldown to allow retry if desired
+      setTimeout(function() {
+        isSubmitting = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        }
+      }, 2500);
+    });
+  }
+
+  // Initialize Reels, Graphics, and Contact Quotation Modules
   renderReelsCarousel();
   setupReelsControls();
   renderGraphicsGrid();
   setupGraphicsControls();
+  setupWhatsAppQuoteForm();
   discoverBloggerPosts();
 
 })();
