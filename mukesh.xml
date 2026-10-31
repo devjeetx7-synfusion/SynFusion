@@ -2761,215 +2761,12 @@
         <button class='filter' data-filter='video' type='button'>Video</button>
       </div>
 
-      <!-- Portfolio Projects Grid -->
-      <div class='projects'>
-        <!-- Project 1 -->
-        <article class='project reveal' data-tags='graphic ads social'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Bold experimental poster composition'>
-              <rect width='700' height='440' fill='#F8FAFC'/>
-              <circle cx='490' cy='220' r='170' fill='#4F46E5' opacity='0.85'/>
-              <circle cx='490' cy='220' r='115' fill='none' stroke='#06B6D4' stroke-width='3'/>
-              <path d='M280 420 L445 45 L620 420 Z' fill='#2563EB' opacity='0.75'/>
-              <path d='M445 45 L515 420 H620 Z' fill='#4F46E5'/>
-              <text x='45' y='100' fill='#111827' font-size='52' font-family='Space Grotesk' font-weight='800'>THINK</text>
-              <text x='45' y='155' fill='#4F46E5' font-size='52' font-family='Space Grotesk' font-weight='800'>LOUDER.</text>
-              <text x='48' y='390' fill='#64748B' font-size='13' letter-spacing='5'>POSTER &amp; AD / STUDY 001</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>Think Louder</h3>
-              <p>Graphic Composition &amp; Campaign Poster</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class='project reveal' data-tags='brand graphic'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Minimal identity design layout'>
-              <rect width='700' height='440' fill='#EEF2FF'/>
-              <circle cx='350' cy='175' r='105' fill='#111827'/>
-              <path d='M300 225 L350 100 L400 225 Z' fill='#4F46E5'/>
-              <circle cx='401' cy='136' r='24' fill='#06B6D4'/>
-              <text x='350' y='325' text-anchor='middle' fill='#111827' font-size='38' font-family='Space Grotesk' font-weight='800'>NORTH STUDIO</text>
-              <text x='350' y='362' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>IDENTITY SYSTEM / 002</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>North Studio</h3>
-              <p>Brand Identity &amp; Visual System</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class='project reveal' data-tags='ads social graphic'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Vibrant promotional ad campaign graphic'>
-              <defs>
-                <linearGradient id='p3ad' x1='0' y1='0' x2='1' y2='1'>
-                  <stop stop-color='#2563EB'/>
-                  <stop offset='0.5' stop-color='#4F46E5'/>
-                  <stop offset='1' stop-color='#D946EF'/>
-                </linearGradient>
-              </defs>
-              <rect width='700' height='440' fill='#F8FAFC'/>
-              <rect x='40' y='40' width='620' height='360' rx='24' fill='url(#p3ad)'/>
-              <circle cx='540' cy='160' r='90' fill='#FFFFFF' opacity='0.2'/>
-              <text x='80' y='140' fill='#D5FF72' font-size='22' font-family='Space Grotesk' font-weight='800' letter-spacing='3'>SPECIAL PROMO</text>
-              <text x='80' y='210' fill='#FFFFFF' font-size='48' font-family='Space Grotesk' font-weight='900'>FLASH SALE</text>
-              <text x='80' y='260' fill='#F3F4F6' font-size='20'>HIGH-IMPACT AD CREATIVE CONCEPT</text>
-              <rect x='80' y='295' width='190' height='50' rx='25' fill='#FFFFFF'/>
-              <text x='175' y='328' text-anchor='middle' fill='#1E1B4B' font-size='16' font-weight='800'>CLAIM OFFER →</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>Summer Flash Offer</h3>
-              <p>Facebook &amp; Instagram Ad Creative</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class='project reveal' data-tags='social graphic'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Social media carousel template design'>
-              <rect width='700' height='440' fill='#F0F9FF'/>
-              <g stroke='#06B6D4' stroke-width='2' fill='none' opacity='0.2'>
-                <line x1='0' y1='110' x2='700' y2='110'/>
-                <line x1='0' y1='220' x2='700' y2='220'/>
-                <line x1='0' y1='330' x2='700' y2='330'/>
-              </g>
-              <rect x='70' y='60' width='240' height='320' rx='16' fill='#FFFFFF' stroke='#E2E8F0' stroke-width='2'/>
-              <rect x='340' y='60' width='240' height='320' rx='16' fill='#4F46E5'/>
-              <circle cx='190' cy='150' r='45' fill='#2563EB' opacity='0.15'/>
-              <text x='190' y='230' text-anchor='middle' fill='#111827' font-size='20' font-family='Space Grotesk' font-weight='800'>CAROUSEL 01</text>
-              <text x='460' y='230' text-anchor='middle' fill='#FFFFFF' font-size='20' font-family='Space Grotesk' font-weight='800'>CAROUSEL 02</text>
-              <text x='350' y='410' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='4'>SOCIAL MEDIA KIT / STUDY 004</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>Creator Daily Set</h3>
-              <p>Social Media Carousel &amp; Posts</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
-
-        <!-- Project 5 -->
-        <article class='project reveal' data-tags='3d motion'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='3D luminous sculpted orb visual'>
-              <defs>
-                <radialGradient id='p3g' cx='0.3' cy='0.2' r='0.85'>
-                  <stop stop-color='#FFFFFF'/>
-                  <stop offset='0.25' stop-color='#06B6D4'/>
-                  <stop offset='0.6' stop-color='#2563EB'/>
-                  <stop offset='1' stop-color='#4F46E5'/>
-                </radialGradient>
-              </defs>
-              <rect width='700' height='440' fill='#F1F5F9'/>
-              <circle cx='350' cy='205' r='130' fill='url(#p3g)'/>
-              <ellipse cx='350' cy='205' rx='185' ry='65' fill='none' stroke='#4F46E5' stroke-width='3' transform='rotate(-25 350 205)'/>
-              <text x='350' y='390' text-anchor='middle' fill='#64748B' font-size='14' letter-spacing='6'>SCULPTED LIGHT / 005</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>Sculpted Light</h3>
-              <p>3D Visual Exploration &amp; Lighting</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
-
-        <!-- Project 6 -->
-        <article class='project reveal' data-tags='video motion'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Cinematic film frame artwork'>
-              <defs>
-                <linearGradient id='p4g' x1='0' y1='0' x2='1' y2='1'>
-                  <stop stop-color='#E0E7FF'/>
-                  <stop offset='0.55' stop-color='#4F46E5'/>
-                  <stop offset='1' stop-color='#06B6D4'/>
-                </linearGradient>
-              </defs>
-              <rect width='700' height='440' fill='url(#p4g)'/>
-              <circle cx='500' cy='130' r='75' fill='#FFFFFF' opacity='0.85'/>
-              <path d='M0 335 L180 155 L300 300 L430 190 L700 350 V440 H0 Z' fill='#111827'/>
-              <path d='M28 35 H100 M28 35 V95 M672 35 H600 M672 35 V95 M28 405 H100 M28 405 V345 M672 405 H600 M672 405 V345' fill='none' stroke='#FFFFFF' stroke-width='3'/>
-              <text x='45' y='100' fill='#FFFFFF' font-size='36' font-family='Space Grotesk' font-weight='800'>FRAME THE FEELING</text>
-              <text x='48' y='400' fill='#94A3B8' font-size='13' letter-spacing='5'>VIDEO MOOD / 006</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>Frame the Feeling</h3>
-              <p>Video Direction &amp; Cinematic Edit</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
-
-        <!-- Project 7 -->
-        <article class='project reveal' data-tags='graphic motion'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Kinetic typographic composition'>
-              <rect width='700' height='440' fill='#F8FAFC'/>
-              <g font-family='Space Grotesk' font-weight='900' font-size='72'>
-                <text x='30' y='120' fill='#06B6D4' opacity='0.3'>KINETIC TYPE</text>
-                <text x='30' y='210' fill='#4F46E5'>KINETIC TYPE</text>
-                <text x='30' y='300' fill='#2563EB' opacity='0.5'>KINETIC TYPE</text>
-              </g>
-              <text x='350' y='400' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>MOTION LAB / 007</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>Kinetic Type Lab</h3>
-              <p>Motion Typography Experiment</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
-
-        <!-- Project 8 -->
-        <article class='project reveal' data-tags='brand social'>
-          <div class='project-art'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 440' role='img' aria-label='Neon glowing identity poster design'>
-              <rect width='700' height='440' fill='#FAF5FF'/>
-              <circle cx='350' cy='220' r='140' fill='none' stroke='#06B6D4' stroke-width='4'/>
-              <circle cx='350' cy='220' r='100' fill='none' stroke='#4F46E5' stroke-width='3' stroke-dasharray='12 8'/>
-              <text x='350' y='228' text-anchor='middle' fill='#111827' font-size='42' font-family='Space Grotesk' font-weight='800'>NEON PULSE</text>
-              <text x='350' y='395' text-anchor='middle' fill='#64748B' font-size='13' letter-spacing='5'>BRAND EXPLORATION / 008</text>
-            </svg>
-            <span class='concept-badge'>CONCEPT STUDY</span>
-          </div>
-          <div class='project-info'>
-            <div>
-              <h3>Neon Pulse Brand</h3>
-              <p>Brand Visuals &amp; Social Covers</p>
-            </div>
-            <span class='project-link'>↗</span>
-          </div>
-        </article>
+      <!-- Demo portfolio cards removed. Real artwork is populated from published Blogger posts below. -->
+      <div class='projects portfolio-live-notice' style='grid-column:1/-1; padding:32px 24px; text-align:center; border:1px dashed var(--border); border-radius:20px; background:var(--card); color:var(--muted);'>
+        <p>Portfolio artwork is loaded automatically from published Blogger posts. See the live Graphics gallery below.</p>
+        <a class='btn btn-primary' href='#graphics' style='margin-top:16px;'>View Graphics Gallery</a>
       </div>
-    </div>
+
   </section>
 
   <!-- Motion Lab Section -->
@@ -3514,68 +3311,7 @@
    * - description: Short project breakdown
    * - featured: true/false
    */
-  var REELS_DATA = [
-    {
-      id: 'reel-1',
-      title: 'Cinematic 3D Character Rigging & Animation',
-      category: '3d',
-      categoryLabel: '3D',
-      youtubeId: 'L_LUpnjgPso', // High quality vertical animation reel sample ID
-      thumbnail: '',
-      description: '3D character motion design, fluid simulations, and visual storytelling for digital brand campaigns.',
-      featured: true
-    },
-    {
-      id: 'reel-2',
-      title: 'Product Advertisement Video with AI',
-      category: 'ai-ads',
-      categoryLabel: 'AI ADS',
-      youtubeId: 'jNQXAC9IVRw', // Sample YouTube video ID
-      thumbnail: '',
-      description: 'AI-generated hyper-realistic product visuals paired with motion typography for high CTR ads.',
-      featured: true
-    },
-    {
-      id: 'reel-3',
-      title: '2D Hand-Drawn Frame Animation',
-      category: '2d',
-      categoryLabel: '2D',
-      youtubeId: 'kJQP7kiw5Fk', // Sample YouTube video ID
-      thumbnail: '',
-      description: 'Expressive frame-by-frame 2D animation sequence crafted for brand commercial intros.',
-      featured: true
-    },
-    {
-      id: 'reel-4',
-      title: 'Dynamic Short-Form Reel Editing',
-      category: 'editing',
-      categoryLabel: 'EDITING',
-      youtubeId: 'fJ9rUzIMcZQ', // Sample YouTube video ID
-      thumbnail: '',
-      description: 'Fast-paced rhythmic video editing, sound design, and colored grading for social media.',
-      featured: true
-    },
-    {
-      id: 'reel-5',
-      title: 'Kinetic Motion Graphics & Title Sequence',
-      category: 'motion',
-      categoryLabel: 'MOTION',
-      youtubeId: '3JZ_D3ELwOQ', // Sample YouTube video ID
-      thumbnail: '',
-      description: 'Bold kinetic typography and particle motion graphics designed for campaign launch teasers.',
-      featured: true
-    },
-    {
-      id: 'reel-6',
-      title: 'AI Commercial & Creative Direction',
-      category: 'ai-ads',
-      categoryLabel: 'AI ADS',
-      youtubeId: '2Vv-BfVoq4g', // Sample YouTube video ID
-      thumbnail: '',
-      description: 'Synthesized AI camera choreography combined with premium audio design for modern brands.',
-      featured: true
-    }
-  ];
+  var REELS_DATA = []; // Live published Blogger posts only; no demo reels.
 
   /**
    * GRAPHIC DESIGN SHOWCASE DATA CONFIGURATION
@@ -4850,17 +4586,8 @@
               var ytId = extractYouTubeIdFromText(content);
               if (!ytId && postUrl) ytId = extractYouTubeIdFromText(postUrl);
 
-              // Disallow placeholder titles: 'Untitled Project', 'Untitled', video ID, or YouTube URLs
-              var isTitleGeneric = !title ||
-                title.toLowerCase() === 'untitled project' ||
-                title.toLowerCase() === 'untitled' ||
-                (ytId && title === ytId) ||
-                /^(https?:\/\/)?(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(title);
-
-              if (isTitleGeneric) {
-                // Only fall back if Blogger genuinely provides no title
-                title = 'Creative Reel';
-              }
+              // Use the actual Blogger post title; use a generic fallback only when it is truly missing.
+              if (!title || !title.trim()) title = ytId ? 'Creative Reel' : 'Creative Artwork';
 
               var publishedDate = (entry.published && entry.published.$t) ? new Date(entry.published.$t).getTime() : 0;
 
@@ -4949,19 +4676,19 @@
               }
 
               // GRAPHICS CLASSIFICATION RULES:
-              // 1. Must have explicit Graphics label or graphic subcategories.
-              // 2. Must contain genuine artwork image.
-              if (hasExplicitGraphicsLabel) {
-                var contentImages = extractImagesFromContent(content);
-                var primaryImage = '';
-
-                if (contentImages.length > 0) {
-                  primaryImage = contentImages[0];
-                } else if (entry.media$thumbnail && entry.media$thumbnail.url) {
-                  primaryImage = upgradeBloggerImageUrl(entry.media$thumbnail.url);
-                }
-
-                // Skip if no real image found or if image is a YT thumbnail without genuine graphic artwork
+              // A published post with artwork images and NO YouTube video automatically belongs in Graphics,
+              // even when the author has not added the Graphics label. Explicit Graphics-labeled posts are
+              // also eligible, but YouTube preview thumbnails alone must never count as artwork.
+              var contentImages = extractImagesFromContent(content).filter(function(url) {
+                return url && !/ytimg\.com|img\.youtube\.com|youtube\.com\/vi\//i.test(url);
+              });
+              var mediaImage = (entry.media$thumbnail && entry.media$thumbnail.url)
+                ? upgradeBloggerImageUrl(entry.media$thumbnail.url) : '';
+              if (mediaImage && /ytimg\.com|img\.youtube\.com|youtube\.com\/vi\//i.test(mediaImage)) mediaImage = '';
+              var primaryImage = contentImages.length ? contentImages[0] : mediaImage;
+              var shouldShowAsGraphic = !!primaryImage && (!ytId || hasExplicitGraphicsLabel);
+              if (shouldShowAsGraphic) {
+                // Render real artwork only; never fabricate a demo or gradient placeholder.
                 if (primaryImage) {
                   var gfxCat = 'brand';
                   var badge = 'CREATIVE';
