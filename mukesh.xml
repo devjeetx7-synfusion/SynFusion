@@ -9,6 +9,34 @@
 <title>Singh Creative Studio — MUKESH SINGH</title>
 <b:include data='blog' name='all-head-content'/>
 
+<!-- Open Graph / Social Share Preview -->
+<b:if cond='data:blog.pageType == "index"'>
+  <meta content='Singh Creative Studio' property='og:title'/>
+  <meta content='Singh Creative Studio — Creative design, visual branding, motion graphics, animation and visual storytelling.' property='og:description'/>
+  <meta content='website' property='og:type'/>
+<b:else/>
+  <meta expr:content='data:blog.pageTitle' property='og:title'/>
+  <meta expr:content='data:blog.metaDescription' property='og:description'/>
+  <meta content='article' property='og:type'/>
+</b:if>
+<meta content='https://i.postimg.cc/tRdFHhwJ/IMG-20261031-WA0000.jpg' property='og:image'/>
+<meta content='https://i.postimg.cc/tRdFHhwJ/IMG-20261031-WA0000.jpg' property='og:image:secure_url'/>
+<meta content='1200' property='og:image:width'/>
+<meta content='630' property='og:image:height'/>
+<meta content='Singh Creative Studio social preview image' property='og:image:alt'/>
+<meta expr:content='data:blog.url' property='og:url'/>
+<meta content='Singh Creative Studio' property='og:site_name'/>
+<meta content='summary_large_image' name='twitter:card'/>
+<b:if cond='data:blog.pageType == "index"'>
+  <meta content='Singh Creative Studio' name='twitter:title'/>
+  <meta content='Creative design, visual branding, motion graphics, animation and visual storytelling.' name='twitter:description'/>
+<b:else/>
+  <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+  <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+</b:if>
+<meta content='https://i.postimg.cc/tRdFHhwJ/IMG-20261031-WA0000.jpg' name='twitter:image'/>
+
+
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com' rel='preconnect'/>
 <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
