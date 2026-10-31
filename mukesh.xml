@@ -1142,24 +1142,167 @@
     flex-wrap: wrap;
   }
 
+  /* Premium Responsive Footer Styles */
   .footer {
     border-top: 1px solid var(--border);
-    padding: 32px 0;
+    padding: 60px 0 32px;
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     background: #F8FAFC;
+    position: relative;
+    overflow: hidden;
   }
 
-  .footer-inner {
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand {
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .footer-founder {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .footer-tagline {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--electric) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+
+  .footer-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 420px;
+  }
+
+  .footer-heading {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-nav-list a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+  }
+
+  .footer-nav-list a:hover,
+  .footer-nav-list a:focus-visible {
+    color: var(--primary);
+    transform: translateX(4px);
+  }
+
+  .footer-subtext {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: var(--muted);
+  }
+
+  .footer-social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .footer-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    min-height: 44px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  }
+
+  .footer-action-btn:hover,
+  .footer-action-btn:focus-visible {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.12);
+  }
+
+  .footer-action-btn.footer-quote-btn {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+    border-color: rgba(79, 70, 229, 0.3);
+    color: var(--primary);
+  }
+
+  .footer-action-btn.footer-quote-btn:hover,
+  .footer-action-btn.footer-quote-btn:focus-visible {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--electric) 100%);
+    color: #FFFFFF;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+  }
+
+  .footer-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  .footer-bottom-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  .socials {
-    display: flex;
-    gap: 10px;
+  .footer-credit strong {
+    color: var(--text);
   }
 
   /* Reveal animation */
@@ -1313,12 +1456,30 @@
     .about-art { min-height: 280px; }
     .monogram { font-size: 8.5rem; }
     .contact { padding: 75px 0; }
-    .footer-inner {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .footer-social-grid {
+      grid-template-columns: 1fr;
+    }
+    .footer-bottom-inner {
       flex-direction: column;
       text-align: center;
+      gap: 8px;
     }
-    .socials {
-      justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    .footer {
+      padding: 44px 0 24px;
+    }
+    .footer-content {
+      gap: 28px;
+    }
+    .footer-action-btn {
+      width: 100%;
+      justify-content: flex-start;
     }
   }
 
@@ -2600,7 +2761,7 @@
       <h2 class='display'>Let's make it<br/><span class='gradient-text'>mean something.</span></h2>
       <p>Have a brand, campaign or creative idea in mind? Let's turn that first spark into something people remember.</p>
       <div class='contact-actions'>
-        <a class='btn btn-primary' href='mailto:hello@example.com'>
+        <a class='btn btn-primary' id='mainContactEmailBtn' href='mailto:dharmjeetsingh958@gmail.com'>
           <span>Start a Conversation</span>
           <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='5' x2='19' y1='12' y2='12'/><polyline points='12 5 19 12 12 19'/></svg>
         </a>
@@ -2614,22 +2775,98 @@
 </main>
 
 <!-- Footer -->
-<footer class='footer'>
-  <div class='container footer-inner'>
-    <span>© <span id='yearNow'>2026</span> Singh Creative Studio · MUKESH SINGH</span>
-    <div class='socials'>
-      <a class='btn-icon' href='#contact' aria-label='Instagram' title='Instagram'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='2' width='20' height='20' rx='5' ry='5'/><path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'/><line x1='17.5' x2='17.51' y1='6.5' y2='6.5'/></svg>
+<footer class='footer' id='siteFooter'>
+  <div class='container footer-content'>
+    <!-- Brand Area -->
+    <div class='footer-brand-col'>
+      <a class='brand footer-brand' href='#home' aria-label='Singh Creative Studio Home'>
+        <span class='brand-icon'>S</span>
+        <span class='footer-brand-name'>Singh Creative Studio</span>
       </a>
-      <a class='btn-icon' href='#contact' aria-label='Behance' title='Behance'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M3 7h5a3 3 0 0 1 0 6H3zm0 6h6a3.5 3.5 0 0 1 0 7H3z'/><path d='M13 14a4 4 0 1 0 4-4h-4zm0 0h8'/><line x1='14' x2='18' y1='7' y2='7'/></svg>
-      </a>
-      <a class='btn-icon' href='#contact' aria-label='YouTube' title='YouTube'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z'/><polygon points='9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02'/></svg>
-      </a>
-      <a class='btn-icon' href='#contact' aria-label='LinkedIn' title='LinkedIn'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z'/><rect x='2' y='9' width='4' height='12'/><circle cx='4' cy='4' r='2'/></svg>
-      </a>
+      <p class='footer-founder'>Founder: <strong>Mukesh Singh</strong></p>
+      <p class='footer-tagline'>Ideas Made Visible.</p>
+      <p class='footer-desc'>Creative solutions for brands through animation, video editing, graphic design, AI-powered advertisements, and social media management.</p>
+    </div>
+
+    <!-- Quick Navigation Links -->
+    <div class='footer-nav-col'>
+      <h3 class='footer-heading'>Navigation</h3>
+      <ul class='footer-nav-list'>
+        <li><a href='#home'>Home</a></li>
+        <li><a href='#services'>Services</a></li>
+        <li><a href='#reels'>Reels</a></li>
+        <li><a href='#graphics'>Graphics</a></li>
+        <li><a href='#about'>About</a></li>
+        <li><a href='#contact'>Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Social and Contact Actions -->
+    <div class='footer-actions-col'>
+      <h3 class='footer-heading'>Connect &amp; Collaborate</h3>
+      <p class='footer-subtext'>Ready to discuss your next campaign? Reach out across any of our direct studio channels:</p>
+      <div class='footer-social-grid'>
+        <!-- 1. Instagram -->
+        <a class='footer-action-btn' id='footerInstagramLink' href='https://www.instagram.com/getsynfusion/' target='_blank' rel='noopener noreferrer' aria-label='Follow Singh Creative Studio on Instagram'>
+          <svg class='footer-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'>
+            <rect x='2' y='2' width='20' height='20' rx='5' ry='5' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+            <path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+            <circle cx='17.5' cy='6.5' r='1.5' fill='currentColor'/>
+          </svg>
+          <span class='footer-action-label'>Instagram</span>
+        </a>
+
+        <!-- 2. Facebook -->
+        <a class='footer-action-btn' id='footerFacebookLink' href='https://www.facebook.com/getsynfusion' target='_blank' rel='noopener noreferrer' aria-label='Connect with Singh Creative Studio on Facebook'>
+          <svg class='footer-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'>
+            <path d='M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+          </svg>
+          <span class='footer-action-label'>Facebook</span>
+        </a>
+
+        <!-- 3. YouTube -->
+        <a class='footer-action-btn' id='footerYoutubeLink' href='https://www.youtube.com/@getsynfusion' target='_blank' rel='noopener noreferrer' aria-label='Subscribe to Singh Creative Studio on YouTube'>
+          <svg class='footer-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'>
+            <path d='M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+            <polygon points='9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02' fill='currentColor'/>
+          </svg>
+          <span class='footer-action-label'>YouTube</span>
+        </a>
+
+        <!-- 4. WhatsApp -->
+        <a class='footer-action-btn' id='footerWhatsappLink' href='https://wa.me/919334603912' target='_blank' rel='noopener noreferrer' aria-label='Chat with Singh Creative Studio on WhatsApp'>
+          <svg class='footer-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'>
+            <path d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+          </svg>
+          <span class='footer-action-label'>WhatsApp</span>
+        </a>
+
+        <!-- 5. Call -->
+        <a class='footer-action-btn' id='footerCallLink' href='tel:+919334603912' aria-label='Call Singh Creative Studio at +91 9334603912'>
+          <svg class='footer-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'>
+            <path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+          </svg>
+          <span class='footer-action-label'>Call Now</span>
+        </a>
+
+        <!-- 6. Get a Quote -->
+        <a class='footer-action-btn footer-quote-btn' id='footerQuoteLink' href='#contact' aria-label='Request a project quote from Singh Creative Studio'>
+          <svg class='footer-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'>
+            <path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>
+            <line x1='8' y1='9' x2='16' y2='9' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/>
+            <line x1='8' y1='13' x2='13' y2='13' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/>
+          </svg>
+          <span class='footer-action-label'>Get a Quote</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Copyright Bar -->
+  <div class='container footer-bottom'>
+    <div class='footer-bottom-inner'>
+      <span>© <span id='yearNow'>2026</span> Singh Creative Studio · All Rights Reserved.</span>
+      <span class='footer-credit'>Crafted by <strong>Mukesh Singh</strong></span>
     </div>
   </div>
 </footer>
@@ -2645,60 +2882,109 @@
 <script type='text/javascript'>
 //<![CDATA[
 (function(){
-// Cinematic Intro Screen handling
+  /* ==========================================================================
+     STUDIO CONFIGURATION
+     Central authoritative configuration for Singh Creative Studio.
+     Replace or customize any of these values as needed.
+     ========================================================================== */
+  var STUDIO_CONFIG = {
+    brandName: 'Singh Creative Studio',
+    founder: 'Mukesh Singh',
+    tagline: 'Ideas Made Visible.',
+    email: 'dharmjeetsingh958@gmail.com',
+    phone: '+919334603912',
+    phoneDisplay: '+91 9334603912',
+    quoteTarget: '#contact',
+    social: {
+      instagram: 'https://www.instagram.com/getsynfusion/',
+      facebook: 'https://www.facebook.com/getsynfusion',
+      youtube: 'https://www.youtube.com/@getsynfusion',
+      whatsapp: 'https://wa.me/919334603912'
+    },
+    bloggerFeed: {
+      postsUrl: '/feeds/posts/default?alt=json&max-results=150',
+      reelsLabel: 'reels',
+      graphicsLabel: 'graphics'
+    },
+    youtubePlayerVars: {
+      autoplay: 0,
+      controls: 1,
+      modestbranding: 1,
+      rel: 0,
+      playsinline: 1
+    }
+  };
+
+  // Cinematic Intro Screen handling with Explicit State Machine:
+  // States: 'intro-active' -> 'intro-transitioning' -> 'intro-complete'
   var intro = document.getElementById('introScreen');
   var enterBtn = document.getElementById('enterStudio');
-var isTransitioning = false;
+  var introState = 'intro-active';
+  var introFallbackTimer = null;
 
-function startCinematicTransition() {
-  if (isTransitioning) return;
-  isTransitioning = true;
-
-  if (enterBtn) {
-    enterBtn.classList.add('active-cta');
-  }
-
-  if (intro) {
-    intro.classList.add('transitioning');
-  }
-
-    try { sessionStorage.setItem('scs-intro-seen', '1'); } catch(e) {}
-
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var duration = prefersReducedMotion ? 200 : 950;
-
-  var safetyTimer = setTimeout(finishTransition, duration + 150);
-
-  function finishTransition() {
-    clearTimeout(safetyTimer);
-    if (intro) {
-      intro.classList.add('hidden');
-      intro.classList.remove('transitioning');
-    }
-    document.body.classList.add('intro-dismissed');
-    document.body.style.overflow = '';
-  }
-
-  setTimeout(finishTransition, duration);
-  }
-
-  try {
-    if (sessionStorage.getItem('scs-intro-seen') === '1' && intro) {
-      intro.classList.add('hidden');
-    document.body.classList.add('intro-dismissed');
-    document.body.style.overflow = '';
-  } else {
+  // Ensure scroll is at top and locked while intro is active
+  if (intro && !intro.classList.contains('hidden')) {
+    document.body.classList.remove('intro-dismissed');
     document.body.style.overflow = 'hidden';
+    window.scrollTo(0, 0);
+  }
+
+  function finishIntroTransition() {
+    if (introState === 'intro-complete') return;
+    introState = 'intro-complete';
+
+    if (introFallbackTimer) {
+      clearTimeout(introFallbackTimer);
+      introFallbackTimer = null;
     }
-} catch(e) {
-  document.body.style.overflow = '';
-}
+
+    if (intro) {
+      intro.classList.remove('transitioning');
+      intro.classList.add('hidden');
+      intro.setAttribute('aria-hidden', 'true');
+    }
+
+    document.body.classList.add('intro-dismissed');
+    document.body.style.overflow = '';
+    window.scrollTo(0, 0);
+  }
+
+  function startCinematicTransition() {
+    if (introState !== 'intro-active') return;
+    introState = 'intro-transitioning';
+
+    if (enterBtn) {
+      enterBtn.classList.add('active-cta');
+      enterBtn.setAttribute('disabled', 'disabled');
+    }
+
+    var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      finishIntroTransition();
+      return;
+    }
+
+    if (intro) {
+      intro.classList.add('transitioning');
+      var onTransitionEnd = function(e) {
+        if (e.target === intro) {
+          intro.removeEventListener('transitionend', onTransitionEnd);
+          finishIntroTransition();
+        }
+      };
+      intro.addEventListener('transitionend', onTransitionEnd);
+    }
+
+    // Safety fallback timer in case transitionend does not fire
+    introFallbackTimer = setTimeout(finishIntroTransition, 1000);
+  }
 
   if (enterBtn) {
-  enterBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    startCinematicTransition();
-  });
+    enterBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      startCinematicTransition();
+    });
   }
 
   // Mobile Navigation Toggle
@@ -2982,39 +3268,53 @@ function startCinematicTransition() {
   // Active Reels Carousel State
   var filteredReels = REELS_DATA.slice();
   var activeReelIndex = 0;
+  var isCarouselProgrammaticScroll = false;
+  var carouselProgrammaticTimer = null;
 
-  // Helper to load YouTube IFrame API safely once
+  // Registered callbacks waiting for YouTube API ready
+  var ytReadyCallbacks = [];
+
+  // Helper to load YouTube IFrame API safely, idempotently, and without multiple script injections
   function loadYouTubeIframeApi(callback) {
-    if (window.YT && window.YT.Player) {
+    if (window.YT && typeof window.YT.Player === 'function') {
       ytApiLoaded = true;
-      if (callback) callback();
-      return;
-    }
-    if (ytApiLoading) {
-      var checkInterval = setInterval(function() {
-        if (window.YT && window.YT.Player) {
-          clearInterval(checkInterval);
-          ytApiLoaded = true;
-          if (callback) callback();
-        }
-      }, 100);
+      if (typeof callback === 'function') callback();
       return;
     }
 
+    if (typeof callback === 'function') {
+      ytReadyCallbacks.push(callback);
+    }
+
+    if (ytApiLoading) return;
     ytApiLoading = true;
+
+    // Preserve any existing window.onYouTubeIframeAPIReady handler
+    var existingHandler = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = function() {
       ytApiLoaded = true;
       ytApiLoading = false;
-      if (callback) callback();
+      if (typeof existingHandler === 'function') {
+        try { existingHandler(); } catch (e) {}
+      }
+      while (ytReadyCallbacks.length) {
+        var cb = ytReadyCallbacks.shift();
+        try { cb(); } catch (e) {}
+      }
     };
 
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    if (firstScriptTag && firstScriptTag.parentNode) {
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    } else {
-      document.head.appendChild(tag);
+    // Check if script tag is already in DOM
+    var existingScript = document.querySelector('script[src*="youtube.com/iframe_api"]');
+    if (!existingScript) {
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      tag.async = true;
+      var firstScript = document.getElementsByTagName('script')[0];
+      if (firstScript && firstScript.parentNode) {
+        firstScript.parentNode.insertBefore(tag, firstScript);
+      } else {
+        (document.head || document.body).appendChild(tag);
+      }
     }
   }
 
@@ -3173,22 +3473,29 @@ function startCinematicTransition() {
       counterEl.innerHTML = numStr + " <span>/ " + totalStr + "</span>";
     }
 
-    // Scroll selected card to exact horizontal center
+    // Scroll selected card to exact horizontal center strictly inside the wrapper container
+    // Do NOT use targetCard.scrollIntoView() which causes unwanted document-level vertical scrolling!
     var targetCard = cards[activeReelIndex];
     var wrapper = document.getElementById('reelsTrackWrapper');
     if (targetCard && wrapper) {
-      if (typeof targetCard.scrollIntoView === 'function') {
-        targetCard.scrollIntoView({
-          behavior: isSmooth ? 'smooth' : 'auto',
-          inline: 'center',
-          block: 'nearest'
-        });
-      } else {
-        var cardOffset = targetCard.offsetLeft + (targetCard.offsetWidth / 2) - (wrapper.clientWidth / 2);
-        wrapper.scrollTo({
-          left: Math.max(0, cardOffset),
-          behavior: isSmooth ? 'smooth' : 'auto'
-        });
+      var cardOffset = targetCard.offsetLeft + (targetCard.offsetWidth / 2) - (wrapper.clientWidth / 2);
+      var targetLeft = Math.max(0, cardOffset);
+
+      if (Math.abs(wrapper.scrollLeft - targetLeft) > 2) {
+        isCarouselProgrammaticScroll = true;
+        clearTimeout(carouselProgrammaticTimer);
+        carouselProgrammaticTimer = setTimeout(function() {
+          isCarouselProgrammaticScroll = false;
+        }, isSmooth ? 500 : 50);
+
+        if (typeof wrapper.scrollTo === 'function') {
+          wrapper.scrollTo({
+            left: targetLeft,
+            behavior: isSmooth ? 'smooth' : 'auto'
+          });
+        } else {
+          wrapper.scrollLeft = targetLeft;
+        }
       }
     }
   }
@@ -3213,24 +3520,26 @@ function startCinematicTransition() {
     }
 
     loadYouTubeIframeApi(function() {
+      // If another reel was clicked while loading, abort
+      if (activeReelIndex !== index) return;
+
+      cleanupActivePlayer();
+
       var containerId = 'ytPlayerInstance-' + index;
       iframeBox.innerHTML = "<div id='" + containerId + "'></div>";
 
       if (statusOverlay) statusOverlay.classList.add('hidden');
 
       try {
+        var pVars = Object.assign({}, STUDIO_CONFIG.youtubePlayerVars, {
+          mute: isMuted ? 1 : 0
+        });
+
         activeYtPlayer = new window.YT.Player(containerId, {
           height: '100%',
           width: '100%',
           videoId: reel.youtubeId,
-          playerVars: {
-            autoplay: 0,
-            controls: 1,
-            modestbranding: 1,
-            rel: 0,
-            playsinline: 1,
-            mute: isMuted ? 1 : 0
-          },
+          playerVars: pVars,
           events: {
             onReady: function(event) {
               activeYtIframeId = containerId;
@@ -3331,9 +3640,15 @@ function startCinematicTransition() {
     var reelsTrackWrapper = document.getElementById('reelsTrackWrapper');
     if (reelsTrackWrapper) {
       var scrollDebounceTimer = null;
+      var lastWrapperWidth = reelsTrackWrapper.clientWidth;
+
       reelsTrackWrapper.addEventListener('scroll', function() {
+        if (isCarouselProgrammaticScroll) return;
+
         clearTimeout(scrollDebounceTimer);
         scrollDebounceTimer = setTimeout(function() {
+          if (isCarouselProgrammaticScroll) return;
+
           var cards = reelsTrackWrapper.querySelectorAll('.reel-card');
           var wrapperCenter = reelsTrackWrapper.scrollLeft + (reelsTrackWrapper.clientWidth / 2);
           var closestIdx = activeReelIndex;
@@ -3365,8 +3680,13 @@ function startCinematicTransition() {
         }, 60);
       }, { passive: true });
 
+      // Only re-center horizontally if width actually changed (prevents vertical mobile address-bar resize jumps)
       window.addEventListener('resize', function() {
-        selectReel(activeReelIndex, { smooth: false });
+        var newWidth = reelsTrackWrapper.clientWidth;
+        if (Math.abs(newWidth - lastWrapperWidth) > 10) {
+          lastWrapperWidth = newWidth;
+          selectReel(activeReelIndex, { smooth: false });
+        }
       }, { passive: true });
     }
   }
@@ -3374,6 +3694,8 @@ function startCinematicTransition() {
   // Render Graphic Design Gallery & Lightbox Modal
   var currentGfxIndex = 0;
   var filteredGraphics = GRAPHICS_DATA.slice();
+  var savedLightboxScrollY = 0;
+  var lastTriggeringGfxElement = null;
 
   function renderGraphicsGrid() {
     var grid = document.getElementById('graphicsGrid');
@@ -3413,7 +3735,7 @@ function startCinematicTransition() {
     });
   }
 
-  function openLightbox(index) {
+  function openLightbox(index, triggerEl) {
     if (index < 0 || index >= filteredGraphics.length) return;
     currentGfxIndex = index;
     var gfx = filteredGraphics[currentGfxIndex];
@@ -3425,6 +3747,12 @@ function startCinematicTransition() {
 
     if (!modal || !body) return;
 
+    if (triggerEl) {
+      lastTriggeringGfxElement = triggerEl;
+    } else {
+      lastTriggeringGfxElement = document.querySelector('.graphic-card[data-gfx-index="' + index + '"]');
+    }
+
     if (gfx.image) {
       body.innerHTML = "<img src='" + gfx.image + "' alt='" + gfx.title + "'/>";
     } else {
@@ -3434,14 +3762,31 @@ function startCinematicTransition() {
     if (titleEl) titleEl.textContent = gfx.title;
     if (catEl) catEl.textContent = gfx.categoryLabel || gfx.category;
 
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    if (!modal.classList.contains('open')) {
+      savedLightboxScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   function closeLightbox() {
     var modal = document.getElementById('lightboxModal');
-    if (modal) modal.classList.remove('open');
+    if (!modal || !modal.classList.contains('open')) return;
+
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+
+    // Restore exact document scroll position without jumping
+    if (typeof window.scrollTo === 'function') {
+      window.scrollTo(0, savedLightboxScrollY);
+    }
+
+    // Restore focus to the card that opened the lightbox
+    if (lastTriggeringGfxElement && typeof lastTriggeringGfxElement.focus === 'function') {
+      try { lastTriggeringGfxElement.focus(); } catch (e) {}
+    }
   }
 
   function setupGraphicsControls() {
@@ -3511,7 +3856,7 @@ function startCinematicTransition() {
   // Comprehensive Blogger Feed Discovery for Posts Labeled 'Reels' or 'Graphics'
   function discoverBloggerPosts() {
     try {
-      var feedUrl = '/feeds/posts/default?alt=json&max-results=150';
+      var feedUrl = STUDIO_CONFIG.bloggerFeed.postsUrl;
       fetch(feedUrl)
         .then(function(res) {
           if (!res.ok) throw new Error('Network error');
