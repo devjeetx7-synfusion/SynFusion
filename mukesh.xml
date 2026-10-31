@@ -2497,10 +2497,6 @@
             <svg xmlns='http://www.w3.org/2000/svg' fill='none' height='16' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' viewBox='0 0 24 24' width='16'><line x1='12' x2='12' y1='5' y2='19'/><line x1='5' x2='19' y1='12' y2='12'/></svg>
           </a>
         </div>
-        <div class='hero-meta'>
-          <span class='dot'></span>
-          <span><b>Graphics. Ads. Branding. Motion.</b> — From idea to impact.</span>
-        </div>
       </div>
 
       <!-- Hero Visual Canvas / Carousel Showcase -->
@@ -2646,16 +2642,6 @@
           <h2 class='display'>Our Creative <span class='gradient-text'>Reels</span></h2>
           <p style='margin: 12px auto 0;'>Stories and creative ideas brought to life. Explore our animation, editing, and AI-powered advertising projects.</p>
         </div>
-      </div>
-
-      <!-- Reels Category Filters -->
-      <div class='reels-category-filters reveal' id='reelsFilterGroup' role='group' aria-label='Filter reels by category'>
-        <button class='reel-filter-btn active' data-reel-filter='all' type='button'>All Reels</button>
-        <button class='reel-filter-btn' data-reel-filter='2d' type='button'>2D Animation</button>
-        <button class='reel-filter-btn' data-reel-filter='3d' type='button'>3D Animation</button>
-        <button class='reel-filter-btn' data-reel-filter='editing' type='button'>Video Editing</button>
-        <button class='reel-filter-btn' data-reel-filter='ai-ads' type='button'>AI Product Ads</button>
-
       </div>
 
       <!-- Reels Carousel Showcase -->
@@ -4525,10 +4511,9 @@
     return btn ? (btn.getAttribute(attrName) || 'all') : 'all';
   }
 
-  // Re-apply the currently selected filter chip (used after filtering AND after feed refreshes)
+  // Category chips are intentionally removed; show every published Reel.
   function applyReelFilter() {
-    var category = getActiveFilterValue('#reelsFilterGroup .reel-filter-btn.active', 'data-reel-filter');
-    filteredReels = category === 'all' ? REELS_DATA.slice() : REELS_DATA.filter(function(r) { return r.category === category; });
+    filteredReels = REELS_DATA.slice();
   }
 
   function applyGraphicsFilter() {
