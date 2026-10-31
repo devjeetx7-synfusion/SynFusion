@@ -5088,7 +5088,16 @@
     }
 
     // Reels: a valid YouTube video ID is mandatory
+    // Blogger may place the YouTube URL in an alternate link, media metadata, or another
+    // serialized field rather than entry.content.$t. Inspect the full entry as a final fallback.
     var ytId = extractYouTubeIdFromPost(contentHtml, summaryHtml, mediaThumb);
+    if (!ytId) {
+      var entryText = '';
+      try { entryText = JSON.stringify(entry); } catch (ignoreEntryJsonError) {}
+      ytId = extractYouTubeIdFromText(entryText);
+    }
+    if (!ytId && postUrl) ytId = extractYouTubeIdFromText(postUrl);
+
     if (!ytId) return { section: 'reels-invalid', info: info };
     var reelSub = matchSublabel(labels, REELS_SUBLABELS);
     return {
