@@ -3179,9 +3179,11 @@
       whatsapp: 'https://wa.me/919334603912'
     },
     bloggerFeed: {
-      postsUrl: '/feeds/posts/default?alt=json&max-results=150',
+      postsUrl: '/feeds/posts/default?alt=json',
       reelsLabel: 'reels',
-      graphicsLabel: 'graphics'
+      graphicsLabel: 'graphics',
+      maxResultsPerPage: 50,
+      maxTotalPosts: 150
     },
     youtubePlayerVars: {
       autoplay: 0,
@@ -3689,6 +3691,95 @@
     );
   }
 
+  // Feed loading and error state management
+  var bloggerFeedState = {
+    isLoading: true,
+    reelsError: false,
+    graphicsError: false,
+    reelsErrorMsg: '',
+    graphicsErrorMsg: '',
+    hasLoadedOnce: false
+  };
+
+  // Safe HTML Escaping and Entity Decoding
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function decodeHtmlEntities(str) {
+    if (!str) return '';
+    var txt = document.createElement('textarea');
+    txt.innerHTML = str;
+    return txt.value;
+  }
+
+  // Extract YouTube ID from text, links, query params, or iframes
+  function extractYouTubeIdFromText(text) {
+    if (!text) return null;
+    var rawText = decodeHtmlEntities(text);
+    // 1. YouTube watch URL with query parameters (v=...)
+    var watchMatch = rawText.match(/(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/watch\?[^"'\s<>#]*\bv=([a-zA-Z0-9_-]{11})/i);
+    if (watchMatch) return watchMatch[1];
+    // 2. YouTube Shorts URL
+    var shortsMatch = rawText.match(/(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/i);
+    if (shortsMatch) return shortsMatch[1];
+    // 3. YouTube Embed URL or iframe src
+    var embedMatch = rawText.match(/(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/i);
+    if (embedMatch) return embedMatch[1];
+    // 4. youtu.be shortlink
+    var youtbeMatch = rawText.match(/(?:https?:\/\/)?youtu\.be\/([a-zA-Z0-9_-]{11})/i);
+    if (youtbeMatch) return youtbeMatch[1];
+    // 5. Iframe tag fallback
+    var iframeMatch = rawText.match(/<iframe[^>]+src=["']([^"']+)["']/i);
+    if (iframeMatch) {
+      var iframeSrc = iframeMatch[1];
+      var idFromSrc = extractYouTubeIdFromText(iframeSrc);
+      if (idFromSrc) return idFromSrc;
+    }
+    return null;
+  }
+
+  // Upgrade Blogger image URLs to high-resolution
+  function upgradeBloggerImageUrl(url) {
+    if (!url) return '';
+    // Decode HTML entities if present
+    url = decodeHtmlEntities(url).trim();
+    // Replace Blogger size modifier with high-res /s1600/ or /w1600/
+    if (/blogger\.googleusercontent\.com|bp\.blogspot\.com|googleusercontent\.com/i.test(url)) {
+      url = url.replace(/\/(s\d+(-[chw\d]+)?|w\d+(-h\d+)?)\//, '/s1600/');
+    }
+    return url;
+  }
+
+  // Extract all valid image URLs from HTML content
+  function extractImagesFromContent(contentHtml) {
+    if (!contentHtml) return [];
+    var images = [];
+    var raw = decodeHtmlEntities(contentHtml);
+    // Find anchor wrapped images: <a href="...image.jpg"><img src="..."/></a>
+    var aImgRegex = /<a[^>]+href=["']([^"']+\.(?:jpe?g|png|webp|gif|svg)(?:\?[^"']*)?)["'][^>]*>\s*<img/gi;
+    var aMatch;
+    while ((aMatch = aImgRegex.exec(raw)) !== null) {
+      images.push(upgradeBloggerImageUrl(aMatch[1]));
+    }
+    // Find all <img> tags
+    var imgRegex = /<img[^>]+src=["']([^"']+)["']/gi;
+    var imgMatch;
+    while ((imgMatch = imgRegex.exec(raw)) !== null) {
+      var src = upgradeBloggerImageUrl(imgMatch[1]);
+      if (src && !images.includes(src)) {
+        images.push(src);
+      }
+    }
+    return images;
+  }
+
   // Render Reels Carousel Track
   function renderReelsCarousel() {
     var track = document.getElementById('reelsTrack');
@@ -3698,8 +3789,40 @@
     // Clean up active playback before re-rendering
     cleanupActivePlayer();
 
+    // Check loading state
+    if (bloggerFeedState.isLoading && !bloggerFeedState.hasLoadedOnce && !filteredReels.length) {
+      track.innerHTML = "<div style='padding: 60px 24px; text-align: center; color: var(--muted); width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;'>" +
+        "<div class='reel-spinner' style='display: block; margin: 0 auto 16px;'></div>" +
+        "<div style='font-size: 0.95rem; font-weight: 500;'>Loading published reels...</div>" +
+        "</div>";
+      if (counterEl) counterEl.innerHTML = "-- <span>/ --</span>";
+      return;
+    }
+
+    // Check error state
+    if (bloggerFeedState.reelsError && !filteredReels.length) {
+      track.innerHTML = "<div style='padding: 50px 24px; text-align: center; color: var(--muted); width: 100%; max-width: 500px; margin: 0 auto;'>" +
+        "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='margin: 0 auto 16px; opacity: 0.6;'><circle cx='12' cy='12' r='10'/><line x1='12' y1='8' x2='12' y2='12'/><line x1='12' y1='16' x2='12.01' y2='16'/></svg>" +
+        "<div style='font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 8px;'>Unable to Load Reels</div>" +
+        "<p style='font-size: 0.88rem; margin-bottom: 20px;'>" + escapeHtml(bloggerFeedState.reelsErrorMsg || 'Could not fetch reels from Blogger feed.') + "</p>" +
+        "<button id='reelsRetryBtn' type='button' class='btn btn-primary' style='padding: 8px 20px; font-size: 0.85rem;'>Retry</button>" +
+        "</div>";
+      var retryBtn = document.getElementById('reelsRetryBtn');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', function() {
+          discoverBloggerPosts();
+        });
+      }
+      if (counterEl) counterEl.innerHTML = "00 <span>/ 00</span>";
+      return;
+    }
+
     if (!filteredReels.length) {
-      track.innerHTML = "<div style='padding: 40px; text-align: center; color: var(--muted);'>No reels found for this category.</div>";
+      track.innerHTML = "<div style='padding: 60px 24px; text-align: center; color: var(--muted); width: 100%; max-width: 480px; margin: 0 auto;'>" +
+        "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' style='margin: 0 auto 16px; opacity: 0.5;'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><polyline points='11 3 11 11 14 8 17 11 17 3'/></svg>" +
+        "<div style='font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px;'>No Reels Published Yet</div>" +
+        "<p style='font-size: 0.88rem;'>Publish posts with the label <strong>'Reels'</strong> or YouTube video links on Blogger to automatically populate this section.</p>" +
+        "</div>";
       if (counterEl) counterEl.innerHTML = "00 <span>/ 00</span>";
       return;
     }
@@ -4296,6 +4419,32 @@
     var grid = document.getElementById('graphicsGrid');
     if (!grid) return;
 
+    // Check loading state
+    if (bloggerFeedState.isLoading && !bloggerFeedState.hasLoadedOnce && !filteredGraphics.length) {
+      grid.innerHTML = "<div style='grid-column: 1 / -1; padding: 60px 24px; text-align: center; background: var(--card); border: 1px dashed var(--border); border-radius: 20px; color: var(--muted);'>" +
+        "<div class='reel-spinner' style='display: block; margin: 0 auto 16px;'></div>" +
+        "<div style='font-size: 0.95rem; font-weight: 500;'>Loading published graphics...</div>" +
+        "</div>";
+      return;
+    }
+
+    // Check error state
+    if (bloggerFeedState.graphicsError && !filteredGraphics.length) {
+      grid.innerHTML = "<div style='grid-column: 1 / -1; padding: 50px 24px; text-align: center; background: var(--card); border: 1px dashed var(--border); border-radius: 20px; color: var(--muted);'>" +
+        "<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='margin: 0 auto 16px; opacity: 0.6;'><circle cx='12' cy='12' r='10'/><line x1='12' y1='8' x2='12' y2='12'/><line x1='12' y1='16' x2='12.01' y2='16'/></svg>" +
+        "<h3 style='font-family: var(--font-heading); font-size: 1.1rem; color: var(--text); margin-bottom: 8px;'>Unable to Load Graphics</h3>" +
+        "<p style='font-size: 0.88rem; max-width: 460px; margin: 0 auto 20px;'>" + escapeHtml(bloggerFeedState.graphicsErrorMsg || 'Could not fetch graphic designs from Blogger feed.') + "</p>" +
+        "<button id='graphicsRetryBtn' type='button' class='btn btn-primary' style='padding: 8px 20px; font-size: 0.85rem;'>Retry</button>" +
+        "</div>";
+      var retryGfxBtn = document.getElementById('graphicsRetryBtn');
+      if (retryGfxBtn) {
+        retryGfxBtn.addEventListener('click', function() {
+          discoverBloggerPosts();
+        });
+      }
+      return;
+    }
+
     if (!filteredGraphics.length) {
       grid.innerHTML = "<div style='grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: var(--card); border: 1px dashed var(--border); border-radius: 20px; color: var(--muted);'>" +
         "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' style='margin: 0 auto 16px; display: block; opacity: 0.5;'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/></svg>" +
@@ -4448,110 +4597,349 @@
     });
   }
 
-  // Comprehensive Blogger Feed Discovery for Posts Labeled 'Reels' or 'Graphics'
-  function discoverBloggerPosts() {
-    try {
-      var feedUrl = STUDIO_CONFIG.bloggerFeed.postsUrl;
-      fetch(feedUrl)
+  // Comprehensive Blogger Feed Discovery with Pagination and CORS Resiliency
+  var isDiscoveringBloggerPosts = false;
+  var seenBloggerPostIds = {};
+
+  function fetchBloggerFeedBatch(startIndex, maxResults) {
+    return new Promise(function(resolve, reject) {
+      // Build feed URL based on current origin or configured postsUrl
+      var baseUrl = STUDIO_CONFIG.bloggerFeed.postsUrl || '/feeds/posts/default?alt=json';
+      // Strip any existing alt, start-index, or max-results params
+      var urlWithoutQuery = baseUrl.split('?')[0];
+      // Check if protocol/host is needed (e.g. running on local file or preview)
+      if (urlWithoutQuery.indexOf('http') !== 0 && typeof window !== 'undefined' && window.location) {
+        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+          urlWithoutQuery = window.location.origin + urlWithoutQuery;
+        } else {
+          // If viewing from file:// or custom, fallback to default SynFusion blogger domain
+          urlWithoutQuery = 'https://synfusion.blogspot.com' + urlWithoutQuery;
+        }
+      }
+
+      var jsonUrl = urlWithoutQuery + '?alt=json&start-index=' + startIndex + '&max-results=' + maxResults;
+
+      // Attempt 1: Standard fetch
+      if (typeof fetch === 'function') {
+        var fetchController = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        var fetchTimeout = setTimeout(function() {
+          if (fetchController) fetchController.abort();
+        }, 10000);
+
+        fetch(jsonUrl, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' },
+          signal: fetchController ? fetchController.signal : undefined
+        })
         .then(function(res) {
-          if (!res.ok) throw new Error('Network error');
+          clearTimeout(fetchTimeout);
+          if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
         })
         .then(function(data) {
-          if (!data || !data.feed || !data.feed.entry) return;
-          var entries = data.feed.entry;
-          var hasNewReels = false;
-          var hasNewGraphics = false;
+          resolve(data);
+        })
+        .catch(function(err) {
+          clearTimeout(fetchTimeout);
+          // Attempt 2: JSONP fallback for cross-origin or CORS restriction
+          fetchBloggerFeedJsonp(urlWithoutQuery, startIndex, maxResults)
+            .then(resolve)
+            .catch(function(jsonpErr) {
+              reject(new Error(err.message || 'Feed request failed'));
+            });
+        });
+      } else {
+        // Fallback to JSONP directly if fetch is not supported
+        fetchBloggerFeedJsonp(urlWithoutQuery, startIndex, maxResults)
+          .then(resolve)
+          .catch(reject);
+      }
+    });
+  }
+
+  // JSONP fallback for Blogger public feeds (bypasses CORS restrictions)
+  function fetchBloggerFeedJsonp(baseUrl, startIndex, maxResults) {
+    return new Promise(function(resolve, reject) {
+      var callbackName = '__blogger_feed_cb_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+      var script = document.createElement('script');
+      var timeout = setTimeout(function() {
+        cleanup();
+        reject(new Error('JSONP feed request timed out'));
+      }, 12000);
+
+      function cleanup() {
+        clearTimeout(timeout);
+        delete window[callbackName];
+        if (script && script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      }
+
+      window[callbackName] = function(data) {
+        cleanup();
+        resolve(data);
+      };
+
+      script.onerror = function() {
+        cleanup();
+        reject(new Error('JSONP script loading error'));
+      };
+
+      var separator = baseUrl.indexOf('?') === -1 ? '?' : '&';
+      script.src = baseUrl + separator + 'alt=json-in-script&callback=' + callbackName + '&start-index=' + startIndex + '&max-results=' + maxResults;
+      document.head.appendChild(script);
+    });
+  }
+
+  function discoverBloggerPosts() {
+    if (isDiscoveringBloggerPosts) return;
+    isDiscoveringBloggerPosts = true;
+
+    bloggerFeedState.isLoading = true;
+    bloggerFeedState.reelsError = false;
+    bloggerFeedState.graphicsError = false;
+    bloggerFeedState.reelsErrorMsg = '';
+    bloggerFeedState.graphicsErrorMsg = '';
+
+    renderReelsCarousel();
+    renderGraphicsGrid();
+
+    var maxPerPage = STUDIO_CONFIG.bloggerFeed.maxResultsPerPage || 50;
+    var maxTotal = STUDIO_CONFIG.bloggerFeed.maxTotalPosts || 150;
+    var currentStartIndex = 1;
+
+    var discoveredReels = [];
+    var discoveredGraphics = [];
+
+    var targetReelsLabel = (STUDIO_CONFIG.bloggerFeed.reelsLabel || 'reels').toLowerCase().trim();
+    var targetGraphicsLabel = (STUDIO_CONFIG.bloggerFeed.graphicsLabel || 'graphics').toLowerCase().trim();
+
+    function fetchNextBatch() {
+      fetchBloggerFeedBatch(currentStartIndex, maxPerPage)
+        .then(function(data) {
+          if (!data || !data.feed) {
+            finishDiscovery(null, 'Malformed Blogger feed structure');
+            return;
+          }
+
+          var totalResults = 0;
+          if (data.feed.openSearch$totalResults && data.feed.openSearch$totalResults.$t) {
+            totalResults = parseInt(data.feed.openSearch$totalResults.$t, 10) || 0;
+          }
+
+          var entries = data.feed.entry || [];
+          if (typeof console !== 'undefined' && console.log) {
+            console.log('[Blogger Feed] Received ' + entries.length + ' entries (Batch starting ' + currentStartIndex + ')');
+          }
 
           entries.forEach(function(entry) {
-            var title = entry.title ? entry.title.$t : 'Untitled Project';
-            var content = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
-            var categoriesRaw = entry.category ? entry.category.map(function(c) { return c.term; }) : [];
-            var categoriesLower = categoriesRaw.map(function(c) { return (c || '').toLowerCase().trim(); });
+            try {
+              var postId = (entry.id && entry.id.$t) ? entry.id.$t : (entry.title ? entry.title.$t : Math.random().toString());
+              if (seenBloggerPostIds[postId]) return;
+              seenBloggerPostIds[postId] = true;
 
-            var isReel = categoriesLower.some(function(c) {
-              return ['reels', 'reel', '2d animation', '3d animation', 'video editing', 'ai product ads', 'motion graphics'].indexOf(c) !== -1;
-            });
+              var rawTitle = (entry.title && entry.title.$t) ? entry.title.$t : 'Untitled Project';
+              var title = decodeHtmlEntities(rawTitle).trim();
 
-            var isGraphic = categoriesLower.some(function(c) {
-              return ['graphics', 'graphic', 'logo design', 'social media posts', 'youtube thumbnails', 'posters & banners', 'advertising creatives', 'brand identity', 'branding', 'thumbnails', 'posters', 'social media creatives'].indexOf(c) !== -1;
-            });
+              var content = (entry.content && entry.content.$t) ? entry.content.$t : ((entry.summary && entry.summary.$t) ? entry.summary.$t : '');
+              var publishedDate = (entry.published && entry.published.$t) ? new Date(entry.published.$t).getTime() : 0;
 
-            // Handle Reels / Videos
-            if (isReel) {
-              var ytMatch = content.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-              var ytId = ytMatch ? ytMatch[1] : null;
-
-              if (ytId) {
-                if (!REELS_DATA.some(function(r) { return r.youtubeId === ytId; })) {
-                  var reelCategory = 'motion';
-                  if (categoriesLower.indexOf('2d animation') !== -1) reelCategory = '2d';
-                  else if (categoriesLower.indexOf('3d animation') !== -1) reelCategory = '3d';
-                  else if (categoriesLower.indexOf('video editing') !== -1) reelCategory = 'editing';
-                  else if (categoriesLower.indexOf('ai product ads') !== -1) reelCategory = 'ai-ads';
-
-                  REELS_DATA.unshift({
-                    id: 'blogger-yt-' + ytId,
-                    title: title,
-                    category: reelCategory,
-                    youtubeId: ytId,
-                    thumbnail: '',
-                    description: title,
-                    featured: true
-                  });
-                  hasNewReels = true;
-                }
-              }
-            }
-
-            // Handle Graphics / Portfolio Artwork
-            if (isGraphic) {
-              var imgMatch = content.match(/<img[^>]+src=["']([^"']+)["']/i);
-              var imgUrl = imgMatch ? imgMatch[1] : null;
-
-              if (!imgUrl && entry.media$thumbnail && entry.media$thumbnail.url) {
-                imgUrl = entry.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/s1600/');
+              // Extract canonical / alternate post URL
+              var postUrl = '';
+              if (entry.link && Array.isArray(entry.link)) {
+                var altLink = entry.link.find(function(l) { return l.rel === 'alternate'; });
+                if (altLink && altLink.href) postUrl = altLink.href;
               }
 
-              if (imgUrl) {
-                if (!GRAPHICS_DATA.some(function(g) { return g.image === imgUrl; })) {
-                  var gfxCategory = 'brand';
-                  var badgeLabel = 'CREATIVE';
+              // Extract labels case-insensitively
+              var categoriesRaw = entry.category ? entry.category.map(function(c) { return c.term; }) : [];
+              var categoriesLower = categoriesRaw.map(function(c) { return (c || '').toLowerCase().trim(); });
 
-                  if (categoriesLower.indexOf('logo design') !== -1) { gfxCategory = 'logo'; badgeLabel = 'LOGO'; }
-                  else if (categoriesLower.indexOf('social media posts') !== -1) { gfxCategory = 'social'; badgeLabel = 'SOCIAL'; }
-                  else if (categoriesLower.indexOf('youtube thumbnails') !== -1) { gfxCategory = 'thumbnail'; badgeLabel = 'THUMBNAIL'; }
-                  else if (categoriesLower.indexOf('posters & banners') !== -1) { gfxCategory = 'poster'; badgeLabel = 'POSTER'; }
-                  else if (categoriesLower.indexOf('advertising creatives') !== -1) { gfxCategory = 'ads'; badgeLabel = 'AD CREATIVE'; }
+              var hasExplicitReelsLabel = categoriesLower.indexOf(targetReelsLabel) !== -1 ||
+                categoriesLower.some(function(c) {
+                  return ['reel', '2d animation', '3d animation', 'video editing', 'ai product ads', 'motion graphics', 'short-form'].indexOf(c) !== -1;
+                });
 
-                  GRAPHICS_DATA.unshift({
-                    id: 'blogger-gfx-' + Math.random().toString(36).substr(2, 9),
-                    title: title,
-                    category: gfxCategory,
-                    categoryLabel: badgeLabel,
-                    badge: badgeLabel,
-                    image: imgUrl
-                  });
-                  hasNewGraphics = true;
+              var hasExplicitGraphicsLabel = categoriesLower.indexOf(targetGraphicsLabel) !== -1 ||
+                categoriesLower.some(function(c) {
+                  return ['graphic', 'logo design', 'social media posts', 'youtube thumbnails', 'posters & banners', 'advertising creatives', 'brand identity', 'branding', 'thumbnails', 'posters', 'social media creatives'].indexOf(c) !== -1;
+                });
+
+              // Check for YouTube video in content, title, or links
+              var ytId = extractYouTubeIdFromText(content);
+              if (!ytId && postUrl) ytId = extractYouTubeIdFromText(postUrl);
+
+              // REELS CLASSIFICATION RULES:
+              // 1. If explicit Reels label and has valid YT ID, it's a Reel.
+              // 2. If valid YouTube video detected, and NO explicit Graphics label, treat as Reel.
+              // 3. If post has both Graphics label and YouTube video, prioritize based on artwork presence:
+              //    if it contains graphic artwork, it goes to Graphics, but can also be in Reels if explicitly labeled Reels.
+              var isReelCandidate = (hasExplicitReelsLabel && ytId) || (ytId && !hasExplicitGraphicsLabel);
+
+              if (isReelCandidate && ytId) {
+                // Determine reel category
+                var reelCat = 'motion';
+                if (categoriesLower.indexOf('2d animation') !== -1 || categoriesLower.indexOf('2d') !== -1) reelCat = '2d';
+                else if (categoriesLower.indexOf('3d animation') !== -1 || categoriesLower.indexOf('3d') !== -1) reelCat = '3d';
+                else if (categoriesLower.indexOf('video editing') !== -1 || categoriesLower.indexOf('editing') !== -1) reelCat = 'editing';
+                else if (categoriesLower.indexOf('ai product ads') !== -1 || categoriesLower.indexOf('ai-ads') !== -1) reelCat = 'ai-ads';
+
+                // Extract custom thumbnail if present
+                var thumb = '';
+                if (entry.media$thumbnail && entry.media$thumbnail.url) {
+                  thumb = upgradeBloggerImageUrl(entry.media$thumbnail.url);
                 }
+
+                discoveredReels.push({
+                  id: 'blogger-reel-' + ytId,
+                  title: title,
+                  category: reelCat,
+                  youtubeId: ytId,
+                  thumbnail: thumb,
+                  description: title,
+                  featured: true,
+                  publishedDate: publishedDate,
+                  postUrl: postUrl
+                });
+              }
+
+              // GRAPHICS CLASSIFICATION RULES:
+              // 1. Must have explicit Graphics label or graphic subcategories.
+              // 2. Must contain genuine artwork image.
+              if (hasExplicitGraphicsLabel) {
+                var contentImages = extractImagesFromContent(content);
+                var primaryImage = '';
+
+                if (contentImages.length > 0) {
+                  primaryImage = contentImages[0];
+                } else if (entry.media$thumbnail && entry.media$thumbnail.url) {
+                  primaryImage = upgradeBloggerImageUrl(entry.media$thumbnail.url);
+                }
+
+                // Skip if no real image found or if image is a YT thumbnail without genuine graphic artwork
+                if (primaryImage) {
+                  var gfxCat = 'brand';
+                  var badge = 'CREATIVE';
+
+                  if (categoriesLower.indexOf('logo design') !== -1 || categoriesLower.indexOf('logo') !== -1) {
+                    gfxCat = 'logo'; badge = 'LOGO';
+                  } else if (categoriesLower.indexOf('social media posts') !== -1 || categoriesLower.indexOf('social') !== -1) {
+                    gfxCat = 'social'; badge = 'SOCIAL';
+                  } else if (categoriesLower.indexOf('youtube thumbnails') !== -1 || categoriesLower.indexOf('thumbnail') !== -1) {
+                    gfxCat = 'thumbnail'; badge = 'THUMBNAIL';
+                  } else if (categoriesLower.indexOf('posters & banners') !== -1 || categoriesLower.indexOf('poster') !== -1) {
+                    gfxCat = 'poster'; badge = 'POSTER';
+                  } else if (categoriesLower.indexOf('advertising creatives') !== -1 || categoriesLower.indexOf('ads') !== -1) {
+                    gfxCat = 'ads'; badge = 'AD CREATIVE';
+                  } else if (categoriesLower.indexOf('brand identity') !== -1 || categoriesLower.indexOf('branding') !== -1) {
+                    gfxCat = 'brand'; badge = 'BRANDING';
+                  }
+
+                  discoveredGraphics.push({
+                    id: 'blogger-gfx-' + postId.replace(/[^a-zA-Z0-9_-]/g, '_'),
+                    title: title,
+                    category: gfxCat,
+                    categoryLabel: badge,
+                    badge: badge,
+                    image: primaryImage,
+                    publishedDate: publishedDate,
+                    postUrl: postUrl
+                  });
+                }
+              }
+            } catch (entryErr) {
+              if (typeof console !== 'undefined' && console.warn) {
+                console.warn('[Blogger Feed] Skipping malformed post entry:', entryErr);
               }
             }
           });
 
-          if (hasNewReels) {
-            filteredReels = REELS_DATA.slice();
-            renderReelsCarousel();
-          }
-
-          if (hasNewGraphics) {
-            filteredGraphics = GRAPHICS_DATA.slice();
-            renderGraphicsGrid();
+          // Check if more entries exist and within maxTotal limit
+          currentStartIndex += entries.length;
+          if (entries.length >= maxPerPage && currentStartIndex <= totalResults && currentStartIndex < maxTotal) {
+            fetchNextBatch();
+          } else {
+            finishDiscovery(null, '');
           }
         })
-        .catch(function() {
-          // Gracefully fallback to current configuration
+        .catch(function(err) {
+          finishDiscovery(err, err.message || 'Unable to connect to Blogger feed');
         });
-    } catch (e) {}
+    }
+
+    function finishDiscovery(err, errMsg) {
+      isDiscoveringBloggerPosts = false;
+      bloggerFeedState.isLoading = false;
+      bloggerFeedState.hasLoadedOnce = true;
+
+      if (err) {
+        if (typeof console !== 'undefined' && console.error) {
+          console.error('[Blogger Feed Discovery Error]:', err);
+        }
+        // Only set error state if no existing content is present
+        if (!REELS_DATA.length) {
+          bloggerFeedState.reelsError = true;
+          bloggerFeedState.reelsErrorMsg = errMsg;
+        }
+        if (!GRAPHICS_DATA.length) {
+          bloggerFeedState.graphicsError = true;
+          bloggerFeedState.graphicsErrorMsg = errMsg;
+        }
+        renderReelsCarousel();
+        renderGraphicsGrid();
+        return;
+      }
+
+      // Merge and sort discovered Reels
+      if (discoveredReels.length > 0) {
+        // Remove duplicates by youtubeId
+        discoveredReels.forEach(function(r) {
+          var existingIdx = REELS_DATA.findIndex(function(ex) { return ex.youtubeId === r.youtubeId; });
+          if (existingIdx !== -1) {
+            REELS_DATA[existingIdx] = r;
+          } else {
+            REELS_DATA.unshift(r);
+          }
+        });
+
+        // Sort by publication date descending where available
+        REELS_DATA.sort(function(a, b) {
+          return (b.publishedDate || 0) - (a.publishedDate || 0);
+        });
+
+        filteredReels = REELS_DATA.slice();
+        renderReelsCarousel();
+      } else {
+        renderReelsCarousel();
+      }
+
+      // Merge and sort discovered Graphics
+      if (discoveredGraphics.length > 0) {
+        discoveredGraphics.forEach(function(g) {
+          var existingIdx = GRAPHICS_DATA.findIndex(function(ex) { return ex.image === g.image; });
+          if (existingIdx !== -1) {
+            GRAPHICS_DATA[existingIdx] = g;
+          } else {
+            GRAPHICS_DATA.unshift(g);
+          }
+        });
+
+        GRAPHICS_DATA.sort(function(a, b) {
+          return (b.publishedDate || 0) - (a.publishedDate || 0);
+        });
+
+        filteredGraphics = GRAPHICS_DATA.slice();
+        renderGraphicsGrid();
+      } else {
+        renderGraphicsGrid();
+      }
+
+      if (typeof console !== 'undefined' && console.log) {
+        console.log('[Blogger Feed] Discovery finished. Classified Reels: ' + discoveredReels.length + ', Classified Graphics: ' + discoveredGraphics.length);
+      }
+    }
+
+    fetchNextBatch();
   }
 
   // WhatsApp Quotation Request Form Handler
