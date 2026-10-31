@@ -5035,7 +5035,11 @@
     var labels = getEntryLabels(entry);
     var reelsLabel = normalizeLabel(STUDIO_CONFIG.bloggerFeed.reelsLabel || 'Reels');
     var graphicsLabel = normalizeLabel(STUDIO_CONFIG.bloggerFeed.graphicsLabel || 'Graphics');
-    var hasReels = labels.indexOf(reelsLabel) !== -1;
+    // Accept both common Blogger labels: "Reel" and "Reels" (case/spacing normalized).
+    // Keep this exact-label matching so unrelated labels cannot accidentally publish a Reel.
+    var hasReels = labels.indexOf(reelsLabel) !== -1 ||
+      labels.indexOf('reel') !== -1 ||
+      labels.indexOf('reels') !== -1;
     var hasGraphics = labels.indexOf(graphicsLabel) !== -1;
     var title = decodeHtmlEntities(feedText(entry.title)).replace(/\s+/g, ' ').trim();
     var postUrl = getEntryPostUrl(entry);
