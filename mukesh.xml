@@ -4294,10 +4294,10 @@
       html += "<article class='graphic-card' data-gfx-index='" + idx + "'>";
       html += "<div class='graphic-image-wrap'>";
       html += "<span class='graphic-badge'>" + (gfx.badge || 'CREATIVE') + "</span>";
-      html += "<img src='" + gfx.image + "' alt='" + gfx.title + "' loading='lazy'/>";
+      html += "<img src='" + escapeHtml(gfx.image) + "' alt='" + escapeHtml(gfx.title) + "' loading='lazy' onerror='this.style.display=&quot;none&quot;;'/>";
       html += "</div>";
       html += "<div class='graphic-info'>";
-      html += "<h3>" + gfx.title + "</h3>";
+      html += "<h3>" + escapeHtml(gfx.title) + "</h3>";
       html += "<p>" + (gfx.categoryLabel || gfx.category) + "</p>";
       html += "</div></article>";
     });
