@@ -5,7 +5,7 @@
 <meta content='width=device-width, initial-scale=1, maximum-scale=5' name='viewport'/>
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 <meta content='#FFFFFF' name='theme-color'/>
-<meta content='Singh Creative Studio — MUKESH SINGH. Ideas Made Visible. Graphic design, brand identity, motion design, animation and visual storytelling.' name='description'/>
+<meta content='Singh Creative Studio — MUKESH SINGH. Ideas Made Visible. Graphic design, visual branding, motion design, animation and visual storytelling.' name='description'/>
 <title>Singh Creative Studio — MUKESH SINGH</title>
 <b:include data='blog' name='all-head-content'/>
 
@@ -2546,8 +2546,8 @@
           </div>
 
           <!-- Slide 2 -->
-          <div class='scene' data-title='North Studio System' data-sub='Visual Branding · 02 / 04'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 520' role='img' aria-label='Minimal brand identity vector visual'>
+          <div class='scene' data-title='Creative Studio System' data-sub='Visual Branding · 02 / 04'>
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 520' role='img' aria-label='Minimal creative vector visual'>
               <rect width='560' height='520' fill='#EEF2FF'/>
               <circle cx='280' cy='210' r='120' fill='#111827'/>
               <path d='M220 270 L280 120 L340 270 Z' fill='#4F46E5'/>
@@ -2555,7 +2555,7 @@
               <text x='50' y='390' font-family='Space Grotesk' font-size='32' font-weight='800' fill='#111827'>NORTH / STUDIO</text>
               <text x='52' y='425' font-size='13' letter-spacing='4' fill='#64748B'>IDENTITY DIRECTION</text>
               <path d='M50 450 H510' stroke='#111827' stroke-opacity='0.15'/>
-              <text x='50' y='480' font-size='11' letter-spacing='3' fill='#64748B'>BRAND SYSTEM / 002</text>
+              <text x='50' y='480' font-size='11' letter-spacing='3' fill='#64748B'>CREATIVE SYSTEM / 002</text>
             </svg>
           </div>
 
@@ -2841,12 +2841,12 @@
           <span class='eyebrow'>THE PORTFOLIO</span>
           <h2 class='display'>Selected <span class='gradient-text'>experiments.</span></h2>
         </div>
-        <p>A visual playground exploring bold typography, color systems, brand identity, and dimensional forms. These concept studies demonstrate design capability.</p>
+        <p>A visual playground exploring bold typography, color systems, visual systems and dimensional forms. These concept studies demonstrate design capability.</p>
       </div>
 
-      <!-- Demo portfolio cards removed. Real artwork is populated from published Blogger posts in the Graphics gallery. -->
+      <!-- Demo portfolio cards removed. Real artwork is populated from published posts in the Graphics gallery. -->
       <div class='portfolio-live-notice' style='padding:32px 24px; text-align:center; border:1px dashed var(--border); border-radius:20px; background:var(--card); color:var(--muted);'>
-        <p>Portfolio artwork is loaded automatically from published Blogger posts. See the live Graphics gallery below.</p>
+        <p>Portfolio artwork is loaded automatically from published published posts. See the live Graphics gallery below.</p>
         <a class='btn btn-primary' href='#graphics' style='margin-top:16px;'>View Graphics Gallery</a>
       </div>
     </div>
@@ -3418,7 +3418,7 @@
                  Animation
      ========================================================================== */
 
-  // Filled at runtime from the Blogger feed only (see discoverBloggerPosts). Shapes:
+  // Filled at runtime from the content feed only (see discoverBloggerPosts). Shapes:
   //   Reel:    { id, postKey, title, youtubeId, category, badge, description, postUrl, publishedDate }
   //   Graphic: { id, postKey, title, image, imageFallback, imageCount, category, badge,
   //              categoryLabel, postUrl, publishedDate }   (image is '' when the post has none)
@@ -4845,9 +4845,11 @@
       }
       list.push({ transport: transport, base: base, name: name });
     }
+    // Prefer the canonical homepage URL emitted by Blogger, then try the current origin.
+    // Custom-domain feed routes can return a valid but empty/unrelated feed response.
+    if (homeOrigin) add('jsonp', homeOrigin + feedPath, 'canonical blog JSONP feed');
     if (servedByBlog) add('fetch', loc.origin + feedPath, 'same-origin JSON feed');
-    if (homeOrigin) add('jsonp', homeOrigin + feedPath, 'blog JSONP feed');
-    else if (servedByBlog) add('jsonp', loc.origin + feedPath, 'same-origin JSONP feed');
+    if (!homeOrigin && servedByBlog) add('jsonp', loc.origin + feedPath, 'same-origin JSONP feed');
     if (/^\d+$/.test(meta.blogId)) add('jsonp', 'https://www.blogger.com/feeds/' + meta.blogId + '/posts/default', 'blog-ID JSONP feed');
     return list;
   }
@@ -5010,7 +5012,7 @@
     { category: '3d', badge: '3D', terms: ['3d animation', '3d'] },
     { category: 'editing', badge: 'EDITING', terms: ['video editing', 'editing'] },
     { category: 'ai-ads', badge: 'AI ADS', terms: ['ai product ads', 'ai product ad', 'ai ads', 'ai-ads'] },
-    { category: 'motion', badge: 'MOTION', terms: ['motion design', 'motion'] }
+    { category: 'motion', badge: 'MOTION', terms: ['motion graphics', 'motion design', 'motion'] }
   ];
 
   function matchSublabel(labels, table) {
@@ -5131,7 +5133,7 @@
           stats.graphicsWithoutImage++;
           feedLog('warn', "Graphics post " + describePost(result.info) + " has no usable artwork image (no <img> in the post body or summary, and no non-YouTube media$thumbnail). It is listed with a 'No artwork image' notice. Upload the artwork image into the post to display it.");
         } else if (result.imageSource === 'media$thumbnail') {
-          feedLog('info', 'Graphics post ' + describePost(result.info) + ' has no image in the feed body (feed may be set to Short/jump-break); using its Blogger thumbnail instead.');
+          feedLog('info', 'Graphics post ' + describePost(result.info) + ' has no image in the feed body (feed may be set to Short/jump-break); using its post thumbnail instead.');
         }
         if (!result.info.title) feedLog('warn', 'Graphics post at ' + (result.info.postUrl || '(unknown URL)') + ' has no title.');
         graphics.push(result.item);
@@ -5202,7 +5204,7 @@
     var partialError = null;
 
     if (!endpoints.length) {
-      finish(new Error('the blog feed address could not be determined. Open this page from your Blogger site.'), null);
+      finish(new Error('the blog feed address could not be determined. Open this page from your website.'), null);
       return;
     }
 
@@ -5250,7 +5252,7 @@
           pagesFetched < maxPages &&
           (isNaN(totalResults) || nextStart <= totalResults);
         if (hasMore) fetchPage(endpoint, nextStart, null, endpointIndex);
-        else finish(null, endpoint);
+        else finish(null, endpoint, endpointIndex);
       }).catch(function(err) {
         if (runId !== feedDiscoveryRunId) return;
         if (startIndex === 1 && onFirstPageError) {
@@ -5263,8 +5265,20 @@
       });
     }
 
-    function finish(fatalError, endpoint) {
+    function finish(fatalError, endpoint, endpointIndex) {
       if (runId !== feedDiscoveryRunId) return;
+      if (!fatalError && typeof endpointIndex === 'number' && endpointIndex + 1 < endpoints.length && collected.length) {
+        var probe = classifyBloggerEntries(collected);
+        if (!probe.reels.length && !probe.graphics.length) {
+          feedLog('warn', 'Feed endpoint ' + endpoint.name + ' returned posts but none matched the Reels/Graphics labels; checking the next configured endpoint.');
+          collected = [];
+          seenKeys = {};
+          pagesFetched = 0;
+          partialError = null;
+          tryEndpoint(endpointIndex + 1);
+          return;
+        }
+      }
       feedDiscoveryInFlight = false;
       bloggerFeedState.isLoading = false;
       bloggerFeedState.hasLoadedOnce = true;
