@@ -1913,13 +1913,34 @@
     color: #FFFFFF;
   }
 
+  .reel-cover-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    transition: transform 0.4s ease;
+  }
+
+  .reel-card:hover .reel-cover-img {
+    transform: scale(1.04);
+  }
+
   .reel-meta-title {
     font-family: var(--font-heading);
     font-size: 1.05rem;
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 6px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
   }
 
   .reel-meta-desc {
@@ -2290,15 +2311,40 @@
 
   @media (max-width: 480px) {
     .reels-carousel-track-wrapper {
-      scroll-padding-inline: calc(50% - 125px);
+      scroll-padding-inline: calc(50% - 120px);
     }
     .reel-card {
-      flex: 0 0 250px;
-      width: 250px;
+      flex: 0 0 240px;
+      width: 240px;
     }
     .reels-carousel-footer {
       flex-direction: column;
       gap: 14px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .reels-carousel-track-wrapper {
+      scroll-padding-inline: calc(50% - 110px);
+    }
+    .reel-card {
+      flex: 0 0 220px;
+      width: 220px;
+      border-radius: 20px;
+    }
+    .reel-frame-inner {
+      border-radius: 19px;
+    }
+    .reel-play-btn {
+      width: 54px;
+      height: 54px;
+    }
+    .reel-play-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+    .reel-meta-title {
+      font-size: 0.95rem;
     }
   }
 ]]></b:skin>
@@ -3473,6 +3519,7 @@
       id: 'reel-1',
       title: 'Cinematic 3D Character Rigging & Animation',
       category: '3d',
+      categoryLabel: '3D',
       youtubeId: 'L_LUpnjgPso', // High quality vertical animation reel sample ID
       thumbnail: '',
       description: '3D character motion design, fluid simulations, and visual storytelling for digital brand campaigns.',
@@ -3482,6 +3529,7 @@
       id: 'reel-2',
       title: 'Product Advertisement Video with AI',
       category: 'ai-ads',
+      categoryLabel: 'AI ADS',
       youtubeId: 'jNQXAC9IVRw', // Sample YouTube video ID
       thumbnail: '',
       description: 'AI-generated hyper-realistic product visuals paired with motion typography for high CTR ads.',
@@ -3491,6 +3539,7 @@
       id: 'reel-3',
       title: '2D Hand-Drawn Frame Animation',
       category: '2d',
+      categoryLabel: '2D',
       youtubeId: 'kJQP7kiw5Fk', // Sample YouTube video ID
       thumbnail: '',
       description: 'Expressive frame-by-frame 2D animation sequence crafted for brand commercial intros.',
@@ -3500,6 +3549,7 @@
       id: 'reel-4',
       title: 'Dynamic Short-Form Reel Editing',
       category: 'editing',
+      categoryLabel: 'EDITING',
       youtubeId: 'fJ9rUzIMcZQ', // Sample YouTube video ID
       thumbnail: '',
       description: 'Fast-paced rhythmic video editing, sound design, and colored grading for social media.',
@@ -3509,6 +3559,7 @@
       id: 'reel-5',
       title: 'Kinetic Motion Graphics & Title Sequence',
       category: 'motion',
+      categoryLabel: 'MOTION',
       youtubeId: '3JZ_D3ELwOQ', // Sample YouTube video ID
       thumbnail: '',
       description: 'Bold kinetic typography and particle motion graphics designed for campaign launch teasers.',
@@ -3518,6 +3569,7 @@
       id: 'reel-6',
       title: 'AI Commercial & Creative Direction',
       category: 'ai-ads',
+      categoryLabel: 'AI ADS',
       youtubeId: '2Vv-BfVoq4g', // Sample YouTube video ID
       thumbnail: '',
       description: 'Synthesized AI camera choreography combined with premium audio design for modern brands.',
@@ -3691,6 +3743,51 @@
     );
   }
 
+  // Global handler for Reel Cover Image Fallback progression
+  window.handleReelCoverImgError = function(imgEl) {
+    if (!imgEl) return;
+    var step = parseInt(imgEl.getAttribute("data-fallback-step") || "0", 10);
+    var ytId = imgEl.getAttribute("data-yt-id") || "";
+    var title = imgEl.getAttribute("data-title") || "Singh Creative Studio";
+    var cat = imgEl.getAttribute("data-category") || "CREATIVE REEL";
+
+    if (step === 0) {
+      imgEl.setAttribute("data-fallback-step", "1");
+      if (ytId) {
+        if (imgEl.src.indexOf("maxresdefault.jpg") !== -1) {
+          imgEl.setAttribute("data-fallback-step", "2");
+          imgEl.src = "https://i.ytimg.com/vi/" + ytId + "/hqdefault.jpg";
+        } else {
+          imgEl.src = "https://i.ytimg.com/vi/" + ytId + "/maxresdefault.jpg";
+        }
+      } else {
+        imgEl.setAttribute("data-fallback-step", "4");
+        imgEl.src = createBrandedSvgThumbnail(title, cat);
+      }
+    } else if (step === 1) {
+      imgEl.setAttribute("data-fallback-step", "2");
+      if (ytId) {
+        imgEl.src = "https://i.ytimg.com/vi/" + ytId + "/hqdefault.jpg";
+      } else {
+        imgEl.setAttribute("data-fallback-step", "4");
+        imgEl.src = createBrandedSvgThumbnail(title, cat);
+      }
+    } else if (step === 2) {
+      imgEl.setAttribute("data-fallback-step", "3");
+      if (ytId) {
+        imgEl.src = "https://i.ytimg.com/vi/" + ytId + "/mqdefault.jpg";
+      } else {
+        imgEl.setAttribute("data-fallback-step", "4");
+        imgEl.src = createBrandedSvgThumbnail(title, cat);
+      }
+    } else if (step === 3) {
+      imgEl.setAttribute("data-fallback-step", "4");
+      imgEl.src = createBrandedSvgThumbnail(title, cat);
+    } else {
+      imgEl.onerror = null;
+    }
+  };
+
   // Feed loading and error state management
   var bloggerFeedState = {
     isLoading: true,
@@ -3833,22 +3930,23 @@
     var html = '';
     filteredReels.forEach(function(reel, idx) {
       var isActive = idx === activeReelIndex;
-      var thumbUrl = reel.thumbnail || ('https://img.youtube.com/vi/' + reel.youtubeId + '/maxresdefault.jpg');
-      var fallbackThumbUrl = 'https://img.youtube.com/vi/' + reel.youtubeId + '/hqdefault.jpg';
-      var svgFallback = createBrandedSvgThumbnail(reel.title, reel.category);
+      var thumbUrl = reel.thumbnail || ('https://i.ytimg.com/vi/' + reel.youtubeId + '/maxresdefault.jpg');
+      var safeTitle = escapeHtml(reel.title);
+      var badgeText = (reel.categoryLabel || reel.category || 'REEL').toUpperCase();
 
       html += "<div class='reel-card " + (isActive ? 'active' : '') + "' data-index='" + idx + "' data-id='" + reel.id + "'>";
       html += "<div class='reel-frame-inner'>";
 
-      // Thumbnail Overlay
-      html += "<div class='reel-thumbnail-wrap' id='reelThumb-" + idx + "' style=\"background-image: url('" + thumbUrl + "'), url('" + fallbackThumbUrl + "'), url('" + svgFallback + "');\">";
-      html += "<span class='reel-badge-category'>" + reel.category + "</span>";
+      // Thumbnail Overlay with real <img> cover and fallback progression
+      html += "<div class='reel-thumbnail-wrap' id='reelThumb-" + idx + "'>";
+      html += "<img class='reel-cover-img' src='" + thumbUrl + "' alt='" + safeTitle + "' data-fallback-step='0' data-yt-id='" + (reel.youtubeId || '') + "' data-title='" + safeTitle + "' data-category='" + badgeText + "' onerror='window.handleReelCoverImgError(this);' loading='lazy' />";
+      html += "<span class='reel-badge-category'>" + badgeText + "</span>";
       html += "<div class='reel-play-btn-wrap' data-play-index='" + idx + "' title='Play Reel'>";
       html += "<div class='reel-play-btn'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polygon points='5 3 19 12 5 21 5 3'/></svg></div>";
       html += "</div>";
       html += "<div class='reel-meta-bottom'>";
-      html += "<div class='reel-meta-title'>" + reel.title + "</div>";
-      html += "<div class='reel-meta-desc'>" + reel.description + "</div>";
+      html += "<div class='reel-meta-title'>" + safeTitle + "</div>";
+      html += "<div class='reel-meta-desc'>" + (reel.description ? escapeHtml(reel.description) : safeTitle) + "</div>";
       html += "</div></div>";
 
       // Iframe Container
@@ -4738,11 +4836,9 @@
               if (seenBloggerPostIds[postId]) return;
               seenBloggerPostIds[postId] = true;
 
-              var rawTitle = (entry.title && entry.title.$t) ? entry.title.$t : 'Untitled Project';
+              // Extract post title strictly from entry.title.$t
+              var rawTitle = (entry.title && typeof entry.title.$t === 'string') ? entry.title.$t : '';
               var title = decodeHtmlEntities(rawTitle).trim();
-
-              var content = (entry.content && entry.content.$t) ? entry.content.$t : ((entry.summary && entry.summary.$t) ? entry.summary.$t : '');
-              var publishedDate = (entry.published && entry.published.$t) ? new Date(entry.published.$t).getTime() : 0;
 
               // Extract canonical / alternate post URL
               var postUrl = '';
@@ -4750,6 +4846,23 @@
                 var altLink = entry.link.find(function(l) { return l.rel === 'alternate'; });
                 if (altLink && altLink.href) postUrl = altLink.href;
               }
+              var content = (entry.content && entry.content.$t) ? entry.content.$t : ((entry.summary && entry.summary.$t) ? entry.summary.$t : '');
+              var ytId = extractYouTubeIdFromText(content);
+              if (!ytId && postUrl) ytId = extractYouTubeIdFromText(postUrl);
+
+              // Disallow placeholder titles: 'Untitled Project', 'Untitled', video ID, or YouTube URLs
+              var isTitleGeneric = !title ||
+                title.toLowerCase() === 'untitled project' ||
+                title.toLowerCase() === 'untitled' ||
+                (ytId && title === ytId) ||
+                /^(https?:\/\/)?(www\.|m\.)?(youtube\.com|youtu\.be)\//i.test(title);
+
+              if (isTitleGeneric) {
+                // Only fall back if Blogger genuinely provides no title
+                title = 'Creative Reel';
+              }
+
+              var publishedDate = (entry.published && entry.published.$t) ? new Date(entry.published.$t).getTime() : 0;
 
               // Extract labels case-insensitively
               var categoriesRaw = entry.category ? entry.category.map(function(c) { return c.term; }) : [];
@@ -4765,10 +4878,6 @@
                   return ['graphic', 'logo design', 'social media posts', 'youtube thumbnails', 'posters & banners', 'advertising creatives', 'brand identity', 'branding', 'thumbnails', 'posters', 'social media creatives'].indexOf(c) !== -1;
                 });
 
-              // Check for YouTube video in content, title, or links
-              var ytId = extractYouTubeIdFromText(content);
-              if (!ytId && postUrl) ytId = extractYouTubeIdFromText(postUrl);
-
               // REELS CLASSIFICATION RULES:
               // 1. If explicit Reels label and has valid YT ID, it's a Reel.
               // 2. If valid YouTube video detected, and NO explicit Graphics label, treat as Reel.
@@ -4777,23 +4886,59 @@
               var isReelCandidate = (hasExplicitReelsLabel && ytId) || (ytId && !hasExplicitGraphicsLabel);
 
               if (isReelCandidate && ytId) {
-                // Determine reel category
+                // Determine reel category and badge label case-insensitively
+                // Motion Graphics -> MOTION
+                // 3D Animation -> 3D
+                // 2D Animation -> 2D
+                // Video Editing -> EDITING
+                // AI Product Ads -> AI ADS
                 var reelCat = 'motion';
-                if (categoriesLower.indexOf('2d animation') !== -1 || categoriesLower.indexOf('2d') !== -1) reelCat = '2d';
-                else if (categoriesLower.indexOf('3d animation') !== -1 || categoriesLower.indexOf('3d') !== -1) reelCat = '3d';
-                else if (categoriesLower.indexOf('video editing') !== -1 || categoriesLower.indexOf('editing') !== -1) reelCat = 'editing';
-                else if (categoriesLower.indexOf('ai product ads') !== -1 || categoriesLower.indexOf('ai-ads') !== -1) reelCat = 'ai-ads';
+                var reelBadge = 'MOTION';
+
+                if (categoriesLower.indexOf('3d animation') !== -1 || categoriesLower.indexOf('3d') !== -1) {
+                  reelCat = '3d';
+                  reelBadge = '3D';
+                } else if (categoriesLower.indexOf('2d animation') !== -1 || categoriesLower.indexOf('2d') !== -1) {
+                  reelCat = '2d';
+                  reelBadge = '2D';
+                } else if (categoriesLower.indexOf('video editing') !== -1 || categoriesLower.indexOf('editing') !== -1) {
+                  reelCat = 'editing';
+                  reelBadge = 'EDITING';
+                } else if (categoriesLower.indexOf('ai product ads') !== -1 || categoriesLower.indexOf('ai-ads') !== -1 || categoriesLower.indexOf('ai product ad') !== -1) {
+                  reelCat = 'ai-ads';
+                  reelBadge = 'AI ADS';
+                } else if (categoriesLower.indexOf('motion graphics') !== -1 || categoriesLower.indexOf('motion') !== -1) {
+                  reelCat = 'motion';
+                  reelBadge = 'MOTION';
+                }
 
                 // Extract custom thumbnail if present
-                var thumb = '';
-                if (entry.media$thumbnail && entry.media$thumbnail.url) {
-                  thumb = upgradeBloggerImageUrl(entry.media$thumbnail.url);
+                // Priority: 1. Content image explicitly designated or present in post
+                //           2. entry.media$thumbnail if not a generic low-res YT grab
+                //           3. Automatic YouTube maxresdefault thumbnail
+                var contentImages = extractImagesFromContent(content);
+                var customCover = '';
+                if (contentImages.length > 0) {
+                  var firstImg = contentImages[0];
+                  if (!/ytimg\.com|img\.youtube\.com/i.test(firstImg)) {
+                    customCover = firstImg;
+                  }
                 }
+                if (!customCover && entry.media$thumbnail && entry.media$thumbnail.url) {
+                  var mediaThumb = upgradeBloggerImageUrl(entry.media$thumbnail.url);
+                  if (!/ytimg\.com|img\.youtube\.com/i.test(mediaThumb)) {
+                    customCover = mediaThumb;
+                  }
+                }
+
+                var thumb = customCover || ('https://i.ytimg.com/vi/' + ytId + '/maxresdefault.jpg');
 
                 discoveredReels.push({
                   id: 'blogger-reel-' + ytId,
                   title: title,
                   category: reelCat,
+                  categoryLabel: reelBadge,
+                  badge: reelBadge,
                   youtubeId: ytId,
                   thumbnail: thumb,
                   description: title,
