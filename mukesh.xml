@@ -3696,6 +3696,10 @@
         if (linkId) return linkId;
       }
     }
+    // Regex fallback covers Blogger's exact iframe serialization, including youtube-src-id,
+    // if the browser's inert HTML parser cannot parse the markup for any reason.
+    var iframeIdMatch = String(contentHtml || '').match(/youtube-src-id\\s*=\\s*["']([A-Za-z0-9_-]{11})["']/i);
+    if (iframeIdMatch && isValidYouTubeId(iframeIdMatch[1])) return iframeIdMatch[1];
     var fromBody = extractYouTubeIdFromText(contentHtml || '');
     if (fromBody) return fromBody;
     var fromSummary = extractYouTubeIdFromText(summaryHtml || '');
@@ -5037,10 +5041,12 @@
     var graphicsLabel = normalizeLabel(STUDIO_CONFIG.bloggerFeed.graphicsLabel || 'Graphics');
     // Accept both common Blogger labels: "Reel" and "Reels" (case/spacing normalized).
     // Keep this exact-label matching so unrelated labels cannot accidentally publish a Reel.
+    // Blogger category feeds may expose the label as "Reel", "Reels", or a
+    // whitespace/case-normalized equivalent. Match the standalone word, not only one configured form.
     var hasReels = labels.indexOf(reelsLabel) !== -1 ||
-      labels.indexOf('reel') !== -1 ||
-      labels.indexOf('reels') !== -1;
-    var hasGraphics = labels.indexOf(graphicsLabel) !== -1;
+      labels.some(function(label) { return /(^|\\s)reels?(\\s|$)/i.test(label); });
+    var hasGraphics = labels.indexOf(graphicsLabel) !== -1 ||
+      labels.some(function(label) { return /(^|\\s)graphics(\\s|$)/i.test(label); });
     var title = decodeHtmlEntities(feedText(entry.title)).replace(/\s+/g, ' ').trim();
     var postUrl = getEntryPostUrl(entry);
     var publishedDate = Date.parse(feedText(entry.published) || feedText(entry.updated)) || 0;
