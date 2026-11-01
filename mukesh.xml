@@ -1412,9 +1412,33 @@
 
   .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
-    gap: 48px;
+    grid-template-columns: 1.1fr 1fr 1.5fr;
+    gap: 36px;
     margin-bottom: 40px;
+  }
+
+  .footer-legal-col { min-width: 0; }
+
+  .footer-legal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .footer-legal-list a {
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .footer-legal-list a:hover,
+  .footer-legal-list a:focus-visible {
+    color: var(--primary);
+    transform: translateX(3px);
   }
 
   .footer-brand {
@@ -2970,6 +2994,17 @@
       <p class='footer-desc'>Creative solutions for brands through animation, video editing, graphic design, AI-powered advertisements, and social media management.</p>
     </div>
 
+
+    <!-- Legal Pages -->
+    <div class='footer-legal-col'>
+      <h3 class='footer-heading'>Legal</h3>
+      <ul class='footer-legal-list'>
+        <li><a href='https://creativestudiosingh.blogspot.com/p/privacy-policy.html'>Privacy Policy</a></li>
+        <li><a href='https://creativestudiosingh.blogspot.com/p/terms-and-conditions.html'>Terms &amp; Conditions</a></li>
+        <li><a href='https://creativestudiosingh.blogspot.com/p/refund-cancellation-policy.html'>Refund &amp; Cancellation Policy</a></li>
+        <li><a href='https://creativestudiosingh.blogspot.com/p/disclaimer.html'>Disclaimer</a></li>
+      </ul>
+    </div>
 
     <!-- Social and Contact Actions -->
     <div class='footer-actions-col'>
